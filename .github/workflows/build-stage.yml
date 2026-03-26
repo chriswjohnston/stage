@@ -28,5 +28,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add docs/
           git diff --staged --quiet && echo "No changes" || (git commit -m "Stage build: $(date +'%Y-%m-%d %H:%M')" && git push)
