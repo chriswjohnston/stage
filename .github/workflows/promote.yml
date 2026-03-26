@@ -1,0 +1,57 @@
+name: Promote to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type PROMOTE to confirm pushing to live site'
+        required: true
+        default: ''
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    if: inputs.confirm == 'PROMOTE'
+
+    steps:
+      - name: Checkout stage repo
+        uses: actions/checkout@v4.2.2
+
+      - name: Push campaign site to production repo
+        env:
+          PROD_TOKEN: ${{ secrets.PROD_TOKEN }}
+        run: |
+          # Read the campaign index file
+          CONTENT=$(base64 -w 0 src/campaign/index.html)
+
+          # Get current SHA of the file in production repo
+          SHA=$(curl -s \
+            -H "Authorization: Bearer $PROD_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/chriswjohnston/chriswjohnston-site/contents/src/campaign/index.html" \
+            | python3 -c "import sys,json; print(json.load(sys.stdin).get('sha',''))")
+
+          # Push updated file to production repo
+          curl -s -X PUT \
+            -H "Authorization: Bearer $PROD_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/chriswjohnston/chriswjohnston-site/contents/src/campaign/index.html" \
+            -d "{
+              \"message\": \"Promoted from stage: $(date +'%Y-%m-%d %H:%M')\",
+              \"content\": \"$CONTENT\",
+              \"sha\": \"$SHA\"
+            }"
+
+          echo "✓ Pushed to production repo"
+          echo "Production build will trigger automatically within 1 minute."
+
+      - name: Trigger production build
+        env:
+          PROD_TOKEN: ${{ secrets.PROD_TOKEN }}
+        run: |
+          curl -s -X POST \
+            -H "Authorization: Bearer $PROD_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/chriswjohnston/chriswjohnston-site/actions/workflows/build.yml/dispatches" \
+            -d '{"ref":"main"}'
+          echo "✓ Production build triggered"
