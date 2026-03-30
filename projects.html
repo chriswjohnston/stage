@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Accountability – Chris Johnston for Nipissing Township Council</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #2C4A3E; --pine: #3D6B5E; --water: #5B9FAF; --sky: #A8D5E2;
+      --sand: #F2EAD3; --warm: #E8C98A; --rust: #C06830;
+      --charcoal: #1E2B2A; --cream: #FAF7F0; --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--charcoal); }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; background: rgba(44,74,62,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--warm); text-decoration: none; }
+    .nav-logo span { color: var(--sky); }
+    .nav-back { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-back:hover { color: var(--warm); }
+    .nav-back::before { content: '← '; }
+
+    /* PAGE HERO */
+    .page-hero { background: var(--forest); padding: 9rem 2rem 4rem; }
+    .page-hero .container { max-width: 860px; margin: 0 auto; }
+    .page-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm); margin-bottom: 1rem; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; }
+    .page-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.82; color: rgba(255,255,255,0.78); max-width: 700px; margin-bottom: 2rem; }
+    .page-intro strong { color: var(--warm); font-weight: 700; }
+
+    .stance-box { background: rgba(192,104,48,0.15); border: 1px solid rgba(192,104,48,0.35); border-radius: 10px; padding: 1.5rem 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .stance-box .si { font-size: 1.4rem; flex-shrink: 0; }
+    .stance-box p { font-size: 0.93rem; line-height: 1.75; color: rgba(255,255,255,0.8); }
+
+    /* SHARED */
+    .container { max-width: 860px; margin: 0 auto; }
+    section { padding: 4.5rem 2rem; }
+
+    /* PROJECT CARDS */
+    .project { background: var(--white); border-radius: 14px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); overflow: hidden; margin-bottom: 3rem; }
+    .project-header { padding: 2.5rem 2.5rem 0; border-left: 5px solid var(--rust); margin-left: 0; }
+    .project-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.5rem; }
+    .project-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem; line-height: 1.25; }
+    .project-subtitle { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
+    .project-body { padding: 0 2.5rem 2.5rem; }
+
+    .project-body p { font-size: 0.97rem; line-height: 1.82; color: #444; margin-bottom: 1.2rem; }
+    .project-body p:last-child { margin-bottom: 0; }
+    .project-body strong { color: var(--charcoal); }
+
+    /* Timeline steps */
+    .timeline { margin: 2rem 0; padding-left: 0; list-style: none; border-left: 2px solid rgba(44,74,62,0.15); padding-left: 1.5rem; }
+    .timeline li { position: relative; margin-bottom: 1.5rem; padding-left: 0.5rem; }
+    .timeline li::before { content: ''; position: absolute; left: -1.9rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--pine); border: 2px solid var(--cream); }
+    .timeline-date { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.2rem; }
+    .timeline li p { font-size: 0.92rem; line-height: 1.72; color: #555; margin: 0; }
+    .timeline li strong { color: var(--forest); }
+
+    /* Evidence box */
+    .evidence { background: var(--sand); border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
+    .evidence-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.5rem; }
+    .evidence a { display: block; font-size: 0.88rem; color: var(--forest); text-decoration: none; font-weight: 700; margin-bottom: 0.3rem; border-bottom: 1px solid rgba(44,74,62,0.2); padding-bottom: 0.3rem; }
+    .evidence a:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+    .evidence a:hover { color: var(--rust); }
+    .evidence a::before { content: '↗ '; font-size: 0.8rem; }
+
+    /* My position callout */
+    .my-position { background: #192820; border-radius: 10px; padding: 1.8rem 2rem; margin-top: 1.5rem; }
+    .my-position .mp-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.6rem; }
+    .my-position p { font-size: 0.93rem; line-height: 1.78; color: rgba(255,255,255,0.8); margin-bottom: 0.8rem; }
+    .my-position p:last-child { margin-bottom: 0; }
+
+    /* Letter block */
+    .letter-block { background: #f8f5ef; border: 1px solid rgba(44,74,62,0.12); border-radius: 8px; padding: 2rem 2.5rem; margin: 1.5rem 0; font-size: 0.92rem; line-height: 1.82; color: #444; }
+    .letter-block .letter-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 1rem; }
+    .letter-block p { margin-bottom: 1rem; }
+    .letter-block p:last-child { margin-bottom: 0; }
+    .letter-block ul { margin: 0.5rem 0 1rem 1.5rem; }
+    .letter-block ul li { margin-bottom: 0.5rem; font-size: 0.9rem; line-height: 1.72; }
+    .letter-block .sig { margin-top: 1.5rem; font-style: italic; color: #666; }
+
+    /* CTA section */
+    #cta { background: var(--forest); text-align: center; }
+    #cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 1rem; }
+    #cta p { font-size: 1rem; color: rgba(255,255,255,0.72); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .btn-primary { background: var(--rust); color: var(--white); padding: 0.9rem 2rem; border: none; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: #A8552A; }
+
+    footer { background: #111b1a; padding: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    footer a { color: var(--warm); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .project-header, .project-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .letter-block { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Chris <span>Johnston</span></a>
+  <a href="index.html" class="nav-back">Back to main site</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <p class="page-eyebrow">Accountability · Project Track Record</p>
+    <h1 class="page-title">When Projects Go Wrong<br>and No One Asks Why</h1>
+    <p class="page-intro">Nipissing Township has struggled with technology and administrative projects across multiple terms. In each case, the pattern is the same: a project is approved, problems emerge, deadlines slip, money is spent — and <strong>council asks no public questions</strong>. Residents find out through informal conversations with staff, if at all. These are three documented examples.</p>
+    <div class="stance-box">
+      <div class="si">📋</div>
+      <p>My position is simple: when public money is spent on a project, the public deserves to know when it goes wrong, why it went wrong, and what will be done differently next time. That's not a radical ask — it's basic accountability.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section>
+  <div class="container">
+
+    <!-- PROJECT 1: CAO RECRUITMENT -->
+    <div class="project">
+      <div class="project-header">
+        <p class="project-num">Project 01 · 2021</p>
+        <h2 class="project-title">CAO Recruitment — $9,315 for a Process That Ended Behind Closed Doors</h2>
+        <p class="project-subtitle">HR-CAO-RFP 2021 · Resolution R2021-142 · Resolution R2021-189</p>
+      </div>
+      <div class="project-body">
+        <p>After the Township's CAO-Clerk resigned in February 2021, council issued a Request for Proposal to find a firm to manage the recruitment process. The contract was awarded to Expertise 4 Municipalities (E4M) at a total cost of <strong>$9,315</strong> — a reasonable and transparent start. The process, however, ended very differently.</p>
+
+        <ul class="timeline">
+          <li>
+            <div class="timeline-date">May 21, 2021</div>
+            <p>Township issues <strong>HR-CAO-RFP 2021</strong> — a public, competitive process to hire a firm to manage the CAO-Clerk recruitment.</p>
+          </li>
+          <li>
+            <div class="timeline-date">June 8, 2021 — Resolution R2021-142</div>
+            <p>Council awards the RFP to E4M for <strong>$9,315</strong>. Moved by Marchant, seconded by Kirkey. Carried unanimously.</p>
+          </li>
+          <li>
+            <div class="timeline-date">September 7, 2021 — Resolution R2021-189</div>
+            <p>In a <strong>special meeting</strong>, council passes a resolution — moved by Moore, seconded by Scott — stating that E4M has "advised Council that recruitment for a Municipal Administrator is best suited to the requirements" and that E4M has "engaged in a selection process with Kris Croskery-Hodgins." Council enters into an employment contract with Croskery-Hodgins and amends the job title to Municipal Administrator.</p>
+          </li>
+        </ul>
+
+        <div class="evidence">
+          <div class="evidence-label">Public Records</div>
+          <a href="https://nipissingtownship.com/council-meeting-dates-agendas-minutes/minutes-special-meeting-september-7-2021/" target="_blank" rel="noopener">Special Meeting Minutes — September 7, 2021</a>
+          <a href="https://www.ombudsman.on.ca/en/our-work/municipal-meetings/township-nipissing-january-30-2023" target="_blank" rel="noopener">Ontario Ombudsman Report — Township of Nipissing (January 2023)</a>
+        </div>
+
+        <div class="my-position">
+          <div class="mp-label">My Position</div>
+          <p>The RFP process was public and competitive — that's good governance. But the September 7th meeting, where a specific candidate was selected and a contract awarded, was held as a special meeting with limited public notice. The reasons why E4M advised that a Municipal Administrator role was "best suited" — rather than the advertised CAO-Clerk — were never explained publicly. A decision to restructure the township's most senior staff role and hire a specific individual deserved an open, transparent explanation.</p>
+          <p>The Ontario Ombudsman subsequently investigated the Township's 2021 closed meetings and found that council <strong>violated the Municipal Act</strong> on July 13, 2021 by discussing a hiring plan in camera when it should have occurred in open session. The Township accepted the findings.</p>
+          <p>Residents paid $9,315 for a recruitment process. They deserved to understand the outcome.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: MUNICIPAL SOFTWARE -->
+    <div class="project">
+      <div class="project-header">
+        <p class="project-num">Project 02 · 2022–2025</p>
+        <h2 class="project-title">Municipal Software — Sole-Sourced, Then Abandoned After Three Years</h2>
+        <p class="project-subtitle">Resolution R2022-92 · Resolution R2025-153</p>
+      </div>
+      <div class="project-body">
+        <p>In 2022, council approved a multi-system municipal software package covering finance, payroll, cemetery, building department, fire, and by-law requirements. The total approved spend was <strong>$189,218 plus taxes</strong>. Three years later, the primary platform — TownSuite — was abandoned without a full public explanation of what went wrong.</p>
+
+        <ul class="timeline">
+          <li>
+            <div class="timeline-date">2022 — Resolution R2022-92</div>
+            <p>Council approves the following software package: <strong>TownSuite</strong> for municipal finance and payroll ($179,733 + taxes); CGIS for cemetery and building ($3,800 + taxes); Firepro for fire and by-law ($5,685 + taxes). Total: <strong>$189,218 + taxes</strong>. Moved by Marchant, seconded by Kirkey. Carried.</p>
+          </li>
+          <li>
+            <div class="timeline-date">2022–2025 — Implementation Period</div>
+            <p>TownSuite implementation proceeds over three years. No public updates on progress, milestones, or problems are brought to council on the public record.</p>
+          </li>
+          <li>
+            <div class="timeline-date">Late 2025 — Resolution R2025-153</div>
+            <p>Council terminates the TownSuite implementation. A replacement solution is approved. <strong>No public explanation is provided</strong> for why the three-year implementation failed or what the total cost to taxpayers was.</p>
+          </li>
+        </ul>
+
+        <div class="my-position">
+          <div class="mp-label">My Position</div>
+          <p>A competitive RFP was the right starting point. But when TownSuite came back as the highest-cost option, the correct response was to return to the RFP process — not to sole-source a modified version of the same contract. That decision removed competitive pressure and may have contributed to the implementation challenges that followed.</p>
+          <p>After three years and nearly $190,000 in approved spend, taxpayers deserved a plain-language explanation: What went wrong? What was the final cost? Who was accountable? What will be done differently? None of these questions were answered publicly. A council with the right skills and the willingness to ask hard questions would have caught problems earlier — and demanded answers when it failed.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: LANDFILL DUMP CARDS -->
+    <div class="project">
+      <div class="project-header">
+        <p class="project-num">Project 03 · 2026 — Ongoing</p>
+        <h2 class="project-title">Landfill Card System — Deadline Missed, No Public Update</h2>
+        <p class="project-subtitle">Resolution R2026-09 · Correspondence to Council, March 2026</p>
+      </div>
+      <div class="project-body">
+        <p>In early 2026, council passed Resolution R2026-09 mandating an electronic card use system for the Township's landfill sites, effective <strong>April 1, 2026</strong>. By March 2026, the project had already been delayed to September — a timeline nearly triple the original estimate — with no formal update brought back to a public council meeting. Residents only found out by talking directly to landfill staff.</p>
+
+        <ul class="timeline">
+          <li>
+            <div class="timeline-date">Early 2026 — Resolution R2026-09</div>
+            <p>Council passes a resolution mandating an electronic card system for Township landfill sites. Effective date: <strong>April 1, 2026</strong>. Presented as a three-month project with cost savings through reduced staff workload.</p>
+          </li>
+          <li>
+            <div class="timeline-date">March 2026 — Delay Discovered Informally</div>
+            <p>Landfill staff inform a resident that the April 1st date has been delayed to <strong>September 2026</strong>. No formal update has been brought back to a public council meeting. No communication has been issued to residents.</p>
+          </li>
+          <li>
+            <div class="timeline-date">March 2026 — Correspondence to Council</div>
+            <p>A resident writes formally to Mayor and Councillors requesting answers about the delay, the cost implications, and the governance lessons from the TownSuite experience.</p>
+          </li>
+        </ul>
+
+        <div class="letter-block">
+          <div class="letter-label">Correspondence to Mayor &amp; Council — March 2026</div>
+          <p>Dear Mayor and Councillors,</p>
+          <p>I am writing to you regarding Resolution R2026-09, which mandated the implementation of an electronic card use system for our Township Landfill Sites with an effective date of April 1, 2026.</p>
+          <p>After speaking with landfill staff recently, I was informed that this project has been delayed until September. I would appreciate clarity on the following:</p>
+          <ul>
+            <li><strong>Status Verification:</strong> Is it accurate that the April 1st effective date has been postponed to September?</li>
+            <li><strong>Timeline Expansion:</strong> Since this was presented as a three-month project, why is a five-month extension necessary? How did the complexity and timeframe nearly triple in scope? Will this add additional costs to taxpayers?</li>
+            <li><strong>Project Governance &amp; Lessons Learned:</strong> Resolution R2022-92 initiated a software transition that, according to Resolution R2025-153, ultimately failed after three years of effort and was terminated in late 2025. What specific lessons from the TownSuite experience are being applied to the current landfill project? What structural changes are being made to project governance?</li>
+            <li><strong>Communication &amp; Transparency:</strong> Since the original resolution named a specific start date, why has a formal update not yet returned to a public Council meeting? It is concerning that residents must rely on informal conversations with staff to receive updates on Council-mandated resolutions.</li>
+          </ul>
+          <p>I believe that firm resolve regarding project deadlines and transparent communication are essential for maintaining public trust. As the representatives of our community, I encourage you to follow up and seek answers to why these projects consistently are not completed within the expected timelines, or not completed at all.</p>
+          <p class="sig">Sincerely, Chris Johnston</p>
+        </div>
+
+        <div class="my-position">
+          <div class="mp-label">My Position</div>
+          <p>This is the same pattern repeating. A resolution names a specific date. The date passes. No update comes back to council publicly. Residents find out by chance. The lesson from TownSuite — that technology projects require active governance, milestone tracking, and public accountability — has clearly not been applied.</p>
+          <p>I asked the questions above in writing to Mayor and Council. If elected, I won't need to write letters asking for answers — I'll be in the room ensuring these questions are asked before projects go sideways, not after.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2>Ready for a Council That Asks Hard Questions?</h2>
+    <p>These aren't isolated incidents — they're a pattern. It's time for a councillor who shows up prepared, asks the right questions, and demands public answers.</p>
+    <a href="index.html#contact" class="btn-primary">Get Involved</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Chris Johnston · Candidate for Nipissing Township Council · <a href="mailto:chris@chriswjohnston.ca">chris@chriswjohnston.ca</a> · <a href="index.html">chriswjohnston.ca</a></p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5;">Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+</footer>
+
+</body>
+</html>
