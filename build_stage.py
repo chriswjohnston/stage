@@ -3,6 +3,7 @@ build_stage.py
 ==============
 Always builds in campaign mode — this is the preview/staging site.
 Copies src/campaign/index.html to docs/index.html with ticker injected.
+Also copies standalone pages (projects, facilities, communication) to docs/.
 """
 import re, shutil
 from pathlib import Path
@@ -10,6 +11,13 @@ from datetime import datetime
 
 CAMPAIGN_SRC = Path("src/campaign/index.html")
 DOCS_DIR     = Path("docs")
+
+# Standalone pages in repo root that get copied straight to docs/
+EXTRA_PAGES = [
+    Path("projects.html"),
+    Path("facilities.html"),
+    Path("communication.html"),
+]
 
 TICKER_SNIPPET = """  <script src="/components/news-ticker.js" defer></script>
   <style>.ticker-wrap{position:sticky;top:60px;z-index:99;}</style>"""
@@ -56,6 +64,7 @@ def build():
     except Exception as e:
         print(f"  ⚠ Could not fetch ticker: {e}")
 
+    # ── Main campaign index ────────────────────────────────────────────────
     html = CAMPAIGN_SRC.read_text(encoding="utf-8")
 
     # Inject ticker script
@@ -78,6 +87,19 @@ def build():
 
     (DOCS_DIR / "index.html").write_text(html, encoding="utf-8")
     print(f"  ✓ docs/index.html (campaign mode)")
+
+    # ── Extra standalone pages ─────────────────────────────────────────────
+    for page in EXTRA_PAGES:
+        if page.exists():
+            dest = DOCS_DIR / page.name
+            # Inject stage banner into each extra page too
+            page_html = page.read_text(encoding="utf-8")
+            page_html = page_html.replace("</body>", STAGE_BANNER + "\n</body>", 1)
+            dest.write_text(page_html, encoding="utf-8")
+            print(f"  ✓ docs/{page.name}")
+        else:
+            print(f"  ⚠ {page} not found — skipping")
+
     print(f"\n✓ Stage build complete — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
 if __name__ == "__main__":
