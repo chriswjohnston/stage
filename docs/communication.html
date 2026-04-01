@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communication & Technology – Chris Johnston for Nipissing Township Council</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #2C4A3E; --pine: #3D6B5E; --water: #5B9FAF; --sky: #A8D5E2;
+      --sand: #F2EAD3; --warm: #E8C98A; --rust: #C06830;
+      --charcoal: #1E2B2A; --cream: #FAF7F0; --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--charcoal); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; background: rgba(44,74,62,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--warm); text-decoration: none; }
+    .nav-logo span { color: var(--sky); }
+    .nav-back { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-back:hover { color: var(--warm); }
+    .nav-back::before { content: '← '; }
+    .page-hero { background: var(--forest); padding: 9rem 2rem 4rem; }
+    .page-hero .container { max-width: 900px; margin: 0 auto; }
+    .page-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm); margin-bottom: 1rem; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; }
+    .page-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.82; color: rgba(255,255,255,0.78); max-width: 720px; }
+    .page-intro strong { color: var(--warm); }
+    .container { max-width: 900px; margin: 0 auto; }
+    section { padding: 4.5rem 2rem; }
+    .section-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.6rem; }
+    h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; color: var(--forest); margin-bottom: 1rem; line-height: 1.2; }
+    p { font-size: 0.97rem; line-height: 1.82; color: #444; margin-bottom: 1.2rem; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--charcoal); }
+
+    .gap-list { margin: 2rem 0; display: grid; gap: 1.2rem; }
+    .gap-item { background: var(--white); border-radius: 10px; padding: 1.5rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.2rem; align-items: start; border-left: 4px solid var(--rust); }
+    .gap-icon { font-size: 1.3rem; }
+    .gap-item h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); margin-bottom: 0.4rem; }
+    .gap-item p { font-size: 0.9rem; line-height: 1.72; color: #555; margin: 0; }
+    .gap-item a { color: var(--rust); }
+
+    .proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(44,74,62,0.12); border-radius: 12px; overflow: hidden; margin: 2.5rem 0; }
+    .proof-item { background: var(--white); padding: 2rem 1.5rem; text-align: center; }
+    .proof-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 800; color: var(--forest); line-height: 1; margin-bottom: 0.3rem; }
+    .proof-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: #888; line-height: 1.5; }
+
+    .built-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .built-card { background: var(--white); border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); overflow: hidden; }
+    .built-card-header { background: var(--forest); padding: 1.5rem 2rem; }
+    .built-card-header h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--warm); margin-bottom: 0.3rem; }
+    .built-card-header .url { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-family: monospace; }
+    .built-card-body { padding: 1.5rem 2rem; }
+    .built-card-body p { font-size: 0.9rem; line-height: 1.72; color: #555; margin-bottom: 0.8rem; }
+    .built-stat { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; }
+    .built-stat strong { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--forest); }
+    .built-stat span { font-size: 0.78rem; color: #888; font-weight: 700; }
+    .built-link { display: inline-block; margin-top: 0.8rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); text-decoration: none; border-bottom: 1px solid rgba(192,104,48,0.3); padding-bottom: 2px; }
+    .built-link:hover { color: var(--forest); }
+    .built-card.wide { grid-column: span 2; }
+    .built-card.wide .built-card-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    .callout { border-radius: 10px; padding: 1.5rem 2rem; display: flex; gap: 1.2rem; align-items: flex-start; margin: 1.5rem 0; }
+    .callout.sand { background: var(--sand); }
+    .callout .ci { font-size: 1.5rem; flex-shrink: 0; }
+    .callout h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); margin-bottom: 0.4rem; }
+    .callout p { color: #555; margin: 0; font-size: 0.93rem; line-height: 1.75; }
+
+    .commitment-list { display: grid; gap: 1rem; margin-top: 2rem; }
+    .commitment { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 1.4rem 1.8rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .commitment .cn { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--warm); font-weight: 800; line-height: 1; flex-shrink: 0; min-width: 1.8rem; }
+    .commitment h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); margin-bottom: 0.3rem; }
+    .commitment p { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.7; }
+
+    #cta { background: var(--forest); text-align: center; }
+    #cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 1rem; }
+    #cta p { font-size: 1rem; color: rgba(255,255,255,0.72); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .btn-primary { background: var(--rust); color: var(--white); padding: 0.9rem 2rem; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: #A8552A; }
+    footer { background: #111b1a; padding: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    footer a { color: var(--warm); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .proof-grid, .built-grid { grid-template-columns: 1fr; }
+      .built-card.wide { grid-column: span 1; }
+      .built-card.wide .built-card-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Chris <span>Johnston</span></a>
+  <a href="index.html" class="nav-back">Back to main site</a>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <p class="page-eyebrow">Priority · Communication &amp; Technology</p>
+    <h1 class="page-title">Residents Shouldn't Have to<br>Dig for Information About<br>Their Own Government</h1>
+    <p class="page-intro">The Township of Nipissing hasn't published a newsletter since September 2024. By-laws and resolutions aren't searchable. Key documents are buried in PDFs with no plain-language summaries. <strong>I didn't wait to be elected to start fixing this.</strong> I built the tools myself — and I'm showing what's possible.</p>
+  </div>
+</div>
+
+<!-- THE GAPS -->
+<section>
+  <div class="container">
+    <p class="section-label">The Current State</p>
+    <h2 class="section-title">What Residents Are Working With Today</h2>
+    <p>This isn't a criticism of staff — the Township website is maintained by a small team with no dedicated communications role. It's a criticism of a council that hasn't treated resident communication as a priority. Here's the documented reality.</p>
+
+    <div class="gap-list">
+      <div class="gap-item">
+        <div class="gap-icon">📰</div>
+        <div>
+          <h4>Newsletter: Last Published September 2024 — 18 Months Ago</h4>
+          <p>The Township's official newsletter — the primary way most residents learn about local government — hasn't been published since September 2024. The <a href="https://nipissingtownship.com/municipal-information/township-newsletter/" target="_blank" rel="noopener">newsletter page</a> shows four issues in 2024, then silence. No announcement, no substitute, no explanation to residents.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon">🔍</div>
+        <div>
+          <h4>By-Laws and Resolutions: Not Searchable, Not Complete</h4>
+          <p>The <a href="https://nipissingtownship.com/municipal-information/by-laws/" target="_blank" rel="noopener">Township by-laws page</a> lists some documents but doesn't allow keyword, topic, or date search. Resolutions are embedded inside meeting minutes PDFs — to find a specific council decision, a resident must download and read through dozens of documents. There is no way to simply search "what did council decide about the landfill?"</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon">📄</div>
+        <div>
+          <h4>Council Meetings: A List of PDF Links, Nothing More</h4>
+          <p>The <a href="https://nipissingtownship.com/council-meeting-dates-agendas-minutes/" target="_blank" rel="noopener">council meetings page</a> is a plain list of PDF links. Residents who want to know what happened at the last meeting must download multi-page documents and parse procedural language to find the decisions that affect them. No summaries, no highlights, no email notifications when new documents are posted.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon">📊</div>
+        <div>
+          <h4>Key Plans: Buried in Large PDFs With No Entry Point</h4>
+          <p>The <a href="https://nipissingtownship.com/other/asset-management-plan/" target="_blank" rel="noopener">Asset Management Plan</a>, audited financial statements, strategic plan, and energy consumption plan are each a single link to a large PDF. No summary, no key figures, no plain-language explanation of what any of it means for residents. These documents are produced at taxpayer expense — residents deserve to be able to read them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I BUILT -->
+<section style="background:#f5f1ea;">
+  <div class="container">
+    <p class="section-label">Proof of Concept</p>
+    <h2 class="section-title">I Didn't Wait to Be Elected.<br>I Built It.</h2>
+    <p>As a candidate with no staff, no budget, and no access to Township systems, I built three tools using open data, automation, and publicly available technology. They run automatically, update themselves, and cost almost nothing to operate. This is what better municipal communication looks like in practice.</p>
+
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-num">172</div>
+        <div class="proof-label">Council documents<br>organized &amp; indexed</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">3</div>
+        <div class="proof-label">Years of meetings<br>archived &amp; searchable</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">Auto</div>
+        <div class="proof-label">Updates every two weeks<br>with no manual work</div>
+      </div>
+    </div>
+
+    <div class="built-grid">
+      <div class="built-card">
+        <div class="built-card-header">
+          <h3>Council Meeting Archive</h3>
+          <div class="url">council.chriswjohnston.ca</div>
+        </div>
+        <div class="built-card-body">
+          <p>Every agenda, set of minutes, and agenda package from 2024 to present — organized by year, indexed, and linked to the corresponding Township YouTube livestream where available.</p>
+          <div class="built-stat"><strong>172</strong><span>documents indexed</span></div>
+          <div class="built-stat"><strong>3</strong><span>years covered (2024–2026)</span></div>
+          <p style="font-size:0.83rem;color:#999;margin-top:0.6rem;">A Python scraper runs on GitHub Actions every two weeks — automatically pulling new documents from the Township website with no manual work required.</p>
+          <a href="https://council.chriswjohnston.ca" target="_blank" rel="noopener" class="built-link">Visit the archive →</a>
+        </div>
+      </div>
+
+      <div class="built-card">
+        <div class="built-card-header">
+          <h3>By-Law &amp; Resolution Archive</h3>
+          <div class="url">bylaw.chriswjohnston.ca</div>
+        </div>
+        <div class="built-card-body">
+          <p>Every by-law and resolution extracted from meeting minutes and agenda packages — organized by year, searchable by keyword, and enriched with AI-generated plain-language summaries so residents can understand what was decided without reading legal language.</p>
+          <p style="font-size:0.83rem;color:#999;">The Township's own by-laws page offers none of this functionality. This archive was built specifically to fill that gap.</p>
+          <a href="https://bylaw.chriswjohnston.ca" target="_blank" rel="noopener" class="built-link">Visit the archive →</a>
+        </div>
+      </div>
+
+      <div class="built-card wide">
+        <div class="built-card-header">
+          <h3>Local News Aggregator &amp; Email Digest</h3>
+          <div class="url">Pulls from Township, Fire Dept, Recreation, Commanda Centre, Museum &amp; more · Biweekly email digest</div>
+        </div>
+        <div class="built-card-body">
+          <div>
+            <p>A daily automated scraper pulls posts from six local Facebook pages and RSS feeds — the Township of Nipissing, Nipissing Fire Department, Nipissing Recreation, Commanda Community Centre, Nipissing Township Museum, and Commanda General Store Museum — aggregating everything into a single searchable feed.</p>
+            <p style="font-size:0.83rem;color:#999;">Residents currently need to follow six separate Facebook pages and check the Township website independently. This consolidates all of it automatically.</p>
+          </div>
+          <div>
+            <p>A biweekly email digest is sent to subscribers summarizing what's happened across the township — the proactive communication the Township's newsletter used to provide before it went dark in September 2024.</p>
+            <p style="font-size:0.83rem;color:#999;">This runs on GitHub Actions at essentially no cost, requires no CMS or dedicated staff, and delivers a better result than the current approach of publishing quarterly PDFs when someone remembers to.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout sand">
+      <div class="ci">💡</div>
+      <div>
+        <h4>The Point Isn't to Replace the Township — It's to Show What's Possible</h4>
+        <p>These tools prove that better communication is achievable with modest effort and near-zero cost. If a single candidate with no staff can build an automated council archive, a searchable by-law database, and a news digest, a municipality with a budget and real resources can do far more. The barrier isn't technical — it's whether council treats communication as a priority. Right now, it doesn't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENTS -->
+<section style="background:#192820;">
+  <div class="container">
+    <p class="section-label" style="color:var(--warm);">If Elected · My Commitments</p>
+    <h2 class="section-title" style="color:var(--white);">Five Specific Things<br>I Would Advocate For</h2>
+    <p style="color:rgba(255,255,255,0.7);max-width:680px;margin-bottom:2rem;">These aren't vague promises to "improve communication." Each one is specific, achievable, and grounded in work I've already proven is possible.</p>
+
+    <div class="commitment-list">
+      <div class="commitment">
+        <div class="cn">1</div>
+        <div>
+          <h4>Revive the Newsletter — as a Digital-First Email Digest</h4>
+          <p>A quarterly paper newsletter is slow and expensive. A regular email digest — summarizing council decisions in plain language, upcoming meetings, and community updates — costs nothing to produce and reaches residents the same day. Opt-in, free, and far more useful than a PDF mailed once a quarter.</p>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="cn">2</div>
+        <div>
+          <h4>Plain-Language Summaries for Every Major Decision</h4>
+          <p>When council approves a capital project, passes a by-law, or makes a budget decision, a one-paragraph plain-language summary should be posted to the website and included in the digest. Not a resolution number and legal language — a sentence a resident can understand without a law degree.</p>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="cn">3</div>
+        <div>
+          <h4>Searchable By-Laws and Resolutions on the Township Website</h4>
+          <p>The Township by-laws page should allow search by keyword, year, or topic — functionality I've already built and proven at bylaw.chriswjohnston.ca. This is a one-time implementation, not an ongoing cost. I would make it a specific deliverable in the Township's communications strategy.</p>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="cn">4</div>
+        <div>
+          <h4>Accessible Summaries for Key Plans and Reports</h4>
+          <p>The Asset Management Plan, capital budget, audited financials, and strategic plan should each have a plain-language summary page — not just a PDF download. Residents fund these documents; they deserve to be able to read them without a professional planning background.</p>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="cn">5</div>
+        <div>
+          <h4>Consistent Social Media — Not Just at Election Time</h4>
+          <p>A consistent cadence of posts — meeting reminders, decision summaries, community updates — costs nothing but intention. I would advocate for a formal communications policy that sets minimum standards for how and when the Township communicates with residents online.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <h2>Informed Residents Make Better Communities</h2>
+    <p>Communication isn't a nice-to-have — it's the foundation of trust between a government and the people it serves.</p>
+    <a href="index.html#contact" class="btn-primary">Get Involved</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Chris Johnston · Candidate for Nipissing Township Council · <a href="mailto:chris@chriswjohnston.ca">chris@chriswjohnston.ca</a> · <a href="index.html">chriswjohnston.ca</a></p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5;">Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+</footer>
+
+
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#C06830;color:#fff;text-align:center;padding:.5rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">
+  ⚠ Stage Preview — <a href="https://chriswjohnston.ca" style="color:#fff;text-decoration:underline;">View Live Site</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/chriswjohnston/chriswjohnston-stage/actions" style="color:#fff;text-decoration:underline;">Promote to Production →</a>
+</div>
+</body>
+</html>
