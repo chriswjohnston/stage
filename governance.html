@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Governance — Chris Johnston for Nipissing Township Council</title>
+<meta name="description" content="At Nipissing Township, staff govern and council ratifies. The Municipal Act says it should be the other way around. Here's the documented evidence — and what needs to change.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:     #1a4d2e;
+  --green-mid: #2d6b45;
+  --green-lt:  #e8f0eb;
+  --gold:      #b8922a;
+  --gold-lt:   #fdf6e3;
+  --ink:       #1c1c1c;
+  --body:      #3a3a3a;
+  --muted:     #6e6e6e;
+  --rule:      #d8d0c8;
+  --bg:        #f9f7f4;
+  --white:     #ffffff;
+  --red:       #b83232;
+  --red-lt:    #fdf0f0;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  background: var(--green);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+
+.hero { background: var(--green); padding: 72px 40px 64px; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, transparent 60%); }
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--gold); flex-shrink: 0; }
+.hero h1 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: clamp(30px, 5vw, 52px); line-height: 1.15; color: #fff; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+.hero-lead { font-size: 17px; line-height: 1.72; color: rgba(255,255,255,0.78); max-width: 640px; font-weight: 300; }
+
+.layout { max-width: 1060px; margin: 0 auto; padding: 64px 40px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; }
+
+.section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+.section-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--ink); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--green-lt); }
+
+.intro-block { background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 6px; padding: 28px 32px; margin-bottom: 52px; font-size: 15.5px; line-height: 1.75; color: var(--body); }
+.intro-block strong { color: var(--ink); font-weight: 600; }
+
+/* ACT BLOCK */
+.act-block { background: var(--green); border-radius: 8px; padding: 28px 32px; margin-bottom: 48px; }
+.act-block-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
+.act-block-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 18px; line-height: 1.3; }
+.act-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+.act-col { background: rgba(255,255,255,0.08); border-radius: 6px; padding: 18px 20px; }
+.act-col-label { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
+.act-col ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.act-col li { font-size: 13.5px; color: rgba(255,255,255,0.82); line-height: 1.5; padding-left: 14px; position: relative; }
+.act-col li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+.act-note { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); }
+.act-note a { color: var(--gold); }
+
+/* INVERSION INTRO */
+.inversion-intro { font-size: 15px; line-height: 1.75; color: var(--body); margin-bottom: 36px; padding: 22px 26px; background: var(--red-lt); border: 1px solid #e8c0c0; border-left: 4px solid var(--red); border-radius: 6px; }
+.inversion-intro strong { color: var(--ink); }
+
+/* EVIDENCE ITEMS */
+.evidence-items { display: flex; flex-direction: column; margin-bottom: 56px; }
+.evidence-item { padding: 36px 0; border-bottom: 1px solid var(--rule); opacity: 0; transform: translateY(14px); animation: rise 0.45s ease forwards; }
+.evidence-item:first-child { padding-top: 0; }
+.evidence-item:last-child { border-bottom: none; }
+.evidence-item:nth-child(1) { animation-delay: 0.05s; }
+.evidence-item:nth-child(2) { animation-delay: 0.12s; }
+.evidence-item:nth-child(3) { animation-delay: 0.19s; }
+.evidence-item:nth-child(4) { animation-delay: 0.26s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+.evidence-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+.evidence-num { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 28px; color: var(--green-lt); line-height: 1; flex-shrink: 0; padding-top: 2px; min-width: 36px; }
+.evidence-tag { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--green-mid); margin-bottom: 5px; }
+.evidence-title { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 19px; color: var(--ink); line-height: 1.25; }
+.evidence-body { padding-left: 52px; }
+.evidence-body p { font-size: 14.5px; line-height: 1.75; color: var(--body); }
+.evidence-body p + p { margin-top: 10px; }
+.evidence-body strong { color: var(--ink); font-weight: 600; }
+.evidence-body a { color: var(--green-mid); }
+
+/* EXHIBIT */
+.exhibit { margin: 20px 0; border: 1px solid #e0c87a; border-radius: 8px; overflow: hidden; }
+.exhibit-header { background: var(--gold-lt); padding: 14px 20px; border-bottom: 1px solid #e0c87a; }
+.exhibit-eyebrow { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+.exhibit-title { font-family: 'Lora', serif; font-weight: 700; font-size: 15px; color: var(--ink); }
+.exhibit-row { display: grid; grid-template-columns: 1fr 1fr; }
+.exhibit-col { padding: 18px 20px; }
+.exhibit-col + .exhibit-col { border-left: 1px solid var(--rule); }
+.exhibit-col-label { font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.exhibit-col-label.before { color: var(--green-mid); }
+.exhibit-col-label.after { color: var(--red); }
+.exhibit-col-text { font-size: 13.5px; line-height: 1.65; color: var(--body); background: var(--white); }
+.exhibit-col-text strong { color: var(--ink); font-weight: 600; }
+.exhibit-col-text em { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); font-style: normal; }
+.exhibit-verdict { padding: 14px 20px; background: var(--gold-lt); border-top: 1px solid #e0c87a; font-size: 13.5px; line-height: 1.65; color: #7a5a10; }
+.exhibit-verdict strong { color: var(--ink); font-weight: 600; }
+
+/* TIMELINE */
+.tl { margin: 20px 0; display: flex; flex-direction: column; }
+.tl-row { display: grid; grid-template-columns: 150px 1fr; }
+.tl-date { padding: 12px 16px 12px 0; font-size: 12px; font-weight: 600; color: var(--muted); line-height: 1.4; position: relative; }
+.tl-date::after { content: ''; position: absolute; right: -4px; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.tl-content { padding: 12px 0 12px 24px; border-left: 2px solid var(--rule); font-size: 14px; line-height: 1.65; color: var(--body); }
+.tl-content strong { color: var(--ink); font-weight: 600; }
+.tl-content.highlight { border-left-color: var(--gold); background: var(--gold-lt); padding: 12px 12px 12px 20px; margin-left: 4px; border-radius: 0 4px 4px 0; }
+.tl-content.outcome { border-left-color: var(--red); }
+.tl-row:last-child .tl-content { border-left-color: transparent; }
+
+/* WHY GRID */
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 52px; }
+.why-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 22px; }
+.why-card-icon { font-size: 22px; margin-bottom: 10px; }
+.why-card-title { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.why-card-text { font-size: 13.5px; line-height: 1.68; color: var(--body); }
+
+/* COMMITMENTS */
+.commitments { display: flex; flex-direction: column; margin-bottom: 52px; }
+.commitment { display: grid; grid-template-columns: 32px 1fr; gap: 0 20px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+.commitment:first-child { padding-top: 0; }
+.commitment:last-child { border-bottom: none; }
+.commitment-num { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--green-lt); line-height: 1.1; padding-top: 2px; }
+.commitment-title { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.commitment-desc { font-size: 14px; line-height: 1.72; color: var(--body); }
+.commitment-desc strong { color: var(--ink); font-weight: 600; }
+
+/* CONNECTS */
+.connects-block { background: var(--green-lt); border: 1px solid #b8d4c2; border-radius: 8px; padding: 28px 32px; }
+.connects-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+.connects-lead { font-size: 14.5px; line-height: 1.72; color: var(--body); margin-bottom: 20px; }
+.connects-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.connects-card { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; text-decoration: none; display: block; transition: border-color 0.2s, box-shadow 0.2s; }
+.connects-card:hover { border-color: var(--green-mid); box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+.connects-card-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+.connects-card-title { font-family: 'Lora', serif; font-weight: 600; font-size: 13.5px; color: var(--ink); margin-bottom: 5px; line-height: 1.35; }
+.connects-card-desc { font-size: 12px; line-height: 1.55; color: var(--muted); }
+
+/* SIDEBAR */
+.sidebar { display: flex; flex-direction: column; gap: 24px; }
+.sidebar-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 24px; }
+.sidebar-card-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.sidebar-card p { font-size: 13.5px; line-height: 1.68; color: var(--body); }
+.sidebar-card p + p { margin-top: 10px; }
+
+.toc { list-style: none; }
+.toc li { border-bottom: 1px solid var(--green-lt); font-size: 13px; }
+.toc li:last-child { border-bottom: none; }
+.toc a { display: flex; align-items: center; gap: 10px; padding: 8px 0; color: var(--body); text-decoration: none; transition: color 0.2s; line-height: 1.35; }
+.toc a:hover { color: var(--green); }
+.toc-icon { font-size: 14px; min-width: 20px; }
+
+.stat-list { list-style: none; display: flex; flex-direction: column; }
+.stat-row { display: flex; justify-content: space-between; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--green-lt); font-size: 13px; gap: 8px; }
+.stat-row:last-child { border-bottom: none; }
+.stat-label { color: var(--body); line-height: 1.35; }
+.stat-value { font-family: 'Lora', serif; font-weight: 700; font-size: 13px; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
+.stat-value.bad { color: var(--red); }
+
+.priorities-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.priority-item { display: flex; align-items: center; gap: 12px; font-size: 13.5px; color: var(--body); padding: 10px 12px; border-radius: 6px; background: var(--bg); border: 1px solid var(--rule); }
+.priority-item.active { background: var(--green-lt); border-color: var(--green-mid); color: var(--green); font-weight: 600; }
+.priority-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+.priority-item.active .priority-dot { background: var(--green); }
+
+.cta-card { background: var(--green); border: none; }
+.cta-card .sidebar-card-title { color: #fff; border-color: rgba(255,255,255,0.2); }
+.cta-card p { color: rgba(255,255,255,0.8); font-size: 13.5px; }
+.cta-btn { display: block; margin-top: 16px; background: var(--gold); color: #fff; text-align: center; padding: 11px 0; border-radius: 5px; font-weight: 600; font-size: 13px; text-decoration: none; transition: background 0.2s; }
+.cta-btn:hover { background: #a07d22; }
+
+footer { background: var(--ink); color: rgba(255,255,255,0.55); padding: 36px 40px; font-size: 12.5px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+footer a:hover { color: #fff; }
+.footer-name { font-family: 'Lora', serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
+
+.stage-banner { background: #1a1a1a; color: rgba(255,255,255,0.6); text-align: center; padding: 10px; font-size: 12px; }
+.stage-banner a { color: var(--gold); text-decoration: none; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; gap: 48px; }
+  .sidebar { order: -1; }
+  nav { padding: 0 20px; }
+  .hero { padding: 52px 24px 48px; }
+  .layout { padding: 40px 24px 60px; }
+  .act-cols { grid-template-columns: 1fr; }
+  .exhibit-row { grid-template-columns: 1fr; }
+  .exhibit-col + .exhibit-col { border-left: none; border-top: 1px solid var(--rule); }
+  .why-grid { grid-template-columns: 1fr; }
+  .connects-grid { grid-template-columns: 1fr; }
+  .evidence-body { padding-left: 0; }
+  .tl-row { grid-template-columns: 110px 1fr; }
+}
+@media (max-width: 520px) {
+  .nav-links { display: none; }
+  .tl-row { grid-template-columns: 1fr; }
+  .tl-date::after { display: none; }
+  .tl-content { border-left: none; padding-left: 0; padding-top: 2px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Chris Johnston</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#priorities">Priorities</a></li>
+    <li><a href="/#issues" class="active">Issues</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Campaign Priority · Community Governance</div>
+    <h1>Council Should Lead.<br><em>Staff Should Implement.</em></h1>
+    <p class="hero-lead">The Municipal Act is clear about who governs Nipissing Township: elected councillors set direction, staff carry it out. In practice, that relationship is often inverted — and I have four years of documented evidence to show it.</p>
+  </div>
+</section>
+
+<div class="layout">
+  <main>
+
+    <div class="intro-block">
+      <strong>This isn't a criticism of Township staff.</strong> The people who maintain our roads, run our landfill, and manage our community centre do essential work. The problem is structural: when council doesn't lead — when it arrives without training, without term priorities, and without the institutional knowledge to push back — staff fill the vacuum. They have to. But that inversion means residents have no real democratic accountability for decisions that shape their community. Decisions get made by people no one elected. By-laws get ignored. Processes run in ways the public never sees — not because anyone is corrupt, but because the governance structure has broken down.
+    </div>
+
+    <!-- SECTION 1: THE LAW -->
+    <div class="section-label" id="how-it-works">The Law</div>
+    <h2 class="section-title">How Municipal Governance Is Supposed to Work</h2>
+
+    <div class="act-block">
+      <div class="act-block-label">Municipal Act, 2001 — S.O. 2001, c. 25</div>
+      <div class="act-block-title">The Act establishes a clear division of roles between elected council and appointed staff.</div>
+      <div class="act-cols">
+        <div class="act-col">
+          <div class="act-col-label">Council's Role — Section 224</div>
+          <ul>
+            <li>Represent the public and consider the well-being of the municipality</li>
+            <li>Develop and evaluate the policies and programs of the municipality</li>
+            <li>Determine which services the municipality provides</li>
+            <li>Ensure administrative practices implement council's decisions</li>
+            <li>Maintain the financial integrity of the municipality</li>
+          </ul>
+        </div>
+        <div class="act-col">
+          <div class="act-col-label">Staff's Role — Section 229</div>
+          <ul>
+            <li>Implement council's decisions and directions</li>
+            <li>Ensure efficient and effective delivery of municipal services</li>
+            <li>Advise and assist the Mayor and Members of Council</li>
+            <li>Bring recommendations to council for decision</li>
+            <li>Carry out council's directions between meetings</li>
+          </ul>
+        </div>
+      </div>
+      <div class="act-note">
+        The chain of accountability runs in one direction: <strong>residents → council → staff.</strong> Council is the principal. Staff are the agents. When that relationship inverts — when staff effectively govern and council ratifies — residents lose their democratic voice over decisions that affect them.
+        &nbsp;·&nbsp; <a href="https://www.ontario.ca/laws/statute/01m25" target="_blank">Read the Municipal Act →</a>
+      </div>
+    </div>
+
+    <!-- SECTION 2: EVIDENCE -->
+    <div class="section-label" id="evidence">The Evidence</div>
+    <h2 class="section-title">Four Documented Examples of the Inversion</h2>
+
+    <div class="inversion-intro">
+      <strong>The pattern is consistent across four years and multiple issues.</strong> In each case: staff set the default, council ratified it, and residents had no meaningful visibility into how the decision was actually made. These aren't allegations — each has a documented paper trail.
+    </div>
+
+    <div class="evidence-items">
+
+      <!-- 01: BY-LAW DISCREPANCY -->
+      <div class="evidence-item" id="exhibit-bylaw">
+        <div class="evidence-header">
+          <div class="evidence-num">01</div>
+          <div class="evidence-meta">
+            <div class="evidence-tag">Boards &amp; Committees · By-Law 2021-38 · By-Law 2023-09</div>
+            <div class="evidence-title">A By-Law Requiring Annual Appointments Was Ignored for Years — Then Changed to Match the Practice</div>
+          </div>
+        </div>
+        <div class="evidence-body">
+          <p>By-Law 2021-38, passed August 2021, was explicit: the Recreation Committee "shall be appointed <strong>annually</strong> by Council at their first regular meeting, appointing the Committee for a term of <strong>one (1) year</strong>." This language had existed since the original 2008 by-law. Annual reappointment was the mechanism through which council was supposed to exercise direction over its committees — setting priorities, refreshing membership, and signalling what each body should accomplish in the coming year.</p>
+
+          <p>In practice, staff simply rolled memberships over from term to term without annual appointments. When the 2022 election produced a new council with four new members, the appointment process began before council had even met — staff were contacting existing members about re-appointment while new councillors were still getting oriented. I flagged this in writing on November 9, 2022, citing By-Law 2021-38 specifically, noting "this feels more like a staff decision to ignore the by-law, than a directive provided by council," and requesting my concern be included in the agenda package before the new council voted.</p>
+
+          <p>At the very first council meeting of the new term — January 17, 2023 — council passed By-Law 2023-09, replacing "annually... one (1) year" with "at their first regular meeting in a Council term... <strong>four (4) years</strong>." The practice that had been violating the by-law became the by-law. My November email does not appear in the correspondence record for that meeting.</p>
+
+          <div class="exhibit">
+            <div class="exhibit-header">
+              <div class="exhibit-eyebrow">Side-by-Side Comparison · Public Record</div>
+              <div class="exhibit-title">What the By-Law Said vs. What It Was Changed To Say</div>
+            </div>
+            <div class="exhibit-row">
+              <div class="exhibit-col">
+                <div class="exhibit-col-label before">By-Law 2021-38 · August 2021</div>
+                <div class="exhibit-col-text">
+                  "That a Recreation Committee shall be appointed <strong>annually</strong> by the Council of the Corporation of the Township of Nipissing at their first regular meeting, appointing the Committee for a term of <strong>one (1) year</strong>."
+                  <em>Signed by Kris Croskery-Hodgins as Acting CAO-Clerk-Treasurer. This by-law was itself an update of the 2008 original — the annual appointment requirement had been in place for over a decade.</em>
+                </div>
+              </div>
+              <div class="exhibit-col">
+                <div class="exhibit-col-label after">By-Law 2023-09 · January 17, 2023</div>
+                <div class="exhibit-col-text">
+                  "That a Recreation Committee shall be appointed by the Council of the Township of Nipissing at their first regular meeting <strong>in a Council term</strong>, appointing the committee for the <strong>term of Council, four (4) years</strong>."
+                  <em>Passed at the first meeting of the new council term — the exact meeting where proper annual appointments should have occurred under the by-law then in effect.</em>
+                </div>
+              </div>
+            </div>
+            <div class="exhibit-verdict">
+              <strong>The sequence matters:</strong> A by-law updated as recently as August 2021 still required annual appointments. A resident raised the discrepancy in writing in November 2022 and asked for the concern to reach the new council before they voted. At their first meeting, that council changed the by-law to match what staff had already been doing. Four new councillors voted on this change without — as far as the public record shows — being informed a resident had just flagged the exact issue.
+            </div>
+          </div>
+
+          <div class="tl">
+            <div class="tl-row">
+              <div class="tl-date">2008</div>
+              <div class="tl-content">Original Recreation Committee by-law created. Annual appointments, 1-year terms.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-date">Aug 17, 2021</div>
+              <div class="tl-content">By-Law 2021-38 updates the committee by-law. <strong>Annual appointments and 1-year terms retained.</strong> Signed by Kris Croskery-Hodgins as Acting CAO-Clerk-Treasurer.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-date">Nov 8, 2022</div>
+              <div class="tl-content">Staff email committee members about re-appointment — <strong>before new council has met for the first time.</strong></div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-date">Nov 9, 2022</div>
+              <div class="tl-content highlight">I reply in writing flagging the discrepancy with By-Law 2021-38. I note the process "feels more like a staff decision to ignore the by-law, than a directive provided by council." I ask my email be included in the agenda package. I also note there has been no public advertising for vacancies — meaning community members have no way to even know these positions exist.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-date">Jan 17, 2023</div>
+              <div class="tl-content outcome">First council meeting of the new term. By-Law 2023-09 passed, rescinding 2021-38. Annual 1-year appointments replaced with 4-year council-term appointments. <strong>My November email does not appear in the meeting's correspondence record.</strong></div>
+            </div>
+          </div>
+
+          <p>My email also raised a second concern worth noting: with all boards and committees dissolved at the end of the previous council term, this was exactly the moment to publicly advertise vacancies. People who had run for council in 2022 — and lost — might have welcomed committee experience. People interested in contributing might have stepped forward. Instead, staff reached out directly to existing members. The same faces stayed, no new ideas entered, and the community never knew the opportunity existed.</p>
+        </div>
+      </div>
+
+      <!-- 02: CAO HIRING -->
+      <div class="evidence-item" id="exhibit-cao">
+        <div class="evidence-header">
+          <div class="evidence-num">02</div>
+          <div class="evidence-meta">
+            <div class="evidence-tag">Procurement · CAO Recruitment · 2021 · Ombudsman Finding</div>
+            <div class="evidence-title">The CAO Recruitment Was Managed by the Staff Member Who Became the Successful Candidate — Entirely Behind Closed Doors</div>
+          </div>
+        </div>
+        <div class="evidence-body">
+          <p>When the Township's CAO-Clerk resigned in February 2021, council issued a public RFP to hire a firm to manage the recruitment. The staff member responsible for placing and managing that RFP on the Township's behalf was the Acting Interim CAO-Clerk-Treasurer — the same person who ultimately became the successful candidate for the restructured role.</p>
+
+          <p>Every significant discussion about the hiring process took place in camera. The advertised role — CAO-Clerk — was quietly restructured into a new position: Municipal Administrator-Clerk-Treasurer, with a different title and different qualification profile. No public explanation was ever given for why the role changed, how the selection was made, or what the RFP process had actually looked like. Council's role, from the public record, was to sign the resolution at the September 7, 2021 special meeting.</p>
+
+          <p>I filed a complaint with the Ontario Ombudsman because the entirely closed process made it impossible for any resident to evaluate whether proper governance had occurred. The Ombudsman investigated seven meetings from 2021 and found that council <strong>violated the Municipal Act on July 13, 2021</strong> by discussing the Township's hiring plan in camera when it did not meet any of the Act's closed meeting exceptions. Council accepted the finding.</p>
+
+          <p>The governance question is not whether the person hired was capable. It is whether council was actually making a decision — or ratifying an outcome already determined through a process it did not design, could not observe, and did not publicly question. The Ombudsman finding confirms that at least one of those closed discussions should have been open. The broader question of how council exercises independent oversight when the staff member managing a recruitment process is also the candidate was never answered publicly.</p>
+
+          <p><a href="/projects.html#project-01">Full case study with timeline →</a> &nbsp;·&nbsp; <a href="https://www.ombudsman.on.ca/en/our-work/municipal-meetings/township-nipissing-january-30-2023" target="_blank">Ombudsman report (January 2023) →</a></p>
+        </div>
+      </div>
+
+      <!-- 03: TOWNSUITE -->
+      <div class="evidence-item" id="exhibit-townsuite">
+        <div class="evidence-header">
+          <div class="evidence-num">03</div>
+          <div class="evidence-meta">
+            <div class="evidence-tag">Technology Procurement · TownSuite · 2022–2025</div>
+            <div class="evidence-title">A $189,000 Software Implementation Failed Over Three Years — Without a Single Public Council Question</div>
+          </div>
+        </div>
+        <div class="evidence-body">
+          <p>In 2022, council approved a multi-system software package totalling $189,218 plus taxes. Over the following three years, the implementation encountered serious problems and was ultimately abandoned. At no point during those three years did council ask a public question about progress, milestone adherence, or problems. The termination resolution in late 2025 came with no public explanation of what had gone wrong or what the final cost to taxpayers was.</p>
+
+          <p>A council that was leading would have required regular progress reports, asked what was going wrong, and intervened before three years elapsed. Instead, the project was managed entirely at the staff level. Council approved the initial expenditure and passed the termination resolution — with nothing in between. This is staff-led governance in practice: council approves, staff manage, and when things fail there is no accountability structure to surface the failure publicly.</p>
+
+          <p><a href="/projects.html#project-02">Full case study →</a></p>
+        </div>
+      </div>
+
+      <!-- 04: LANDFILL -->
+      <div class="evidence-item" id="exhibit-landfill">
+        <div class="evidence-header">
+          <div class="evidence-num">04</div>
+          <div class="evidence-meta">
+            <div class="evidence-tag">Project Governance · Landfill Card System · 2026</div>
+            <div class="evidence-title">Staff Overrode a Council Resolution Without a Vote — Council Ratified It Without a Single Public Question</div>
+          </div>
+        </div>
+        <div class="evidence-body">
+          <p>In January 2026, council passed Resolution R2026-09 mandating an electronic card system at Township landfill sites, effective April 1, 2026. When a vendor issue arose, the Municipal Administrator made a unilateral decision: purchase interim paper cards and defer the electronic system to September. This directly overrode a council resolution — without bringing the matter back to council for a vote.</p>
+
+          <p>Residents found out through informal conversations with landfill staff. No formal update came to a public council meeting. I wrote formally to the Mayor and all Councillors in March 2026 asking specifically why a staff decision had effectively rescinded a council resolution without authorization. The letter entered the public record as Correspondence Item 9 at the April 7, 2026 meeting. Council passed a new resolution extending the deadline — and not one councillor publicly asked why the original resolution had been overridden by staff without a vote.</p>
+
+          <p>This is the governance failure in its most explicit form. Council passed a resolution. Staff changed it. Council ratified the change. No one asked why the chain of authority had been bypassed. The absence of public questions is not evidence that nothing went wrong — it is evidence that council did not understand, or did not choose to exercise, its role as the decision-making authority over its own resolutions.</p>
+
+          <p><a href="/projects.html#project-03">Full case study →</a></p>
+        </div>
+      </div>
+
+    </div><!-- /evidence-items -->
+
+    <!-- SECTION 3: WHY -->
+    <div class="section-label" id="why">Why It Happens</div>
+    <h2 class="section-title">The Structural Causes of Council Passivity</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card-icon">🔄</div>
+        <div class="why-card-title">Chronic Turnover Destroys Institutional Knowledge</div>
+        <div class="why-card-text">Nipissing Township has seen its mayor's seat change hands mid-term for three consecutive terms. Councillors have resigned and been replaced by appointment. Every departure takes institutional knowledge with it — budget history, project context, staff relationships. Staff, who stay, become the institutional memory. New councillors, who don't, have little choice but to defer to them.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">📚</div>
+        <div class="why-card-title">No Formal Onboarding — For Councillors or Board Members</div>
+        <div class="why-card-text">When I joined the Museum Board and Recreation Committee, I assumed there was a plan — a mandate, priorities, a sense of what we were supposed to accomplish. There was nothing. New councillors face the same vacuum: they arrive at their first meeting and are expected to govern without any orientation on the Township's finances, pending projects, staff structure, or statutory obligations. The institution depends on learning by osmosis — which means learning from staff, who set the frame.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🧭</div>
+        <div class="why-card-title">No Term Priorities — Council Has No Agenda of Its Own</div>
+        <div class="why-card-text">A council without a term priorities document doesn't have its own agenda — it has staff's agenda. Every meeting is shaped by what staff bring forward. Council reacts rather than directs. This isn't staff's fault: if council hasn't articulated what it wants to accomplish, staff will default to operational necessity. The absence of a strategic direction document means the institution runs on inertia — which looks a lot like staff governance.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">📋</div>
+        <div class="why-card-title">Councillors Don't Know Their Own By-Laws</div>
+        <div class="why-card-text">The Recreation Committee by-law required annual appointments since 2008. The new 2022 council changed it to 4-year appointments at their very first meeting — almost certainly without knowing a resident had just flagged the discrepancy in writing two months earlier. When councillors don't know what their by-laws say, they can't recognize when practice deviates from policy. Staff know. New councillors often don't. That information asymmetry is where staff-led governance lives.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: COMMITMENTS -->
+    <div class="section-label" id="commitments">What I Would Do</div>
+    <h2 class="section-title">Five Structural Changes to Restore Council Leadership</h2>
+
+    <div class="commitments">
+
+      <div class="commitment">
+        <div class="commitment-num">1</div>
+        <div class="commitment-body">
+          <div class="commitment-title">A Term Priorities Document — Council's Agenda, Not Staff's</div>
+          <div class="commitment-desc">At the start of each term, council should produce a public document committing to specific outcomes — not a staff report, but a council-led exercise. Every staff recommendation, budget line, and committee mandate letter would be evaluated against those priorities. Small Ontario municipalities have done this without consultants or significant cost. It requires only that councillors understand their job is to set direction first.</div>
+        </div>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num">2</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Formal Council Orientation at the Start of Every Term</div>
+          <div class="commitment-desc">New councillors should arrive at their first meeting having reviewed key by-laws, current capital projects, staff structure, financial position, and outstanding commitments. AMO and Local Authority Services offer orientation resources for small municipalities. A prepared council is a council that can push back. An unprepared one defaults to whatever is placed in front of it — which is how a by-law change gets voted on without anyone knowing a resident raised the issue two months prior.</div>
+        </div>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num">3</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Mandate Letters and Annual Objectives for Every Board and Committee</div>
+          <div class="commitment-desc">Council should issue a formal mandate letter to every board and committee at the start of each term — setting priorities, defining success, and establishing fiscal constraints. Boards should return annual objectives for council approval and report against them. This creates the accountability loop that is currently absent. A museum board with a $50,000 deficit shouldn't be debating fundraisers — because council should have told it what to prioritize. That requires council to actually know what it wants.</div>
+        </div>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num">4</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Public Advertising for All Board and Committee Vacancies</div>
+          <div class="commitment-desc">Every vacancy should be publicly advertised — on the Township website, in the newsletter, on social media — with a plain-language description of the role, the time commitment, and the <strong>actual term length as specified in the governing by-law</strong>. Residents who read the by-law and believe they're signing up for a one-year term should not discover mid-term they've been appointed for four years. People who ran for council and lost deserve the opportunity to contribute through committee service — but only if they know it exists.</div>
+        </div>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num">5</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Council-Directed Staff Reports — Not Staff-Initiated Ratifications</div>
+          <div class="commitment-desc">The default pattern at Nipissing is: staff identify an issue, develop a solution, present a recommendation, council votes. Council's role is limited to the final step. A better model has council first directing what options it wants to see, receiving those options with tradeoffs clearly stated, deliberating, and then deciding. This is a cultural shift as much as a structural one — and it starts with councillors who know their role is to lead, not to approve.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONNECTS -->
+    <div class="connects-block">
+      <div class="connects-title">This Is the Thread That Connects Everything</div>
+      <div class="connects-lead">Staff-led governance isn't a separate problem from the fiscal accountability failures, the facilities gap, or the communication failures. It's the structural cause of all of them. A council that leads would have caught TownSuite problems early, started facilities planning in 2023, and never let the newsletter go dark for 18 months while waiting for someone to notice.</div>
+      <div class="connects-grid">
+        <a class="connects-card" href="/projects.html">
+          <div class="connects-card-eyebrow">Fiscal Responsibility</div>
+          <div class="connects-card-title">Three Projects, No Public Questions</div>
+          <div class="connects-card-desc">TownSuite, the landfill card, the CAO hiring — all staff-led, all ratified by council without meaningful oversight.</div>
+        </a>
+        <a class="connects-card" href="/facilities.html">
+          <div class="connects-card-eyebrow">Community Services</div>
+          <div class="connects-card-title">A $4.8M Gap With No Plan</div>
+          <div class="connects-card-desc">A council with a term priorities document would have started the facilities conversation in 2023, not 2034.</div>
+        </a>
+        <a class="connects-card" href="/communication.html">
+          <div class="connects-card-eyebrow">Communication</div>
+          <div class="connects-card-title">Five Years of Advocacy From Outside</div>
+          <div class="connects-card-desc">Every improvement I raised — agenda packages, newsletter, board minutes — required external pressure because no council direction existed to maintain standards.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">On This Page</div>
+      <ul class="toc">
+        <li><a href="#how-it-works"><span class="toc-icon">⚖️</span> The Law</a></li>
+        <li><a href="#evidence"><span class="toc-icon">📋</span> Four Examples</a></li>
+        <li><a href="#exhibit-bylaw"><span class="toc-icon">→</span> By-Law Discrepancy</a></li>
+        <li><a href="#exhibit-cao"><span class="toc-icon">→</span> CAO Recruitment</a></li>
+        <li><a href="#exhibit-townsuite"><span class="toc-icon">→</span> TownSuite</a></li>
+        <li><a href="#exhibit-landfill"><span class="toc-icon">→</span> Landfill Card</a></li>
+        <li><a href="#why"><span class="toc-icon">🔍</span> Why It Happens</a></li>
+        <li><a href="#commitments"><span class="toc-icon">✓</span> Five Changes</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">The By-Law Evidence</div>
+      <ul class="stat-list">
+        <li class="stat-row">
+          <span class="stat-label">Annual appointments required since</span>
+          <span class="stat-value">2008</span>
+        </li>
+        <li class="stat-row">
+          <span class="stat-label">By-law last updated affirming annual terms</span>
+          <span class="stat-value">Aug 2021</span>
+        </li>
+        <li class="stat-row">
+          <span class="stat-label">My written objection to staff practice</span>
+          <span class="stat-value">Nov 2022</span>
+        </li>
+        <li class="stat-row">
+          <span class="stat-label">By-law changed to 4-year terms</span>
+          <span class="stat-value bad">Jan 2023</span>
+        </li>
+        <li class="stat-row">
+          <span class="stat-label">My email in the correspondence record</span>
+          <span class="stat-value bad">Not found</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Campaign Priorities</div>
+      <ul class="priorities-list">
+        <li class="priority-item"><span class="priority-dot"></span>Fiscal Responsibility</li>
+        <li class="priority-item"><span class="priority-dot"></span>Community Services &amp; Recreation</li>
+        <li class="priority-item"><span class="priority-dot"></span>Communication &amp; Technology</li>
+        <li class="priority-item active"><span class="priority-dot"></span>Community Governance</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card cta-card">
+      <div class="sidebar-card-title">Have You Seen This Too?</div>
+      <p>If you've served on a Township board or committee and experienced this firsthand, I'd like to hear from you before October 2026.</p>
+      <a class="cta-btn" href="/#contact">Share Your Experience</a>
+    </div>
+
+  </aside>
+
+</div>
+
+<footer>
+  <div>
+    <div class="footer-name">Chris Johnston</div>
+    <div>Candidate · Nipissing Township Council · October 2026</div>
+  </div>
+  <div>
+    <a href="/">chriswjohnston.ca</a> &nbsp;·&nbsp;
+    <a href="/cdn-cgi/l/email-protection#eb8883998298ab88839982989c81848385989f8485c5888a"><span class="__cf_email__" data-cfemail="85e6edf7ecf6c5e6edf7ecf6f2efeaedebf6f1eaebabe6e4">[email&#160;protected]</span></a>
+  </div>
+</footer>
+
+<div class="stage-banner">
+  ⚠ Stage Preview — <a href="https://chriswjohnston.ca">View L

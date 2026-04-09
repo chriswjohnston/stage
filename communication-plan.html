@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 13-Point Communication Plan — Chris Johnston for Nipissing Township Council</title>
+<meta name="description" content="A complete 13-point plan to make Nipissing Township government more open, searchable, and accountable — from a subscribable calendar to board meeting transparency.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:     #1a4d2e;
+  --green-mid: #2d6b45;
+  --green-lt:  #e8f0eb;
+  --gold:      #b8922a;
+  --gold-lt:   #fdf6e3;
+  --ink:       #1c1c1c;
+  --body:      #3a3a3a;
+  --muted:     #6e6e6e;
+  --rule:      #d8d0c8;
+  --bg:        #f9f7f4;
+  --white:     #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ─────────────────────────────── */
+nav {
+  background: var(--green);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+
+/* ── HERO ────────────────────────────── */
+.hero {
+  background: var(--green);
+  padding: 72px 40px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 60%);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.hero h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+.hero-lead {
+  font-size: 17px;
+  line-height: 1.72;
+  color: rgba(255,255,255,0.78);
+  max-width: 640px;
+  font-weight: 300;
+}
+
+/* ── LAYOUT ──────────────────────────── */
+.layout {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 64px 40px 80px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── INTRO ───────────────────────────── */
+.intro-block {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--body);
+}
+.intro-block strong { color: var(--ink); font-weight: 600; }
+.intro-block a { color: var(--green-mid); }
+
+/* ── SECTION HEADING ─────────────────── */
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--green-lt);
+}
+
+/* ── ITEMS ───────────────────────────── */
+.items { display: flex; flex-direction: column; }
+
+.item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: rise 0.45s ease forwards;
+}
+.item:first-child { padding-top: 0; }
+.item:last-child { border-bottom: none; }
+
+.item:nth-child(1)  { animation-delay: 0.03s; }
+.item:nth-child(2)  { animation-delay: 0.06s; }
+.item:nth-child(3)  { animation-delay: 0.09s; }
+.item:nth-child(4)  { animation-delay: 0.12s; }
+.item:nth-child(5)  { animation-delay: 0.15s; }
+.item:nth-child(6)  { animation-delay: 0.18s; }
+.item:nth-child(7)  { animation-delay: 0.21s; }
+.item:nth-child(8)  { animation-delay: 0.24s; }
+.item:nth-child(9)  { animation-delay: 0.27s; }
+.item:nth-child(10) { animation-delay: 0.30s; }
+.item:nth-child(11) { animation-delay: 0.33s; }
+.item:nth-child(12) { animation-delay: 0.36s; }
+.item:nth-child(13) { animation-delay: 0.39s; }
+
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+.item-num-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 3px;
+}
+.item-num {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1;
+}
+.item-badge {
+  margin-top: 10px;
+  width: 36px;
+  height: 3px;
+  background: var(--green-lt);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.item:hover .item-badge { background: var(--gold); }
+
+/* highlight items that are already built */
+.item.built .item-num { color: var(--green-mid); }
+.item.built .item-badge { background: var(--green-lt); }
+.item.built:hover .item-badge { background: var(--green-mid); }
+
+/* highlight the new governance item */
+.item.governance .item-num { color: var(--gold); }
+.item.governance .item-badge { background: var(--gold-lt); }
+.item.governance:hover .item-badge { background: var(--gold); }
+
+.item-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--green-mid);
+  margin-bottom: 6px;
+}
+.built-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  background: var(--green-lt);
+  border: 1px solid #b8d4c2;
+  border-radius: 20px;
+  padding: 1px 7px;
+}
+.new-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-lt);
+  border: 1px solid #e0c87a;
+  border-radius: 20px;
+  padding: 1px 7px;
+}
+
+.item-title {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.item-desc {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--body);
+  margin-bottom: 14px;
+}
+.item-desc strong { color: var(--ink); font-weight: 600; }
+.item-desc a { color: var(--green-mid); }
+
+.item-outcome {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--green-mid);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.item-outcome::before {
+  content: '✓';
+  font-size: 12px;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── SIDEBAR ─────────────────────────── */
+.sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+.sidebar-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 24px;
+}
+.sidebar-card-title {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.sidebar-card p {
+  font-size: 13.5px;
+  line-height: 1.68;
+  color: var(--body);
+}
+.sidebar-card p + p { margin-top: 10px; }
+
+.toc { list-style: none; }
+.toc li {
+  border-bottom: 1px solid var(--green-lt);
+  font-size: 13px;
+}
+.toc li:last-child { border-bottom: none; }
+.toc a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  color: var(--body);
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.35;
+}
+.toc a:hover { color: var(--green); }
+.toc-num {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 22px;
+  flex-shrink: 0;
+}
+
+.priorities-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.priority-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--body);
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  text-decoration: none;
+}
+.priority-item.active {
+  background: var(--green-lt);
+  border-color: var(--green-mid);
+  color: var(--green);
+  font-weight: 600;
+}
+.priority-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+}
+.priority-item.active .priority-dot { background: var(--green); }
+
+.legend { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--body);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.legend-dot.built { background: var(--green-mid); }
+.legend-dot.new { background: var(--gold); }
+.legend-dot.standard { background: var(--muted); }
+
+.cta-card {
+  background: var(--green);
+  border: none;
+  color: #fff;
+}
+.cta-card .sidebar-card-title {
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
+}
+.cta-card p { color: rgba(255,255,255,0.8); font-size: 13.5px; }
+.cta-btn {
+  display: block;
+  margin-top: 16px;
+  background: var(--gold);
+  color: #fff;
+  text-align: center;
+  padding: 11px 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+}
+.cta-btn:hover { background: #a07d22; }
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--green-mid);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+.back-link:hover { color: var(--green); }
+
+/* ── FOOTER ──────────────────────────── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.55);
+  padding: 36px 40px;
+  font-size: 12.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+footer a:hover { color: #fff; }
+.footer-name {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.stage-banner {
+  background: #1a1a1a;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+}
+.stage-banner a { color: var(--gold); text-decoration: none; }
+
+/* ── RESPONSIVE ──────────────────────── */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; gap: 48px; }
+  .sidebar { order: -1; }
+  nav { padding: 0 20px; }
+  .hero { padding: 52px 24px 48px; }
+  .layout { padding: 40px 24px 60px; }
+}
+@media (max-width: 520px) {
+  .nav-links { display: none; }
+  .item { grid-template-columns: 44px 1fr; gap: 0 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">Chris Johnston</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#priorities">Priorities</a></li>
+    <li><a href="/#issues" class="active">Issues</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Communication &amp; Technology · Full Plan</div>
+    <h1>13 Practical Improvements<br><em>for an Open Township</em></h1>
+    <p class="hero-lead">These aren't vague promises. Each item is specific, achievable, and grounded in how other Ontario municipalities already operate — or in tools I've already built myself.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="layout">
+  <main>
+
+    <a class="back-link" href="/communication.html">← Back to Communication &amp; Technology</a>
+
+    <div class="intro-block">
+      <strong>The barrier to better communication at Nipissing Township isn't technical — it's political will.</strong> Most of the tools on this list are free or near-free, proven in other municipalities, and don't require hiring new staff. Several I've already built myself as a candidate with no budget and no Township access. Three items are marked as already built. One — item 13 — is new, addressing a gap that became clear through my experience serving on Township boards: the public can't follow the work of committees any more easily than they can follow council.
+      <br><br>
+      For the full context — why this matters, what I've already done, and the five-year track record of advocacy behind this plan — see the <a href="/communication.html">Communication &amp; Technology overview</a>.
+    </div>
+
+    <div class="section-label">The Plan</div>
+    <h2 class="section-title">13 Communication &amp; Governance Improvements</h2>
+
+    <div class="items">
+
+      <!-- 01 -->
+      <div class="item built" id="item-1">
+        <div class="item-num-col">
+          <div class="item-num">01</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Digital Presence <span class="built-badge">Already Built</span></div>
+          <div class="item-title">Modernize the Council Meetings Website Layout</div>
+          <div class="item-desc">The Township's meeting pages should function as a true public record — organized by date, with agenda packages, minutes, recordings, and AI summaries all accessible from a single, scannable view. A restructured layout modelled on best-practice municipal sites reduces the friction residents face when trying to find what happened at last month's meeting. Simple information hierarchy, consistent naming, and mobile-friendly design go a long way. I've already built a working proof-of-concept at <strong><a href="https://council.chriswjohnston.ca" target="_blank">council.chriswjohnston.ca</a></strong> — 172 documents indexed, three years covered, updated automatically every two weeks.</div>
+          <div class="item-outcome">Reduces barriers to civic participation for everyday residents</div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="item" id="item-2">
+        <div class="item-num-col">
+          <div class="item-num">02</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Media &amp; Records</div>
+          <div class="item-title">Naming Convention for YouTube Live Streams</div>
+          <div class="item-desc">Recorded meetings on YouTube are currently difficult to search or archive meaningfully. A standardized naming format — <em>Nipissing Township Council · Regular Meeting · 2026-04-09</em> — makes recordings discoverable through search, creates a consistent archive, and allows future AI tools to index and link content reliably. This is a five-minute policy change with lasting organizational value.</div>
+          <div class="item-outcome">Makes the meeting archive searchable and professionally credible</div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="item" id="item-3">
+        <div class="item-num-col">
+          <div class="item-num">03</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Scheduling &amp; Awareness</div>
+          <div class="item-title">Public Subscribable Calendar</div>
+          <div class="item-desc">A Google Calendar or iCal feed that residents can subscribe to — and receive automatic updates when meetings are scheduled, moved, or cancelled — removes the need to check the Township website manually. Council meetings, public hearings, budget sessions, and community events would all appear directly in residents' phones and computers. This is a low-cost, high-impact tool used by municipalities across Ontario.</div>
+          <div class="item-outcome">Brings meeting schedules directly to residents' personal devices</div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="item" id="item-4">
+        <div class="item-num-col">
+          <div class="item-num">04</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Direct Communication</div>
+          <div class="item-title">Email Newsletter — Consistent, Digital-First</div>
+          <div class="item-desc">An opt-in email list allows the Township to communicate directly with residents who want to stay informed — bypassing the assumption that people will check the website or see social media posts. A biweekly or monthly newsletter covering upcoming meetings, recent decisions, and community news builds a direct line between council and constituents. Tools like Mailchimp are free at small list sizes and require minimal maintenance. The Township's newsletter went dark for over a year — it has since resumed, but a formal communications policy would make consistency a standing requirement rather than a reaction to external pressure.</div>
+          <div class="item-outcome">Reaches engaged residents directly, on their own terms</div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="item" id="item-5">
+        <div class="item-num-col">
+          <div class="item-num">05</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Transparency &amp; Access</div>
+          <div class="item-title">AI-Generated Summaries for Every Meeting</div>
+          <div class="item-desc">Most residents will never read a full set of meeting minutes — but many would read a clear two-page summary of what was decided and why. Using AI tools to generate plain-language summaries from agendas, minutes, and recording transcripts makes governance accessible to people without the time or background to parse formal documents. Summaries would be posted alongside the official record, not in place of it. My by-law archive at <a href="https://bylaw.chriswjohnston.ca" target="_blank">bylaw.chriswjohnston.ca</a> already uses this approach for every resolution.</div>
+          <div class="item-outcome">Democratizes access to council decisions for time-pressed residents</div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="item built" id="item-6">
+        <div class="item-num-col">
+          <div class="item-num">06</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Legislative Record <span class="built-badge">Already Built</span></div>
+          <div class="item-title">Full By-law &amp; Resolution Archive with Status and Lineage</div>
+          <div class="item-desc">Every by-law and resolution the Township has ever passed should be searchable online — with its current status (active, repealed, amended), adoption date, and links to any subsequent amendments or related decisions. This legislative lineage gives residents, property owners, and local businesses a reliable way to understand what rules govern the Township. I've already built a working version of this at <strong><a href="https://bylaw.chriswjohnston.ca" target="_blank">bylaw.chriswjohnston.ca</a></strong> — covering approximately 188 by-laws and 833 resolutions, searchable by keyword, with plain-language AI summaries. When a resolution is passed and later rescinded or replaced, both appear together so the full history is visible.</div>
+          <div class="item-outcome">Creates a permanent, searchable public record of Township law</div>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="item" id="item-7">
+        <div class="item-num-col">
+          <div class="item-num">07</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Accountability</div>
+          <div class="item-title">Procedural By-law Requiring Recorded Votes</div>
+          <div class="item-desc">Residents should always be able to know how their representative voted. Amending the Township's procedural by-law to require a recorded vote on all substantive motions — not just those where a member requests one — ensures that the public record reflects individual accountability. Many Ontario municipalities have adopted this standard. It does not slow down council proceedings meaningfully, but it creates an unambiguous record that supports democratic oversight. Without recorded votes, a councillor can support or oppose a major spending decision with no public trace of how they voted.</div>
+          <div class="item-outcome">Holds each councillor individually accountable for every decision</div>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="item" id="item-8">
+        <div class="item-num-col">
+          <div class="item-num">08</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Social Media</div>
+          <div class="item-title">Structured Social Media Cadence at Key Milestones</div>
+          <div class="item-desc">The Township's social media presence should follow a simple, repeatable cadence: a post when the agenda package is published ("Here's what council will be discussing Tuesday — agenda linked below"), and a follow-up post when minutes are available ("Last week's meeting summary is now up"). These two touchpoints — tied to content that already exists — keep the community informed without requiring ongoing creative effort. Linking to plain-language summaries in the follow-up post dramatically increases readership.</div>
+          <div class="item-outcome">Converts existing content into timely public awareness</div>
+        </div>
+      </div>
+
+      <!-- 09 -->
+      <div class="item" id="item-9">
+        <div class="item-num-col">
+          <div class="item-num">09</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Fiscal Transparency</div>
+          <div class="item-title">Visualize the Budget — Infographics from Existing Documents</div>
+          <div class="item-desc">The Township already produces annual budget documents — the problem is that a 60-page PDF with tables of numbers is inaccessible to most residents. The fix isn't a new system; it's presenting the data that already exists in a more readable form. Simple charts showing where tax dollars go by department, year-over-year spending comparisons, and infographics breaking down the levy into relatable per-household figures would give residents genuine budget literacy without placing ongoing data-entry burden on staff. This work can be done once per year, at budget time, using the approved document as the source of truth.</div>
+          <div class="item-outcome">Makes the annual budget understandable to residents without a finance background</div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="item" id="item-10">
+        <div class="item-num-col">
+          <div class="item-num">10</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Civic Participation</div>
+          <div class="item-title">Simplified Public Deputations and Comment Process</div>
+          <div class="item-desc">Most residents don't know they can formally address council — and those who do often find the process opaque or intimidating. A clear online form for submitting written comments, combined with a simple registration system for speaking at meetings, would remove the bureaucratic friction that discourages participation. Automated confirmation emails, a plain-language FAQ, and a standing note in the newsletter ("Want to speak at an upcoming meeting? Here's how.") normalize civic engagement as something ordinary residents do, not just advocacy groups.</div>
+          <div class="item-outcome">Lowers the barrier to democratic participation for every resident</div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="item" id="item-11">
+        <div class="item-num-col">
+          <div class="item-num">11</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Web Standards</div>
+          <div class="item-title">Publish Documents as Text, Not Just PDFs</div>
+          <div class="item-desc">Posting agendas, minutes, and reports exclusively as PDF files is one of the most underappreciated barriers in municipal transparency. Search engines cannot reliably index PDF content, screen readers used by people with visual impairments often struggle with them, and they are inaccessible on slower mobile connections. Publishing documents as actual HTML or structured text — alongside a PDF for those who want it — means that a resident searching Google for a Township decision will actually find it. It also means AI tools, journalists, and researchers can work with the content directly. This is the infrastructure that makes everything else on this list more effective: a well-organized website with searchable text content is the foundation of a genuinely open government.</div>
+          <div class="item-outcome">Makes Township content findable by search engines, accessible to everyone, and usable by modern tools</div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="item" id="item-12">
+        <div class="item-num-col">
+          <div class="item-num">12</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Procurement &amp; Policy</div>
+          <div class="item-title">Publish Procurement Policies and How the Township Awards Contracts</div>
+          <div class="item-desc">Right now, it is genuinely unclear to most residents — and even to many local contractors — how Nipissing Township decides who gets Township work. How are RFPs structured? What thresholds trigger a public tender versus a direct award? Who evaluates bids and on what criteria? These policies exist internally but are not published in any accessible way. Posting the Township's procurement policy, tendering thresholds, and evaluation criteria online would demystify the process for local businesses, reduce the perception of favouritism, and create a baseline of accountability that council can be held to. It costs nothing to publish what already exists.</div>
+          <div class="item-outcome">Levels the playing field for local businesses and makes contract decisions auditable by the public</div>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="item governance" id="item-13">
+        <div class="item-num-col">
+          <div class="item-num">13</div>
+          <div class="item-badge"></div>
+        </div>
+        <div class="item-body">
+          <div class="item-tag">Boards &amp; Committees <span class="new-badge">New</span></div>
+          <div class="item-title">Publish Board and Committee Agendas and Minutes — Proactively, Not Buried in Council Packages</div>
+          <div class="item-desc">
+            <p>Right now, the public record of what happens at Nipissing Township's boards and committees is nearly invisible. Agendas aren't published in advance. Minutes — when they appear at all — surface weeks later, buried inside council agenda packages, referenced only as a committee report item. A resident who wants to follow the work of the Museum Board, the Recreation Committee, or any other body has no practical way to do so without attending every meeting in person.</p>
+            <p>This should work exactly the way council meetings work. Each board and committee should publish its agenda before each meeting and its minutes after — posted directly on the Township website, linked from the relevant board's page, and included in the email newsletter cadence. Not as an afterthought inside a council package, but as a standalone document that a resident can find, read, and act on.</p>
+            <p>I served on both the Museum Board and the Recreation Committee. In neither case were agendas or minutes proactively published in a way that allowed the broader community to understand what was being discussed or decided. Boards dealing with real budgets, community assets, and programming decisions deserve the same transparency standard as council — not a lesser one.</p>
+            <p>This connects directly to the broader <a href="/governance.html">Community Governance</a> priority: mandate letters, annual objectives, and fiscal transparency at the board level all depend on residents being able to follow the work in the first place.</p>
+          </div>
+          <div class="item-outcome">Gives the public visibility into the work of every board and committee — not just council</div>
+        </div>
+      </div>
+
+    </div><!-- /items -->
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Quick Navigation</div>
+      <ul class="toc">
+        <li><a href="#item-1"><span class="toc-num">01</span> Website Layout</a></li>
+        <li><a href="#item-2"><span class="toc-num">02</span> YouTube Naming</a></li>
+        <li><a href="#item-3"><span class="toc-num">03</span> Public Calendar</a></li>
+        <li><a href="#item-4"><span class="toc-num">04</span> Email Newsletter</a></li>
+        <li><a href="#item-5"><span class="toc-num">05</span> AI Summaries</a></li>
+        <li><a href="#item-6"><span class="toc-num">06</span> By-law Archive</a></li>
+        <li><a href="#item-7"><span class="toc-num">07</span> Recorded Votes</a></li>
+        <li><a href="#item-8"><span class="toc-num">08</span> Social Media</a></li>
+        <li><a href="#item-9"><span class="toc-num">09</span> Budget Visualization</a></li>
+        <li><a href="#item-10"><span class="toc-num">10</span> Deputations Process</a></li>
+        <li><a href="#item-11"><span class="toc-num">11</span> Text Over PDFs</a></li>
+        <li><a href="#item-12"><span class="toc-num">12</span> Procurement Policies</a></li>
+        <li><a href="#item-13"><span class="toc-num">13</span> Board &amp; Committee Minutes</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Key</div>
+      <ul class="legend">
+        <li class="legend-item">
+          <span class="legend-dot built"></span>
+          <span>Already built as a working tool (items 01, 06)</span>
+        </li>
+        <li class="legend-item">
+          <span class="legend-dot new"></span>
+          <span>New addition — board &amp; committee transparency (item 13)</span>
+        </li>
+        <li class="legend-item">
+          <span class="legend-dot standard"></span>
+          <span>Specific, achievable commitment</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Already Built</div>
+      <p><strong><a href="https://council.chriswjohnston.ca" target="_blank" style="color: var(--green-mid);">council.chriswjohnston.ca</a></strong> — 172 council documents, indexed and searchable, auto-updated every two weeks.</p>
+      <p><strong><a href="https://bylaw.chriswjohnston.ca" target="_blank" style="color: var(--green-mid);">bylaw.chriswjohnston.ca</a></strong> — 188 by-laws and 833 resolutions, searchable with plain-language summaries.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Related Priorities</div>
+      <ul class="priorities-list">
+        <li class="priority-item"><a class="priority-item" href="/projects.html"><span class="priority-dot"></span>Fiscal Responsibility</a></li>
+        <li class="priority-item"><a class="priority-item" href="/facilities.html"><span class="priority-dot"></span>Community Services &amp; Recreation</a></li>
+        <li class="priority-item active"><span class="priority-dot"></span>Communication &amp; Technology</li>
+        <li class="priority-item"><a class="priority-item" href="/governance.html"><span class="priority-dot"></span>Community Governance</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card cta-card">
+      <div class="sidebar-card-title">Have Thoughts?</div>
+      <p>Have a communication issue with the Township I haven't mentioned? I'd like to hear from you before October 2026.</p>
+      <a class="cta-btn" href="/#contact">Send a Message</a>
+    </div>
+
+  </aside>
+
+</div><!-- /layout -->
+
+<footer>
+  <div>
+    <div class="footer-name">Chris Johnston</div>
+    <div>Candidate · Nipissing Township Council · October 2026</div>
+  </div>
+  <div>
+    <a href="/">chriswjohnston.ca</a> &nbsp;·&nbsp;
+    <a href="/cdn-cgi/l/email-protection#a5c6cdd7ccd6e5c6cdd7ccd6d2cfcacdcbd6d1cacb8bc6c4"><span class="__cf_email__" data-cfemail="0f6c677d667c4f6c677d667c78656067617c7b6061216c6e">[email&#160;protected]</span></a>
+  </div>
+</footer>
+
+<div class="stage-banner">
+  ⚠ Stage Preview — <a href="https://chriswjohnston.ca">View L
