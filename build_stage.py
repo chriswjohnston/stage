@@ -3,7 +3,8 @@ build_stage.py
 ==============
 Always builds in campaign mode — this is the preview/staging site.
 Copies src/campaign/index.html to docs/index.html with ticker injected.
-Also copies standalone pages (projects, facilities, communication) to docs/.
+Also copies standalone pages (projects, facilities, communication,
+governance, communication-plan) to docs/.
 """
 import re, shutil
 from pathlib import Path
@@ -17,6 +18,8 @@ EXTRA_PAGES = [
     Path("projects.html"),
     Path("facilities.html"),
     Path("communication.html"),
+    Path("communication-plan.html"),
+    Path("governance.html"),
 ]
 
 TICKER_SNIPPET = """  <script src="/components/news-ticker.js" defer></script>
