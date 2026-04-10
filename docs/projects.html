@@ -37,8 +37,9 @@ body {
 }
 
 nav {
-  background: var(--green);
-  padding: 0 40px;
+  background: rgba(44,74,62,0.97);
+  backdrop-filter: blur(8px);
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,24 +47,27 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 .nav-logo {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
-  font-size: 16px;
-  color: #fff;
+  font-size: 1.1rem;
+  color: #E8C98A;
   text-decoration: none;
 }
-.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-logo span { color: #A8D5E2; }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; }
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.82);
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-links a:hover, .nav-links a.active { color: #E8C98A; }
 
 .hero {
   background: var(--green);
@@ -428,7 +432,7 @@ footer a:hover { color: #fff; }
 .stage-banner a { color: var(--gold); text-decoration: none; }
 
 @media (max-width: 800px) {
-  nav { padding: 0 20px; }
+  nav { padding: 0 1.25rem; }
   .hero { padding: 52px 24px 48px; }
   .layout { padding: 40px 24px 60px; }
   .tl-row { grid-template-columns: 130px 1fr; }
@@ -444,11 +448,14 @@ footer a:hover { color: #fff; }
 <body>
 
 <nav>
-  <a class="nav-logo" href="/">Chris Johnston</a>
+  <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
   <ul class="nav-links">
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#priorities">Priorities</a></li>
-    <li><a href="/#issues" class="active">Issues</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects.html">Accountability</a></li>
+    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/communication.html">Communication</a></li>
+    <li><a href="/facilities.html">Facilities</a></li>
+    <li><a href="/finances.html">Finances</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
 </nav>
@@ -464,7 +471,7 @@ footer a:hover { color: #fff; }
 <div class="layout">
 
   <div class="intro-block">
-    My position is simple: when public money is spent on a project, the public deserves to know when it goes wrong, why it went wrong, and what will be done differently next time. That's not a radical ask — it's basic accountability. I've been raising these issues formally since 2021, long before filing as a candidate.
+    My position is simple: when public money is spent on a project, the public deserves to know when it goes wrong, why it went wrong, and what will be done differently next time. That's not a radical ask — it's basic accountability. I've been raising these issues formally since 2021 — not as a campaign strategy, but as a resident who kept showing up regardless of whether I had a seat.
   </div>
 
   <!-- ── PROJECT 01 ── -->
@@ -593,8 +600,8 @@ footer a:hover { color: #fff; }
     <div class="position-block">
       <div class="position-label">My Position</div>
       <div class="position-text">
-        <p>A competitive RFP was the right starting point. But when TownSuite came back as the highest-cost option, the correct response was to return to the RFP process — not to sole-source a modified version of the same contract. That decision removed competitive pressure and may have contributed to the implementation challenges that followed.</p>
-        <p>After three years and nearly $190,000 in approved spend, taxpayers deserved a plain-language explanation: What went wrong? What was the final cost? Who was accountable? What will be done differently? None of these questions were answered publicly. A council with the right skills and the willingness to ask hard questions would have caught problems earlier — and demanded answers when it failed.</p>
+        <p>A competitive RFP was the right starting point. But the numbers that came back should have triggered a reset, not an approval. TownSuite's bid was <strong>nearly twice the budgeted amount</strong> and <strong>approximately six times the only other bidder</strong> — a bidder that was deemed unqualified and therefore left no real competitive pressure on price or scope. When one bidder is disqualified and the remaining bid comes in at double the budget, the correct response is a new RFP with a scope more accurately matched to what you actually need — not approval of a modified version of the same contract.</p>
+        <p>After three years and nearly $190,000 in approved spend, taxpayers deserved a plain-language explanation: What went wrong? What was the final cost including staff time and transition? Who was accountable? What will be done differently? None of these questions were answered publicly. A council with the right skills and the willingness to ask hard questions would have caught problems earlier — and demanded answers when it failed.</p>
       </div>
     </div>
 
@@ -669,14 +676,17 @@ footer a:hover { color: #fff; }
 
 </div><!-- /layout -->
 
-<footer>
-  <div>
-    <div class="footer-name">Chris Johnston</div>
-    <div>Candidate · Nipissing Township Council · October 2026</div>
-  </div>
-  <div>
-    <a href="/">chriswjohnston.ca</a> &nbsp;·&nbsp;
-    <a href="/cdn-cgi/l/email-protection#f4979c869d87b4979c869d87839e9b9c9a87809b9ada9795"><span class="__cf_email__" data-cfemail="52313a203b2112313a203b2125383d3a3c21263d3c7c3133">[email&#160;protected]</span></a>
+<footer style="background:#1E2B2A;color:rgba(255,255,255,0.35);text-align:center;padding:2rem;font-size:0.8rem;font-family:'Lato',system-ui,sans-serif;">
+  <p style="margin-bottom:0.4rem;font-family:'Playfair Display',Georgia,serif;font-size:1rem;color:#E8C98A;">Chris Johnston</p>
+  <p>Candidate for Nipissing Township Council · October 2026</p>
+  <p style="margin-top:0.4rem;opacity:0.7;">Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+  <div style="margin-top:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Home</a>
+    <a href="/projects.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Accountability</a>
+    <a href="/governance.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Governance</a>
+    <a href="/communication.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Communication</a>
+    <a href="/finances.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Finances</a>
+    <a href="mailto:chris@chriswjohnston.ca" style="color:#E8C98A;text-decoration:none;font-size:0.75rem;">chris@chriswjohnston.ca</a>
   </div>
 </footer>
 
