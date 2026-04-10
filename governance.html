@@ -36,8 +36,9 @@ body {
 }
 
 nav {
-  background: var(--green);
-  padding: 0 40px;
+  background: rgba(44,74,62,0.97);
+  backdrop-filter: blur(8px);
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,11 +46,27 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
-.nav-logo { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #E8C98A;
+  text-decoration: none;
+}
+.nav-logo span { color: #A8D5E2; }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: #E8C98A; }
 
 .hero { background: var(--green); padding: 72px 40px 64px; position: relative; overflow: hidden; }
 .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, transparent 60%); }
@@ -206,7 +223,7 @@ footer a:hover { color: #fff; }
 @media (max-width: 800px) {
   .layout { grid-template-columns: 1fr; gap: 48px; }
   .sidebar { order: -1; }
-  nav { padding: 0 20px; }
+  nav { padding: 0 1.25rem; }
   .hero { padding: 52px 24px 48px; }
   .layout { padding: 40px 24px 60px; }
   .act-cols { grid-template-columns: 1fr; }
@@ -228,11 +245,14 @@ footer a:hover { color: #fff; }
 <body>
 
 <nav>
-  <a class="nav-logo" href="/">Chris Johnston</a>
+  <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
   <ul class="nav-links">
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#priorities">Priorities</a></li>
-    <li><a href="/#issues" class="active">Issues</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects.html">Accountability</a></li>
+    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/communication.html">Communication</a></li>
+    <li><a href="/facilities.html">Facilities</a></li>
+    <li><a href="/finances.html">Finances</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
 </nav>
@@ -335,7 +355,7 @@ footer a:hover { color: #fff; }
               </div>
             </div>
             <div class="exhibit-verdict">
-              <strong>The sequence matters:</strong> A by-law updated as recently as August 2021 still required annual appointments. A resident raised the discrepancy in writing in November 2022 and asked for the concern to reach the new council before they voted. At their first meeting, that council changed the by-law to match what staff had already been doing. Four new councillors voted on this change without — as far as the public record shows — being informed a resident had just flagged the exact issue.
+              <strong>The sequence matters:</strong> A by-law updated as recently as August 2021 still required annual appointments. A resident raised the discrepancy in writing in November 2022 and asked for the concern to reach the new council before they voted. Early in the new term, that council changed the by-law to match what staff had already been doing — almost certainly without knowing a resident had just flagged the exact issue. This is the pattern: policy gets reverse-engineered to justify existing practice, rather than practice being corrected to match policy.
             </div>
           </div>
 
@@ -441,7 +461,7 @@ footer a:hover { color: #fff; }
       <div class="why-card">
         <div class="why-card-icon">📚</div>
         <div class="why-card-title">No Formal Onboarding — For Councillors or Board Members</div>
-        <div class="why-card-text">When I joined the Museum Board and Recreation Committee, I assumed there was a plan — a mandate, priorities, a sense of what we were supposed to accomplish. There was nothing. New councillors face the same vacuum: they arrive at their first meeting and are expected to govern without any orientation on the Township's finances, pending projects, staff structure, or statutory obligations. The institution depends on learning by osmosis — which means learning from staff, who set the frame.</div>
+        <div class="why-card-text">When I joined the Museum Board and Recreation Committee, I assumed there was a plan — a mandate, priorities, a sense of what we were supposed to accomplish. There was nothing. Mid-term councillors who join by appointment face the same gap: they arrive without the full benefit of any structured orientation that might exist at the start of a term, and chronic turnover means institutional knowledge is always thin. The institution depends on learning by osmosis — which means learning from staff, who set the frame.</div>
       </div>
       <div class="why-card">
         <div class="why-card-icon">🧭</div>
@@ -451,7 +471,7 @@ footer a:hover { color: #fff; }
       <div class="why-card">
         <div class="why-card-icon">📋</div>
         <div class="why-card-title">Councillors Don't Know Their Own By-Laws</div>
-        <div class="why-card-text">The Recreation Committee by-law required annual appointments since 2008. The new 2022 council changed it to 4-year appointments at their very first meeting — almost certainly without knowing a resident had just flagged the discrepancy in writing two months earlier. When councillors don't know what their by-laws say, they can't recognize when practice deviates from policy. Staff know. New councillors often don't. That information asymmetry is where staff-led governance lives.</div>
+        <div class="why-card-text">The Recreation Committee by-law required annual appointments since 2008. The council changed it to 4-year appointments early in the new term — almost certainly without knowing a resident had just flagged the discrepancy in writing two months earlier. When councillors arrive mid-term by appointment, or when turnover is high, they often don't have the full context of what their by-laws say or what has recently been raised by residents. Staff know. Newly seated councillors often don't. That information asymmetry is where staff-led governance lives.</div>
       </div>
     </div>
 
@@ -473,7 +493,7 @@ footer a:hover { color: #fff; }
         <div class="commitment-num">2</div>
         <div class="commitment-body">
           <div class="commitment-title">Formal Council Orientation at the Start of Every Term</div>
-          <div class="commitment-desc">New councillors should arrive at their first meeting having reviewed key by-laws, current capital projects, staff structure, financial position, and outstanding commitments. AMO and Local Authority Services offer orientation resources for small municipalities. A prepared council is a council that can push back. An unprepared one defaults to whatever is placed in front of it — which is how a by-law change gets voted on without anyone knowing a resident raised the issue two months prior.</div>
+          <div class="commitment-desc">Councillors — especially those joining mid-term by appointment — should have access to structured materials covering key by-laws, current capital projects, staff structure, financial position, and outstanding commitments before their first vote. AMO and Local Authority Services offer orientation resources for small municipalities. A prepared council is a council that can push back. One without that foundation defaults to whatever is placed in front of it — which is how a by-law change gets voted on without anyone knowing a resident raised the issue two months prior.</div>
         </div>
       </div>
 
@@ -591,14 +611,17 @@ footer a:hover { color: #fff; }
 
 </div>
 
-<footer>
-  <div>
-    <div class="footer-name">Chris Johnston</div>
-    <div>Candidate · Nipissing Township Council · October 2026</div>
-  </div>
-  <div>
-    <a href="/">chriswjohnston.ca</a> &nbsp;·&nbsp;
-    <a href="/cdn-cgi/l/email-protection#9efdf6ecf7eddefdf6ecf7ede9f4f1f6f0edeaf1f0b0fdff"><span class="__cf_email__" data-cfemail="e5868d978c96a5868d978c96928f8a8d8b96918a8bcb8684">[email&#160;protected]</span></a>
+<footer style="background:#1E2B2A;color:rgba(255,255,255,0.35);text-align:center;padding:2rem;font-size:0.8rem;font-family:'Lato',system-ui,sans-serif;">
+  <p style="margin-bottom:0.4rem;font-family:'Playfair Display',Georgia,serif;font-size:1rem;color:#E8C98A;">Chris Johnston</p>
+  <p>Candidate for Nipissing Township Council · October 2026</p>
+  <p style="margin-top:0.4rem;opacity:0.7;">Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+  <div style="margin-top:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Home</a>
+    <a href="/projects.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Accountability</a>
+    <a href="/governance.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Governance</a>
+    <a href="/communication.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Communication</a>
+    <a href="/finances.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Finances</a>
+    <a href="mailto:chris@chriswjohnston.ca" style="color:#E8C98A;text-decoration:none;font-size:0.75rem;">chris@chriswjohnston.ca</a>
   </div>
 </footer>
 

@@ -36,8 +36,9 @@ body {
 
 /* ── NAV ─────────────────────────────── */
 nav {
-  background: var(--green);
-  padding: 0 40px;
+  background: rgba(44,74,62,0.97);
+  backdrop-filter: blur(8px);
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,25 +46,27 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 .nav-logo {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
-  font-size: 16px;
-  color: #fff;
+  font-size: 1.1rem;
+  color: #E8C98A;
   text-decoration: none;
-  letter-spacing: 0.01em;
 }
-.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-logo span { color: #A8D5E2; }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; }
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.82);
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-links a:hover, .nav-links a.active { color: #E8C98A; }
 
 /* ── HERO ────────────────────────────── */
 .hero {
@@ -463,7 +466,7 @@ footer a:hover { color: #fff; }
 @media (max-width: 800px) {
   .layout { grid-template-columns: 1fr; gap: 48px; }
   .sidebar { order: -1; }
-  nav { padding: 0 20px; }
+  nav { padding: 0 1.25rem; }
   .hero { padding: 52px 24px 48px; }
   .layout { padding: 40px 24px 60px; }
 }
@@ -477,11 +480,14 @@ footer a:hover { color: #fff; }
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="/">Chris Johnston</a>
+  <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
   <ul class="nav-links">
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#priorities">Priorities</a></li>
-    <li><a href="/#issues" class="active">Issues</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects.html">Accountability</a></li>
+    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/communication.html">Communication</a></li>
+    <li><a href="/facilities.html">Facilities</a></li>
+    <li><a href="/finances.html">Finances</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
 </nav>
@@ -769,14 +775,17 @@ footer a:hover { color: #fff; }
 
 </div><!-- /layout -->
 
-<footer>
-  <div>
-    <div class="footer-name">Chris Johnston</div>
-    <div>Candidate · Nipissing Township Council · October 2026</div>
-  </div>
-  <div>
-    <a href="/">chriswjohnston.ca</a> &nbsp;·&nbsp;
-    <a href="/cdn-cgi/l/email-protection#bad9d2c8d3c9fad9d2c8d3c9cdd0d5d2d4c9ced5d494d9db"><span class="__cf_email__" data-cfemail="ddbeb5afb4ae9dbeb5afb4aeaab7b2b5b3aea9b2b3f3bebc">[email&#160;protected]</span></a>
+<footer style="background:#1E2B2A;color:rgba(255,255,255,0.35);text-align:center;padding:2rem;font-size:0.8rem;font-family:'Lato',system-ui,sans-serif;">
+  <p style="margin-bottom:0.4rem;font-family:'Playfair Display',Georgia,serif;font-size:1rem;color:#E8C98A;">Chris Johnston</p>
+  <p>Candidate for Nipissing Township Council · October 2026</p>
+  <p style="margin-top:0.4rem;opacity:0.7;">Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+  <div style="margin-top:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Home</a>
+    <a href="/projects.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Accountability</a>
+    <a href="/governance.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Governance</a>
+    <a href="/communication.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Communication</a>
+    <a href="/finances.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.75rem;">Finances</a>
+    <a href="mailto:chris@chriswjohnston.ca" style="color:#E8C98A;text-decoration:none;font-size:0.75rem;">chris@chriswjohnston.ca</a>
   </div>
 </footer>
 
