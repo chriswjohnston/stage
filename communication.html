@@ -5,24 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Communication & Technology – Chris Johnston for Nipissing Township Council</title>
 <meta name="description" content="Chris Johnston's plan to make Nipissing Township government more open, searchable, and accountable — backed by tools already built and issues already raised.">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green:     #1a4d2e;
-  --green-mid: #2d6b45;
-  --green-lt:  #e8f0eb;
-  --gold:      #b8922a;
-  --gold-lt:   #fdf6e3;
+  /* === Colours — matches chriswjohnston.ca homepage === */
+  --forest:    #2C4A3E;   /* primary dark green — nav, hero, headings */
+  --pine:      #3D6B5E;   /* secondary green — links, borders */
+  --pine-lt:   #e8f0eb;   /* light green tint — section dividers */
+  --gold:      #b8922a;   /* gold accent — labels, badges, borders */
+  --gold-lt:   #fdf6e3;   /* pale gold — block backgrounds */
+  --warm:      #E8C98A;   /* warm gold — nav logo, hero accents */
+  --rust:      #C06830;   /* rust/orange — primary CTA, section labels */
+  --rust-dk:   #A8552A;   /* dark rust — hover state */
+  --sky:       #A8D5E2;   /* sky blue — nav logo span */
   --ink:       #1c1c1c;
   --body:      #3a3a3a;
   --muted:     #6e6e6e;
   --rule:      #d8d0c8;
-  --bg:        #f9f7f4;
+  --bg:        #FAF7F0;
+  --sand:      #F2EAD3;
   --white:     #ffffff;
   --red:       #b83232;
   --red-lt:    #fdf0f0;
+  /* Aliases for pages that use --green / --green-mid / --green-lt */
+  --green:     #2C4A3E;
+  --green-mid: #3D6B5E;
+  --green-lt:  #e8f0eb;
 }
 
 html { scroll-behavior: smooth; }
@@ -30,7 +40,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--body);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -54,11 +64,12 @@ nav {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #E8C98A;
+  color: var(--warm);
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
-.nav-logo span { color: #A8D5E2; }
-.nav-links { display: flex; gap: 1.4rem; list-style: none; }
+.nav-logo span { color: var(--sky); }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; flex-wrap: wrap; }
 .nav-links a {
   color: rgba(255,255,255,0.82);
   text-decoration: none;
@@ -68,7 +79,7 @@ nav {
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: #E8C98A; }
+.nav-links a:hover, .nav-links a.active { color: var(--warm); }
 
 /* ── HERO ────────────────────────────── */
 .hero {
@@ -105,7 +116,7 @@ nav {
   flex-shrink: 0;
 }
 .hero h1 {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: clamp(30px, 5vw, 52px);
   line-height: 1.15;
@@ -137,15 +148,15 @@ nav {
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--rust);
   font-weight: 600;
   margin-bottom: 8px;
 }
 .section-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 22px;
-  color: var(--ink);
+  color: var(--forest);
   margin-bottom: 32px;
   padding-bottom: 16px;
   border-bottom: 2px solid var(--green-lt);
@@ -169,7 +180,7 @@ nav {
 }
 .problem-card-body {}
 .problem-card-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 600;
   font-size: 16px;
   color: var(--ink);
@@ -178,7 +189,7 @@ nav {
 }
 .problem-card-title .status-bad {
   display: inline-block;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -193,7 +204,7 @@ nav {
 }
 .problem-card-title .status-ok {
   display: inline-block;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -228,7 +239,7 @@ nav {
   text-align: center;
 }
 .proof-stat-num {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 28px;
   color: var(--gold);
@@ -259,7 +270,7 @@ nav {
   margin-bottom: 6px;
 }
 .proof-tool-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 600;
   font-size: 17px;
   color: var(--ink);
@@ -330,7 +341,7 @@ nav {
   margin-bottom: 14px;
 }
 .record-item-date {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 12px;
   font-weight: 700;
   color: var(--muted);
@@ -348,7 +359,7 @@ nav {
   margin-bottom: 4px;
 }
 .record-item-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 600;
   font-size: 17px;
   color: var(--ink);
@@ -426,7 +437,7 @@ nav {
 .commitment:first-child { padding-top: 0; }
 
 .commitment-num {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 22px;
   color: var(--green-lt);
@@ -435,7 +446,7 @@ nav {
 }
 .commitment-body {}
 .commitment-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 600;
   font-size: 16px;
   color: var(--ink);
@@ -457,7 +468,7 @@ nav {
   text-align: center;
 }
 .closing-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 20px;
   color: #fff;
@@ -471,7 +482,7 @@ nav {
 }
 .closing-btn {
   display: inline-block;
-  background: var(--gold);
+  background: var(--rust);
   color: #fff;
   padding: 12px 28px;
   border-radius: 5px;
@@ -480,7 +491,7 @@ nav {
   text-decoration: none;
   transition: background 0.2s;
 }
-.closing-btn:hover { background: #a07d22; }
+.closing-btn:hover { background: var(--rust-dk); }
 
 /* ── SIDEBAR ─────────────────────────── */
 .sidebar { display: flex; flex-direction: column; gap: 24px; }
@@ -492,10 +503,10 @@ nav {
   padding: 24px;
 }
 .sidebar-card-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 15px;
-  color: var(--ink);
+  color: var(--forest);
   margin-bottom: 14px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--rule);
@@ -607,7 +618,7 @@ nav {
 .cta-btn {
   display: block;
   margin-top: 16px;
-  background: var(--gold);
+  background: var(--rust);
   color: #fff;
   text-align: center;
   padding: 11px 0;
@@ -617,7 +628,7 @@ nav {
   text-decoration: none;
   transition: background 0.2s;
 }
-.cta-btn:hover { background: #a07d22; }
+.cta-btn:hover { background: var(--rust-dk); }
 
 /* ── FOOTER ──────────────────────────── */
 footer {
@@ -634,7 +645,7 @@ footer {
 footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
 footer a:hover { color: #fff; }
 .footer-name {
-  font-family: 'Lora', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 14px;
   color: #fff;
@@ -669,6 +680,7 @@ footer a:hover { color: #fff; }
   .record-tl-date { font-size: 11px; }
 }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -679,7 +691,7 @@ footer a:hover { color: #fff; }
     <li><a href="/">Home</a></li>
     <li><a href="/projects.html">Accountability</a></li>
     <li><a href="/governance.html">Governance</a></li>
-    <li><a href="/communication.html">Communication</a></li>
+    <li><a href="/communication.html" class="active">Communication</a></li>
     <li><a href="/facilities.html">Facilities</a></li>
     <li><a href="/finances.html">Finances</a></li>
     <li><a href="/#contact">Contact</a></li>
@@ -1006,7 +1018,7 @@ footer a:hover { color: #fff; }
 
     <div style="margin-top: 28px; padding: 22px 28px; background: var(--green-lt); border: 1px solid #b8d4c2; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
       <div>
-        <div style="font-family: 'Lora', serif; font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 4px;">See All 13 Items</div>
+        <div style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 4px;">See All 13 Items</div>
         <div style="font-size: 13.5px; color: var(--body);">The complete plan — including recorded votes, public calendar, budget visualization, procurement transparency, and more.</div>
       </div>
       <a href="/communication-plan.html" style="display: inline-block; background: var(--green); color: #fff; padding: 11px 22px; border-radius: 5px; font-weight: 600; font-size: 13px; text-decoration: none; white-space: nowrap; transition: background 0.2s;">View the Full Plan →</a>

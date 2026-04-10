@@ -5,31 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Community Governance — Chris Johnston for Nipissing Township Council</title>
 <meta name="description" content="At Nipissing Township, staff govern and council ratifies. The Municipal Act says it should be the other way around. Here's the documented evidence — and what needs to change.">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green:     #1a4d2e;
-  --green-mid: #2d6b45;
-  --green-lt:  #e8f0eb;
-  --gold:      #b8922a;
-  --gold-lt:   #fdf6e3;
+  /* === Colours — matches chriswjohnston.ca homepage === */
+  --forest:    #2C4A3E;   /* primary dark green — nav, hero, headings */
+  --pine:      #3D6B5E;   /* secondary green — links, borders */
+  --pine-lt:   #e8f0eb;   /* light green tint — section dividers */
+  --gold:      #b8922a;   /* gold accent — labels, badges, borders */
+  --gold-lt:   #fdf6e3;   /* pale gold — block backgrounds */
+  --warm:      #E8C98A;   /* warm gold — nav logo, hero accents */
+  --rust:      #C06830;   /* rust/orange — primary CTA, section labels */
+  --rust-dk:   #A8552A;   /* dark rust — hover state */
+  --sky:       #A8D5E2;   /* sky blue — nav logo span */
   --ink:       #1c1c1c;
   --body:      #3a3a3a;
   --muted:     #6e6e6e;
   --rule:      #d8d0c8;
-  --bg:        #f9f7f4;
+  --bg:        #FAF7F0;
+  --sand:      #F2EAD3;
   --white:     #ffffff;
   --red:       #b83232;
   --red-lt:    #fdf0f0;
+  /* Aliases for pages that use --green / --green-mid / --green-lt */
+  --green:     #2C4A3E;
+  --green-mid: #3D6B5E;
+  --green-lt:  #e8f0eb;
 }
 
 html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--body);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -52,11 +62,12 @@ nav {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #E8C98A;
+  color: var(--warm);
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
-.nav-logo span { color: #A8D5E2; }
-.nav-links { display: flex; gap: 1.4rem; list-style: none; }
+.nav-logo span { color: var(--sky); }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; flex-wrap: wrap; }
 .nav-links a {
   color: rgba(255,255,255,0.82);
   text-decoration: none;
@@ -66,21 +77,21 @@ nav {
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: #E8C98A; }
+.nav-links a:hover, .nav-links a.active { color: var(--warm); }
 
 .hero { background: var(--green); padding: 72px 40px 64px; position: relative; overflow: hidden; }
 .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, transparent 60%); }
 .hero-inner { max-width: 860px; margin: 0 auto; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
 .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--gold); flex-shrink: 0; }
-.hero h1 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: clamp(30px, 5vw, 52px); line-height: 1.15; color: #fff; margin-bottom: 20px; }
+.hero h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(30px, 5vw, 52px); line-height: 1.15; color: #fff; margin-bottom: 20px; }
 .hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
 .hero-lead { font-size: 17px; line-height: 1.72; color: rgba(255,255,255,0.78); max-width: 640px; font-weight: 300; }
 
 .layout { max-width: 1060px; margin: 0 auto; padding: 64px 40px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; }
 
-.section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
-.section-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--ink); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--green-lt); }
+.section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); font-weight: 600; margin-bottom: 8px; }
+.section-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--forest); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--green-lt); }
 
 .intro-block { background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 6px; padding: 28px 32px; margin-bottom: 52px; font-size: 15.5px; line-height: 1.75; color: var(--body); }
 .intro-block strong { color: var(--ink); font-weight: 600; }
@@ -88,7 +99,7 @@ nav {
 /* ACT BLOCK */
 .act-block { background: var(--green); border-radius: 8px; padding: 28px 32px; margin-bottom: 48px; }
 .act-block-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
-.act-block-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 18px; line-height: 1.3; }
+.act-block-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 18px; line-height: 1.3; }
 .act-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
 .act-col { background: rgba(255,255,255,0.08); border-radius: 6px; padding: 18px 20px; }
 .act-col-label { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
@@ -114,9 +125,9 @@ nav {
 @keyframes rise { to { opacity: 1; transform: none; } }
 
 .evidence-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
-.evidence-num { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 28px; color: var(--green-lt); line-height: 1; flex-shrink: 0; padding-top: 2px; min-width: 36px; }
+.evidence-num { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 28px; color: var(--green-lt); line-height: 1; flex-shrink: 0; padding-top: 2px; min-width: 36px; }
 .evidence-tag { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--green-mid); margin-bottom: 5px; }
-.evidence-title { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 19px; color: var(--ink); line-height: 1.25; }
+.evidence-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 19px; color: var(--ink); line-height: 1.25; }
 .evidence-body { padding-left: 52px; }
 .evidence-body p { font-size: 14.5px; line-height: 1.75; color: var(--body); }
 .evidence-body p + p { margin-top: 10px; }
@@ -127,7 +138,7 @@ nav {
 .exhibit { margin: 20px 0; border: 1px solid #e0c87a; border-radius: 8px; overflow: hidden; }
 .exhibit-header { background: var(--gold-lt); padding: 14px 20px; border-bottom: 1px solid #e0c87a; }
 .exhibit-eyebrow { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
-.exhibit-title { font-family: 'Lora', serif; font-weight: 700; font-size: 15px; color: var(--ink); }
+.exhibit-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--ink); }
 .exhibit-row { display: grid; grid-template-columns: 1fr 1fr; }
 .exhibit-col { padding: 18px 20px; }
 .exhibit-col + .exhibit-col { border-left: 1px solid var(--rule); }
@@ -155,7 +166,7 @@ nav {
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 52px; }
 .why-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 22px; }
 .why-card-icon { font-size: 22px; margin-bottom: 10px; }
-.why-card-title { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.why-card-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
 .why-card-text { font-size: 13.5px; line-height: 1.68; color: var(--body); }
 
 /* COMMITMENTS */
@@ -163,26 +174,26 @@ nav {
 .commitment { display: grid; grid-template-columns: 32px 1fr; gap: 0 20px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
 .commitment:first-child { padding-top: 0; }
 .commitment:last-child { border-bottom: none; }
-.commitment-num { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--green-lt); line-height: 1.1; padding-top: 2px; }
-.commitment-title { font-family: 'Lora', Georgia, serif; font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.commitment-num { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--green-lt); line-height: 1.1; padding-top: 2px; }
+.commitment-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
 .commitment-desc { font-size: 14px; line-height: 1.72; color: var(--body); }
 .commitment-desc strong { color: var(--ink); font-weight: 600; }
 
 /* CONNECTS */
 .connects-block { background: var(--green-lt); border: 1px solid #b8d4c2; border-radius: 8px; padding: 28px 32px; }
-.connects-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+.connects-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
 .connects-lead { font-size: 14.5px; line-height: 1.72; color: var(--body); margin-bottom: 20px; }
 .connects-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 .connects-card { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; text-decoration: none; display: block; transition: border-color 0.2s, box-shadow 0.2s; }
 .connects-card:hover { border-color: var(--green-mid); box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
 .connects-card-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
-.connects-card-title { font-family: 'Lora', serif; font-weight: 600; font-size: 13.5px; color: var(--ink); margin-bottom: 5px; line-height: 1.35; }
+.connects-card-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 13.5px; color: var(--ink); margin-bottom: 5px; line-height: 1.35; }
 .connects-card-desc { font-size: 12px; line-height: 1.55; color: var(--muted); }
 
 /* SIDEBAR */
 .sidebar { display: flex; flex-direction: column; gap: 24px; }
 .sidebar-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 24px; }
-.sidebar-card-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.sidebar-card-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 15px; color: var(--forest); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
 .sidebar-card p { font-size: 13.5px; line-height: 1.68; color: var(--body); }
 .sidebar-card p + p { margin-top: 10px; }
 
@@ -197,7 +208,7 @@ nav {
 .stat-row { display: flex; justify-content: space-between; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--green-lt); font-size: 13px; gap: 8px; }
 .stat-row:last-child { border-bottom: none; }
 .stat-label { color: var(--body); line-height: 1.35; }
-.stat-value { font-family: 'Lora', serif; font-weight: 700; font-size: 13px; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
+.stat-value { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 13px; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
 .stat-value.bad { color: var(--red); }
 
 .priorities-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -209,13 +220,13 @@ nav {
 .cta-card { background: var(--green); border: none; }
 .cta-card .sidebar-card-title { color: #fff; border-color: rgba(255,255,255,0.2); }
 .cta-card p { color: rgba(255,255,255,0.8); font-size: 13.5px; }
-.cta-btn { display: block; margin-top: 16px; background: var(--gold); color: #fff; text-align: center; padding: 11px 0; border-radius: 5px; font-weight: 600; font-size: 13px; text-decoration: none; transition: background 0.2s; }
-.cta-btn:hover { background: #a07d22; }
+.cta-btn { display: block; margin-top: 16px; background: var(--rust); color: #fff; text-align: center; padding: 11px 0; border-radius: 5px; font-weight: 600; font-size: 13px; text-decoration: none; transition: background 0.2s; }
+.cta-btn:hover { background: var(--rust-dk); }
 
 footer { background: var(--ink); color: rgba(255,255,255,0.55); padding: 36px 40px; font-size: 12.5px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
 footer a:hover { color: #fff; }
-.footer-name { font-family: 'Lora', serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
+.footer-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
 
 .stage-banner { background: #1a1a1a; color: rgba(255,255,255,0.6); text-align: center; padding: 10px; font-size: 12px; }
 .stage-banner a { color: var(--gold); text-decoration: none; }
@@ -241,6 +252,7 @@ footer a:hover { color: #fff; }
   .tl-content { border-left: none; padding-left: 0; padding-top: 2px; }
 }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -249,7 +261,7 @@ footer a:hover { color: #fff; }
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/projects.html">Accountability</a></li>
-    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/governance.html" class="active">Governance</a></li>
     <li><a href="/communication.html">Communication</a></li>
     <li><a href="/facilities.html">Facilities</a></li>
     <li><a href="/finances.html">Finances</a></li>
