@@ -26,11 +26,18 @@
     .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 800; color: var(--white); line-height: 1.05; margin-bottom: 0.4rem; opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards; }
     .hero-name em { font-style: normal; color: var(--warm); }
     .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.3rem); color: var(--sky); font-weight: 600; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
-    .hero-tagline { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.82); line-height: 1.75; max-width: 420px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.7s ease 0.7s forwards; }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease 0.85s forwards; }
+    .hero-tagline { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.78; max-width: 420px; margin-bottom: 0; opacity: 0; animation: fadeUp 0.7s ease 0.7s forwards; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease 1s forwards; }
     .hero-right { position: relative; overflow: hidden; }
     .hero-farm-photo { width: 100%; height: 100%; background-image: url('https://cdn.shopify.com/s/files/1/0514/8554/0507/files/DSC_1731_480x480.jpg?v=1609512356'); background-size: cover; background-position: center; }
     .hero-farm-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(44,74,62,0.35) 0%, transparent 60%), linear-gradient(to top, rgba(30,43,42,0.6) 0%, transparent 50%); }
+
+    .hero-permission { font-size: 1.15rem; font-weight: 400; color: rgba(255,255,255,0.92); line-height: 1.55; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+    .hero-permission em { font-style: normal; color: var(--warm); font-weight: 700; }
+    .hero-proof { display: flex; gap: 1.5rem; margin: 1.5rem 0 2rem; opacity: 0; animation: fadeUp 0.7s ease 0.75s forwards; flex-wrap: wrap; }
+    .hero-proof-item { display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-proof-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: var(--warm); line-height: 1; }
+    .hero-proof-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); line-height: 1.4; margin-top: 0.2rem; max-width: 120px; }
 
     .btn-primary { background: var(--rust); color: var(--white); padding: 0.9rem 2rem; border: none; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { background: #A8552A; transform: translateY(-2px); }
@@ -256,13 +263,32 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
-    <p class="hero-eyebrow">Nipissing Township Council · 2026</p>
+    <p class="hero-eyebrow">Nipissing Township Council · October 2026</p>
     <h1 class="hero-name">Chris<br><em>Johnston</em></h1>
-    <p class="hero-title">Candidate for Township Council</p>
-    <p class="hero-tagline">Farmer. Neighbour. Parent. 15+ years in Marketing, Communication and Technology leadership. I've been trying to fix how this township is governed since 2018. In 2026, I'm asking voters to give me the seat to do it from the inside.</p>
+    <p class="hero-title">Candidate for Nipissing Township Council</p>
+
+    <p class="hero-permission">Most people don't follow every council meeting.<br><em>That's okay. I do.</em> Obsessively. That's the point.</p>
+
+    <p class="hero-tagline">You've got roads to drive, a farm to run, a family to raise. You don't need to track every resolution, every closed meeting, every budget line. I will — and I'll report back in plain language. I've been doing it from outside the room for five years. In October 2026, I'm asking you to give me the seat.</p>
+
+    <div class="hero-proof">
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">5</span>
+        <span class="hero-proof-label">years of documented<br>advocacy without a seat</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">833</span>
+        <span class="hero-proof-label">resolutions indexed<br>at bylaw.chriswjohnston.ca</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">1</span>
+        <span class="hero-proof-label">Ombudsman finding<br>council violated the law</span>
+      </div>
+    </div>
+
     <div class="hero-ctas">
-      <a href="#priorities" class="btn-primary">My Priorities</a>
-      <a href="#trying-to-serve" class="btn-outline">My Record</a>
+      <a href="#priorities" class="btn-primary">My Four Priorities</a>
+      <a href="#trying-to-serve" class="btn-outline">Five Years of Proof</a>
     </div>
   </div>
   <div class="hero-right">
@@ -450,7 +476,7 @@
         <div class="term-badge">2014–2018 Term</div>
         <div class="term-dates">The Haufe Term</div>
         <div class="term-departed-count" style="color:var(--warm);opacity:0.7;">1</div>
-        <div class="term-departed-label">mid-term change</div>
+        <div class="term-departed-label">mid-term appointment</div>
         <ul class="term-departures">
           <li>Mayor Haufe resigned mid-term due to ALS</li>
           <li>Councillor Tom Piper appointed Mayor by council — not elected to the role</li>
