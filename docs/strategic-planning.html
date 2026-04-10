@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategic Planning — Chris Johnston for Nipissing Township Council</title>
+  <meta name="description" content="The 2023–2026 Strategic Plan was approved in 42 days, without meaningful public input. Here's what was wrong — and what the next council must do differently.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest:   #2C4A3E;
+      --pine:     #3D6B5E;
+      --pine-lt:  #e8f0eb;
+      --gold:     #b8922a;
+      --gold-lt:  #fdf6e3;
+      --warm:     #E8C98A;
+      --rust:     #C06830;
+      --ink:      #1c1c1c;
+      --charcoal: #1E2B2A;
+      --body:     #3a3a3a;
+      --muted:    #6e6e6e;
+      --rule:     #d8d0c8;
+      --bg:       #FAF7F0;
+      --sand:     #F2EAD3;
+      --white:    #FFFFFF;
+      --red:      #b83232;
+      --sky:      #A8D5E2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', system-ui, sans-serif; background: var(--bg); color: var(--body); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ─── */
+    nav {
+      background: rgba(44,74,62,0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; color: var(--warm); font-size: 1.1rem; text-decoration: none; font-weight: 700; }
+    .nav-logo span { color: var(--sky); }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--warm); }
+
+    /* ── HERO ─── */
+    .hero {
+      background: var(--forest);
+      color: var(--white); padding: 5rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, transparent 60%); }
+    .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+    .breadcrumb { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.25rem; font-weight: 700; }
+    .breadcrumb a { color: var(--warm); text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
+    .breadcrumb a:hover { opacity: 1; }
+    .urgency-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(184,146,42,0.2); border: 1px solid rgba(184,146,42,0.45);
+      color: var(--warm); padding: 0.35rem 1rem; border-radius: 2rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .urgency-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: italic; color: var(--warm); opacity: 0.85; }
+    .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 660px; font-weight: 300; line-height: 1.78; margin-bottom: 2rem; }
+    .toc { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 1.25rem 1.5rem; max-width: 500px; }
+    .toc-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm); font-weight: 700; margin-bottom: 0.75rem; }
+    .toc ol { list-style: none; counter-reset: toc-counter; display: flex; flex-direction: column; gap: 0.35rem; }
+    .toc ol li { counter-increment: toc-counter; display: flex; align-items: baseline; gap: 0.5rem; }
+    .toc ol li::before { content: counter(toc-counter, decimal-leading-zero); font-size: 0.68rem; color: var(--warm); font-weight: 700; flex-shrink: 0; }
+    .toc ol li a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .toc ol li a:hover { color: var(--warm); }
+
+    /* ── MAIN ─── */
+    main { max-width: 860px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+    .alert { background: var(--white); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; margin: 2.5rem 0; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .alert-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .alert p { color: var(--body); font-size: 1rem; line-height: 1.72; margin-bottom: 0; }
+    .alert strong { color: var(--ink); }
+
+    .section-heading { display: flex; align-items: center; gap: 0.85rem; margin: 3.5rem 0 1.25rem; scroll-margin-top: 80px; }
+    .section-heading .marker { width: 4px; height: 32px; background: var(--pine); border-radius: 2px; flex-shrink: 0; }
+    .section-heading h2 { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: var(--ink); font-weight: 700; }
+    p { font-size: 1rem; margin-bottom: 1.1rem; color: var(--body); }
+
+    /* ── CRITIQUE BLOCKS ─── */
+    .critique-block { background: var(--white); border-radius: 10px; box-shadow: 0 2px 14px rgba(0,0,0,0.07); overflow: hidden; margin: 1.75rem 0; border: 1px solid var(--rule); }
+    .critique-header { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.5rem; background: var(--forest); color: var(--white); }
+    .critique-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--warm); line-height: 1; flex-shrink: 0; }
+    .critique-header h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+    .critique-header .tag { margin-left: auto; background: rgba(184,146,42,0.2); border: 1px solid rgba(184,146,42,0.4); color: var(--warm); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2rem; font-weight: 700; flex-shrink: 0; }
+    .critique-body { padding: 1.5rem; }
+    .critique-body p { font-size: 0.96rem; }
+    .critique-body p:last-child { margin-bottom: 0; }
+
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+    .stat-box { background: var(--sand); border-radius: 8px; padding: 1rem 1.1rem; border-top: 3px solid var(--gold); text-align: center; }
+    .stat-box .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--forest); line-height: 1; margin-bottom: 0.3rem; }
+    .stat-box .stat-label { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+    .finding-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 1rem 0; }
+    .finding-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.95rem; }
+    .finding-list li .dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; flex-shrink: 0; margin-top: 0.6rem; }
+    .finding-list li .dot.green { background: var(--pine); }
+
+    .rec-box { background: var(--pine-lt); border: 1px solid #b8d4c2; border-left: 4px solid var(--pine); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.25rem 0 0; }
+    .rec-box .rec-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--pine); margin-bottom: 0.4rem; }
+    .rec-box p { font-size: 0.93rem; color: var(--ink); font-weight: 600; margin: 0; line-height: 1.6; }
+
+    .goal-table-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); margin: 1.1rem 0; }
+    .goal-table-wrap table { width: 100%; border-collapse: collapse; }
+    .goal-table-wrap th { background: var(--pine); color: var(--white); padding: 0.6rem 1rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; }
+    .goal-table-wrap td { padding: 0.65rem 1rem; font-size: 0.88rem; border-bottom: 1px solid var(--rule); color: var(--body); }
+    .goal-table-wrap tr:last-child td { border-bottom: none; }
+    .goal-table-wrap tr:nth-child(even) td { background: var(--sand); }
+    .goal-table-wrap .code { font-family: monospace; font-weight: 700; color: var(--forest); }
+
+    .missing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+    .missing-card { background: var(--bg); border-radius: 8px; padding: 1.1rem 1.25rem; border-left: 3px solid var(--red); border: 1px solid var(--rule); border-left: 3px solid var(--red); }
+    .missing-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+    .missing-card p { font-size: 0.84rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 3rem 0; }
+
+    .doc-link { display: flex; align-items: center; gap: 1.25rem; background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--pine); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.75rem 0; text-decoration: none; transition: box-shadow 0.2s; }
+    .doc-link:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .doc-icon { font-size: 2rem; flex-shrink: 0; }
+    .doc-link .doc-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pine); font-weight: 700; margin-bottom: 0.2rem; }
+    .doc-link .doc-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+    .doc-link .doc-desc { font-size: 0.84rem; color: var(--muted); }
+
+    .priority-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.75rem 0; }
+    .priority-card { background: var(--forest); color: var(--white); border-radius: 10px; padding: 1.4rem 1.5rem; text-decoration: none; display: block; transition: background 0.2s, transform 0.2s; border-bottom: 3px solid var(--gold); }
+    .priority-card:hover { background: var(--pine); transform: translateY(-2px); }
+    .priority-card .priority-num { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); font-weight: 700; margin-bottom: 0.4rem; }
+    .priority-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .priority-card p { font-size: 0.84rem; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.55; }
+
+    .commitments { background: var(--white); border-radius: 10px; padding: 1.75rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin: 1.75rem 0; border: 1px solid var(--rule); }
+    .commitment-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+    .commitment-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .commitment-item:first-child { padding-top: 0; }
+    .commitment-check { width: 28px; height: 28px; background: var(--pine); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: white; font-size: 0.8rem; font-weight: 700; }
+    .commitment-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
+    .commitment-item p { font-size: 0.87rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    .cta-section { background: var(--forest); border-radius: 12px; padding: 2.5rem; margin: 3rem 0 0; text-align: center; color: var(--white); }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; margin-bottom: 0.75rem; }
+    .cta-section p { color: rgba(255,255,255,0.78); margin-bottom: 1.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--white); padding: 0.75rem 1.75rem; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: #9e7c23; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--white); padding: 0.75rem 1.75rem; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border: 2px solid rgba(255,255,255,0.35); transition: border-color 0.2s, transform 0.2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.8); transform: translateY(-1px); }
+
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.4); text-align: center; padding: 2rem; font-size: 0.82rem; }
+    footer a { color: var(--warm); text-decoration: none; }
+
+    .stage-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--rust); color: #fff; text-align: center; padding: 0.4rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .stage-bar a { color: #fff; text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 3.5rem 1.5rem 2.5rem; }
+      main { padding: 0 1.5rem 4rem; }
+      .critique-header .tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Chris <span>Johnston</span></a>
+  <ul class="nav-links">
+    <li><a href="/#priorities">Priorities</a></li>
+    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/projects.html">Accountability</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="/#issues">← Issues</a> &nbsp;/&nbsp; Strategic Planning</div>
+    <div class="urgency-badge">The Plan Expires This Year</div>
+    <h1>Nipissing Township Deserves a<br/><em>Real</em> Strategic Plan</h1>
+    <p class="hero-subtitle">
+      The 2023–2026 Strategic Plan expires this year. A new council takes office in October.
+      I have been raising concerns about the quality of this process since 2023 — and the
+      window to finally get it right is now open.
+    </p>
+    <div class="toc">
+      <div class="toc-label">What's on this page</div>
+      <ol>
+        <li><a href="#timeframe">The Timeframe Problem</a></li>
+        <li><a href="#townhalls">How the Town Halls Failed</a></li>
+        <li><a href="#structure">Organization &amp; Structure</a></li>
+        <li><a href="#goals">The Goals Framework</a></li>
+        <li><a href="#missing">What Was Left Out Entirely</a></li>
+        <li><a href="#commitments">What I Will Do Differently</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <div class="alert">
+    <div class="alert-label">My Position</div>
+    <p>
+      In September 2023, I wrote a detailed submission to Mayor Piper and Members of Council
+      opposing the draft 2023–2026 Strategic Plan. I was <strong>vehemently opposed</strong> to approving
+      it as written and called for the process to restart. Council approved it anyway — largely
+      unchanged — 42 days after the public town hall. What follows is a plain account of what
+      I found wrong, and what I believe we must do differently when the next council takes up this work.
+    </p>
+  </div>
+
+  <!-- 1. TIMEFRAME -->
+  <div class="section-heading" id="timeframe">
+    <div class="marker"></div>
+    <h2>1. The Timeframe Problem</h2>
+  </div>
+
+  <p>
+    The most fundamental issue with the 2023–2026 plan is that it shouldn't have existed
+    in that form at all. We already had a Strategic Plan running through 2024. Starting a
+    new one in 2023 — approved on November 14th of that year — meant we had already
+    burned through nearly a fifth of the plan's total lifespan before it even took effect.
+  </p>
+
+  <div class="critique-block">
+    <div class="critique-header">
+      <div class="critique-number">01</div>
+      <h3>A Plan That Was Already in the Past</h3>
+      <div class="tag">Timeframe</div>
+    </div>
+    <div class="critique-body">
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num">42</div>
+          <div class="stat-label">Days from public town hall to final approval</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">18.75%</div>
+          <div class="stat-label">Of the plan's total timeframe had already elapsed at approval</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">2 yrs</div>
+          <div class="stat-label">Net new years covered — 2025 and 2026 only</div>
+        </div>
+      </div>
+      <p>
+        Our existing plan covered 2019–2024. The new plan covers 2023–2026. That's two
+        full years of overlap. We shortened the previous plan's lifespan by 40% without
+        ever formally acknowledging that decision. And the "new" plan only truly covered
+        2025 and 2026 as genuinely new territory — making it a two-year extension wearing
+        a three-year label.
+      </p>
+      <p>
+        Beyond the math problem, there's a bigger one: three years is not enough time to
+        execute anything strategic. The incoming 2026 council will inherit a plan that expires
+        the moment they're sworn in — forcing them to scramble for a new one or operate
+        without direction in their first year. A 12-year horizon ending in 2039 would
+        avoid this: 2039 is not an election year, meaning the next planning process can
+        begin on schedule with a stable council ready to lead it.
+      </p>
+      <p>
+        Compare this to our neighbours: North Bay plans 10 years out. Callander looks 20
+        years ahead for its community vision. We don't need to match their resources —
+        but we should at least be asking the same kinds of questions about our future.
+      </p>
+      <div class="rec-box">
+        <div class="rec-label">My Recommendation</div>
+        <p>The next council should develop a 2027–2039 Strategic Plan, with the planning
+        process beginning in early 2027. At 12 years, it avoids expiring in an election year
+        and gives us time to do it properly — producing a plan that can guide meaningful,
+        multi-year decisions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TOWN HALLS -->
+  <div class="section-heading" id="townhalls">
+    <div class="marker"></div>
+    <h2>2. How the Town Halls Failed</h2>
+  </div>
+
+  <p>
+    I attended the Town Hall meeting at the Commanda Community Centre on June 28, 2023.
+    I left baffled. What was framed as a community engagement session was, in practice, a
+    presentation of the existing plan — with almost no room for new ideas, genuine
+    brainstorming, or resident-driven input.
+  </p>
+
+  <div class="critique-block">
+    <div class="critique-header">
+      <div class="critique-number">02</div>
+      <h3>Scripted, Presenter-Led, and Closed to New Ideas</h3>
+      <div class="tag">Engagement</div>
+    </div>
+    <div class="critique-body">
+      <p>
+        There was no meeting agenda distributed in advance. No public survey beforehand.
+        No working group, no pre-consultation — no opportunity for residents to shape
+        what would even be on the table.
+      </p>
+      <ul class="finding-list">
+        <li><div class="dot"></div><span>A third-party facilitator with no apparent background in strategic planning was tasked with leading the session. The meeting went off the rails quickly and never recovered. It felt like a presentation — not a place for collaboration.</span></li>
+        <li><div class="dot"></div><span>The facilitator read from the old strategic plan and asked residents what they thought. That is not brainstorming. That is anchoring people to a predetermined outcome and asking them to approve it.</span></li>
+        <li><div class="dot"></div><span>What came out of the process was a heavily council- and staff-influenced document. There is no evidence that core ideas from residents were brought into the plan in any meaningful way.</span></li>
+        <li><div class="dot"></div><span>Other municipalities bring together working groups, distribute surveys in advance, and let community themes emerge organically — before any draft is assembled. We did none of that.</span></li>
+      </ul>
+      <div class="rec-box">
+        <div class="rec-label">My Recommendation</div>
+        <p>Create a joint council-community working committee to design the engagement
+        framework before anything is drafted. Survey residents first. Then hold town halls
+        that are genuinely open-ended — not presentations in disguise.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. STRUCTURE -->
+  <div class="section-heading" id="structure">
+    <div class="marker"></div>
+    <h2>3. Organization &amp; Structure</h2>
+  </div>
+
+  <p>
+    The 2023–2026 plan introduced a new visual format — cleaner and more readable than
+    its predecessor. I'll acknowledge that. But better formatting only made the underlying
+    gaps more visible, not less.
+  </p>
+
+  <div class="critique-block">
+    <div class="critique-header">
+      <div class="critique-number">03</div>
+      <h3>Tactics Up Front, Goals Buried</h3>
+      <div class="tag">Structure</div>
+    </div>
+    <div class="critique-body">
+      <ul class="finding-list">
+        <li><div class="dot"></div><span>In the plan as laid out, tactical methods are the most visually prominent elements. The goals — the actual strategic intent — are de-emphasized and easy to miss.</span></li>
+        <li><div class="dot"></div><span>There is no consistent numbering system. Without reference codes, it is impossible to track progress, produce a report card, or cite specific objectives in a council discussion.</span></li>
+        <li><div class="dot"></div><span>The Town of Huntsville uses a clear alphanumeric shorthand that allows them to build annual report cards and have precise conversations about specific goals. We should do the same.</span></li>
+      </ul>
+      <p>
+        A reference system is not bureaucratic overhead — it's what makes accountability
+        possible. If you can't point to goal 2.1.3 in a council meeting and ask for a status
+        update, the plan is just a document sitting on the website.
+      </p>
+      <div class="rec-box">
+        <div class="rec-label">My Recommendation</div>
+        <p>Adopt a hierarchical naming convention — section, sub-section, and numbered
+        objective — so that any goal can be cited, tracked, reported on, and amended
+        by name throughout the council term.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. GOALS -->
+  <div class="section-heading" id="goals">
+    <div class="marker"></div>
+    <h2>4. The Goals Framework</h2>
+  </div>
+
+  <p>
+    The goals in the 2023–2026 plan bundle too many things together, making it impossible
+    to determine what success actually looks like. A goal like "ensure effective communication
+    while maintaining municipal services and meeting the needs of the community" contains
+    at least two distinct objectives — each deserving its own treatment.
+  </p>
+
+  <div class="critique-block">
+    <div class="critique-header">
+      <div class="critique-number">04</div>
+      <h3>Goals That Can't Be Measured Can't Be Achieved</h3>
+      <div class="tag">Accountability</div>
+    </div>
+    <div class="critique-body">
+      <p>
+        To show what's possible, I broke down just part of the plan's first strategic area into
+        six discrete, measurable, actionable objectives:
+      </p>
+      <div class="goal-table-wrap">
+        <table>
+          <thead>
+            <tr><th>Reference</th><th>Objective</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="code">1.1.1</td><td>Create a licensing model for short-term rental properties, including enforcement mechanisms for excessive noise and disruption</td></tr>
+            <tr><td class="code">1.1.2</td><td>Develop a property standards policy</td></tr>
+            <tr><td class="code">1.1.3</td><td>Develop a clean yard by-law with enforceable restrictions appropriate to a rural township</td></tr>
+            <tr><td class="code">1.2.1</td><td>Implement radar speed signs on municipal roadways</td></tr>
+            <tr><td class="code">1.2.2</td><td>Develop a public education strategy related to speed safety</td></tr>
+            <tr><td class="code">1.2.3</td><td>Complete a Community Risk Assessment</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Six specific goals — from just one section of one strategic area. With this kind of
+        specificity, residents can follow along. Council can be held to account. And at the end
+        of the term, we can actually answer the question: what did we accomplish?
+      </p>
+      <p>
+        The plan also needs to make a clear distinction between two types of goals:
+      </p>
+      <ul class="finding-list">
+        <li><div class="dot green"></div><span><strong>Passive (Continuous) Goals</strong> — things that are ongoing and never truly "done," like maintaining transparency, supporting volunteerism, or preserving natural heritage. These matter, but they are not deliverables.</span></li>
+        <li><div class="dot green"></div><span><strong>Actionable Goals</strong> — specific things that need to happen, can be completed, and can be marked as Not Started, In Progress, or Complete. These are what a report card is built on.</span></li>
+      </ul>
+      <div class="rec-box">
+        <div class="rec-label">My Recommendation</div>
+        <p>Break every goal to its lowest common denominator: time-bound, specific, and
+        achievable. Separate passive commitments from actionable deliverables. Publish
+        an annual progress report against every actionable goal at a public meeting.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MISSING -->
+  <div class="section-heading" id="missing">
+    <div class="marker"></div>
+    <h2>5. What Was Left Out Entirely</h2>
+  </div>
+
+  <p>
+    Even setting aside the structural problems, there are substantive issues that have been
+    raised by residents repeatedly — at council meetings, at committee meetings, and in
+    public forums — that did not find their way into the 2023–2026 plan. These are not
+    fringe concerns. They are recurring themes that any serious strategic planning process
+    should have surfaced.
+  </p>
+
+  <div class="critique-block">
+    <div class="critique-header">
+      <div class="critique-number">05</div>
+      <h3>Four Areas the Plan Ignored</h3>
+      <div class="tag">Missing Content</div>
+    </div>
+    <div class="critique-body">
+      <div class="missing-grid">
+        <div class="missing-card">
+          <h4>Procurement &amp; RFP Reform</h4>
+          <p>The Township's RFP process produced two high-profile failures: the municipal software replacement that arrived massively over budget and required a significant scope reduction, and the CAO recruitment contract where the promised deliverables weren't met. These failures need to be addressed in the plan — not ignored.</p>
+        </div>
+        <div class="missing-card">
+          <h4>Modernization &amp; Technology</h4>
+          <p>The Township now has Bell Fiber available. Yet the 2023–2026 plan has almost nothing to say about what that means for residents, home-based businesses, or Township service delivery. Digital property tax bills, complete by-law access online, and digital service delivery are present opportunities. They deserve a place in the plan.</p>
+        </div>
+        <div class="missing-card">
+          <h4>Committees &amp; Boards</h4>
+          <p>There is a documented knowledge gap and lack of clear expectations across Township committees and boards. Without clear mandates, training, and direction from council, committees cannot function effectively. A strategic plan should address this directly — including mandate letters and annual objectives.</p>
+        </div>
+        <div class="missing-card">
+          <h4>Capital Facilities Vision</h4>
+          <p>What facilities does Nipissing Township want to have in 20 years? A council chamber that functions properly? A museum with adequate space? The $4M Township Office and Public Works replacement the Asset Management Plan identifies? These conversations are happening in fragments — without the big-picture strategic thinking to make them real.</p>
+        </div>
+      </div>
+      <div class="rec-box">
+        <div class="rec-label">My Recommendation</div>
+        <p>Any new strategic plan must directly address procurement reform, digital
+        modernization, the role and expectations of committees and boards, and a
+        long-range capital facilities vision — by name, with specific objectives and timelines.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-heading">
+    <div class="marker"></div>
+    <h2>The Full Record</h2>
+  </div>
+
+  <p>
+    The complete submission — including all six formal recommendations, talking points,
+    and an unfiltered post written the night of the Town Hall — is available below in full.
+  </p>
+
+  <a class="doc-link" href="https://chriswjohnston.ca/documents/Response_to_2023-2026_Draft_Strategic_Plan_-_Chris_Johnston.pdf" target="_blank" rel="noopener">
+    <div class="doc-icon">📄</div>
+    <div>
+      <div class="doc-label">Public Submission — September 19, 2023</div>
+      <div class="doc-title">Response to the 2023–2026 Draft Strategic Plan</div>
+      <div class="doc-desc">Chris Johnston's full letter to Mayor Tom Piper and Members of Council — six formal recommendations, talking points, and the post from the night of the Town Hall.</div>
+    </div>
+  </a>
+
+  <hr class="divider" />
+
+  <div class="section-heading">
+    <div class="marker"></div>
+    <h2>Why This Connects to Everything Else</h2>
+  </div>
+
+  <p>
+    Strategic planning is not a standalone file. It is the foundation that anchors every other
+    priority. Each of my four campaign priorities depends on a strong, community-driven
+    plan to give it policy footing and hold the new council to account.
+  </p>
+
+  <div class="priority-cards">
+    <a class="priority-card" href="/projects.html">
+      <div class="priority-num">Priority 01</div>
+      <h3>Fiscal Responsibility</h3>
+      <p>A 10-year capital forecast and rigorous goal structure ties spending decisions to public commitments — not last-minute motions.</p>
+    </a>
+    <a class="priority-card" href="/facilities.html">
+      <div class="priority-num">Priority 02</div>
+      <h3>Community Services &amp; Recreation</h3>
+      <p>Facilities planning, committee mandates, and recreation programming all need a strategic home — with timelines and real accountability.</p>
+    </a>
+    <a class="priority-card" href="/communication.html">
+      <div class="priority-num">Priority 03</div>
+      <h3>Communication &amp; Technology</h3>
+      <p>Modernization has been absent from two consecutive plans. It must be named, resourced, and tracked in the next one.</p>
+    </a>
+    <a class="priority-card" href="/governance.html">
+      <div class="priority-num">Priority 04</div>
+      <h3>Community Governance</h3>
+      <p>A plan that describes council's role and doesn't follow it is worse than no plan at all. The next council must own its strategic direction.</p>
+    </a>
+  </div>
+
+  <!-- COMMITMENTS -->
+  <div class="section-heading" id="commitments">
+    <div class="marker"></div>
+    <h2>What I Will Do Differently</h2>
+  </div>
+
+  <p>
+    If elected to Nipissing Township Council in October 2026, I will advocate from day one
+    for a strategic planning process that does this community justice.
+  </p>
+
+  <div class="commitments">
+    <div class="commitment-item">
+      <div class="commitment-check">✓</div>
+      <div>
+        <h4>Begin the process in early 2027 — with time to do it properly</h4>
+        <p>A new council should launch strategic planning in its first quarter, with a community working committee, a public survey, and open brainstorming sessions before any draft is written.</p>
+      </div>
+    </div>
+    <div class="commitment-item">
+      <div class="commitment-check">✓</div>
+      <div>
+        <h4>Advocate for a minimum 10-year planning horizon</h4>
+        <p>Three-year plans serve the next election. Ten-year plans serve the community. We should plan the way our neighbours do — with ambition and a genuine long view.</p>
+      </div>
+    </div>
+    <div class="commitment-item">
+      <div class="commitment-check">✓</div>
+      <div>
+        <h4>Insist on numbered, time-bound, measurable goals</h4>
+        <p>Every objective must have a reference code, a deadline, and a clear definition of what "done" looks like. Vague goals produce vague results.</p>
+      </div>
+    </div>
+    <div class="commitment-item">
+      <div class="commitment-check">✓</div>
+      <div>
+        <h4>Distinguish passive commitments from actionable deliverables</h4>
+        <p>Supporting volunteers is ongoing. Building a new dock at Chapman's Landing is not. The plan must treat these differently — and measure them accordingly.</p>
+      </div>
+    </div>
+    <div class="commitment-item">
+      <div class="commitment-check">✓</div>
+      <div>
+        <h4>Require an annual public report card</h4>
+        <p>Progress must be reported at a public meeting every year — goal by goal. Residents deserve to know what was promised and what was delivered, in plain language.</p>
+      </div>
+    </div>
+    <div class="commitment-item">
+      <div class="commitment-check">✓</div>
+      <div>
+        <h4>Ensure technology, modernization, and procurement reform are in the plan by name</h4>
+        <p>These topics have been avoided for two terms. The next plan must name them explicitly — with specific objectives, timelines, and someone responsible for each one.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Your Community. Your Plan.</h2>
+    <p>
+      A strategic plan for Nipissing Township should reflect what residents actually want —
+      not what's easiest to produce. If you have a vision for this community, I want to hear it.
+    </p>
+    <div class="cta-buttons">
+      <a href="/#contact" class="btn-primary">Share Your Vision</a>
+      <a href="/#priorities" class="btn-outline">My Priorities</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Chris Johnston · Candidate for Nipissing Township Council · <a href="mailto:chris@chriswjohnston.ca">chris@chriswjohnston.ca</a></p>
+  <p style="margin-top:0.4rem;opacity:0.6;">Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+</footer>
+
+<div class="stage-bar">
+  ⚠ Stage Preview — <a href="https://chriswjohnston.ca">View Live Site</a> &nbsp;·&nbsp; <a href="https://github.com/chriswjohnston/chriswjohnston-stage/actions">Promote to Production →</a>
+</div>
+
+
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#C06830;color:#fff;text-align:center;padding:.5rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">
+  ⚠ Stage Preview — <a href="https://chriswjohnston.ca" style="color:#fff;text-decoration:underline;">View Live Site</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/chriswjohnston/chriswjohnston-stage/actions" style="color:#fff;text-decoration:underline;">Promote to Production →</a>
+</div>
+</body>
+</html>
