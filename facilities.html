@@ -1,7 +1,430 @@
-<!-- PLACEHOLDER: Replace with facilities.html from your repository -->
-<!-- This file exists in your repo's root as facilities.html -->
-<!-- The build script will copy it to docs/facilities.html automatically -->
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Facilities — Chris Johnston</title>
-<meta http-equiv="refresh" content="0;url=index.html">
-</head><body><p>Redirecting... <a href="index.html">Click here</a></p></body></html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Services &amp; Recreation — Chris Johnston for Nipissing Township Council</title>
+<meta name="description" content="Nipissing Township's Asset Management Plan identifies a $4M+ facilities gap by 2035. No reserve exists. No plan has started. Here's what needs to happen.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #1a4d2e; --green-mid: #2d6b45; --green-lt: #e8f0eb;
+  --gold: #b8922a; --gold-lt: #fdf6e3; --warm: #E8C98A; --sky: #A8D5E2;
+  --ink: #1c1c1c; --body: #3a3a3a; --muted: #6e6e6e; --rule: #d8d0c8;
+  --bg: #f9f7f4; --white: #ffffff; --red: #b83232; --red-lt: #fdf0f0;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--body); font-family: 'DM Sans', sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+nav {
+  background: rgba(44,74,62,0.97); backdrop-filter: blur(8px); padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.nav-logo { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.1rem; color: var(--warm); text-decoration: none; }
+.nav-logo span { color: var(--sky); }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--warm); }
+
+.hero { background: var(--green); padding: 72px 40px 64px; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, transparent 60%); }
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--gold); flex-shrink: 0; }
+.hero h1 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: clamp(28px, 5vw, 50px); line-height: 1.15; color: #fff; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+.hero-lead { font-size: 17px; line-height: 1.72; color: rgba(255,255,255,0.78); max-width: 640px; font-weight: 300; }
+
+.layout { max-width: 1060px; margin: 0 auto; padding: 64px 40px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; }
+.section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+.section-title { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 22px; color: var(--ink); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--green-lt); }
+
+.intro-block { background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 6px; padding: 24px 28px; margin-bottom: 48px; font-size: 15px; line-height: 1.75; }
+.intro-block strong { color: var(--ink); font-weight: 600; }
+
+.facility-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 32px; }
+.fstat { background: var(--white); padding: 1.5rem; text-align: center; }
+.fstat.alert { background: var(--red-lt); }
+.fstat-num { font-family: 'Lora', Georgia, serif; font-size: 2rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 0.3rem; }
+.fstat.alert .fstat-num { color: var(--red); }
+.fstat-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+
+.asset-table-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); margin-bottom: 24px; }
+.asset-table { width: 100%; border-collapse: collapse; }
+.asset-table th { background: var(--green); color: rgba(255,255,255,0.85); padding: 0.6rem 1rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+.asset-table td { padding: 0.65rem 1rem; font-size: 0.86rem; border-bottom: 1px solid var(--rule); color: var(--body); vertical-align: top; }
+.asset-table tr:last-child td { border-bottom: none; }
+.asset-table tr:nth-child(even) td { background: #fafaf8; }
+.amount { font-family: 'Lora', serif; font-weight: 700; white-space: nowrap; }
+.amount.large { color: var(--red); }
+.amount.medium { color: var(--gold); }
+.amount.small { color: var(--green-mid); }
+.horizon { font-size: 0.72rem; color: var(--muted); }
+.flag-none { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--red-lt); color: var(--red); }
+.flag-ok { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--green-lt); color: var(--green-mid); }
+.flag-partial { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--gold-lt); color: var(--gold); }
+
+.callout { border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
+.callout.red { background: var(--red-lt); border: 1px solid #e8c0c0; border-left: 4px solid var(--red); }
+.callout.gold { background: var(--gold-lt); border: 1px solid #e0c87a; border-left: 4px solid var(--gold); }
+.callout.green { background: var(--green-lt); border: 1px solid #b8d4c2; border-left: 4px solid var(--green-mid); }
+.callout-icon { font-size: 1.4rem; flex-shrink: 0; padding-top: 2px; }
+.callout h4 { font-family: 'Lora', serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.4rem; }
+.callout p { font-size: 0.88rem; line-height: 1.72; color: var(--body); }
+.callout p strong { color: var(--ink); font-weight: 600; }
+
+.reserve-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.reserve-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 1.25rem; border-top: 3px solid var(--rule); }
+.reserve-card.missing { border-top-color: var(--red); background: var(--red-lt); }
+.reserve-card.ok { border-top-color: var(--green-mid); }
+.reserve-card.obsolete { border-top-color: var(--gold); background: var(--gold-lt); }
+.reserve-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+.reserve-card.missing .reserve-label { color: var(--red); }
+.reserve-card.ok .reserve-label { color: var(--green-mid); }
+.reserve-card.obsolete .reserve-label { color: var(--gold); }
+.reserve-name { font-family: 'Lora', serif; font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.reserve-amount { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+.reserve-card.missing .reserve-amount { color: var(--red); }
+.reserve-card p { font-size: 0.82rem; line-height: 1.6; color: var(--muted); }
+
+.vision-block { background: var(--green); border-radius: 10px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; }
+.vision-block h3 { font-family: 'Lora', serif; font-size: 1.15rem; color: #fff; margin-bottom: 0.9rem; }
+.vision-block p { font-size: 0.92rem; line-height: 1.78; color: rgba(255,255,255,0.75); margin-bottom: 0.9rem; }
+.vision-block p:last-child { margin-bottom: 0; }
+.vision-block em { font-style: italic; color: var(--warm); }
+
+.commitments { display: flex; flex-direction: column; margin-bottom: 2rem; }
+.commitment { display: grid; grid-template-columns: 32px 1fr; gap: 0 20px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+.commitment:first-child { padding-top: 0; }
+.commitment:last-child { border-bottom: none; }
+.commitment-num { font-family: 'Lora', serif; font-weight: 700; font-size: 22px; color: var(--green-lt); line-height: 1.1; }
+.commitment-title { font-family: 'Lora', serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 7px; line-height: 1.3; }
+.commitment-desc { font-size: 13.5px; line-height: 1.7; color: var(--body); }
+
+.sources-block { background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 1.2rem 1.6rem; margin-top: 1rem; }
+.sources-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+.sources-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.sources-list li { font-size: 0.82rem; }
+.sources-list a { color: var(--green-mid); text-decoration: none; }
+
+.sidebar { display: flex; flex-direction: column; gap: 24px; }
+.sidebar-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 24px; }
+.sidebar-card-title { font-family: 'Lora', serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.sidebar-card p { font-size: 13.5px; line-height: 1.68; color: var(--body); }
+.sidebar-card p + p { margin-top: 10px; }
+.stat-list { list-style: none; }
+.stat-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--green-lt); font-size: 13px; gap: 8px; }
+.stat-row:last-child { border-bottom: none; }
+.stat-label { color: var(--body); line-height: 1.35; }
+.stat-value { font-family: 'Lora', serif; font-weight: 700; font-size: 13px; color: var(--ink); white-space: nowrap; }
+.stat-value.bad { color: var(--red); }
+.toc { list-style: none; }
+.toc li { border-bottom: 1px solid var(--green-lt); font-size: 13px; }
+.toc li:last-child { border-bottom: none; }
+.toc a { display: flex; align-items: center; gap: 8px; padding: 7px 0; color: var(--body); text-decoration: none; transition: color 0.2s; line-height: 1.35; }
+.toc a:hover { color: var(--green); }
+.cta-card { background: var(--green); border: none; }
+.cta-card .sidebar-card-title { color: #fff; border-color: rgba(255,255,255,0.2); }
+.cta-card p { color: rgba(255,255,255,0.8); font-size: 13.5px; }
+.cta-btn { display: block; margin-top: 16px; background: var(--gold); color: #fff; text-align: center; padding: 11px 0; border-radius: 5px; font-weight: 600; font-size: 13px; text-decoration: none; transition: background 0.2s; }
+.cta-btn:hover { background: #9e7c23; }
+
+footer { background: #1E2B2A; color: rgba(255,255,255,0.35); text-align: center; padding: 2rem; font-size: 0.8rem; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: #E8C98A; margin-bottom: 0.4rem; }
+.footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 0.75rem 0; }
+.footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.75rem; }
+.stage-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: #C06830; color: #fff; text-align: center; padding: 0.4rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.stage-bar a { color: #fff; text-decoration: underline; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; gap: 48px; }
+  .sidebar { order: -1; }
+  nav { padding: 0 1.25rem; }
+  .hero { padding: 52px 24px 48px; }
+  .layout { padding: 40px 24px 60px; }
+  .facility-stats, .reserve-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) { .nav-links li:nth-child(n+5) { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projects.html">Accountability</a></li>
+    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/communication.html">Communication</a></li>
+    <li><a href="/finances.html">Finances</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Campaign Priority · Community Services &amp; Recreation</div>
+    <h1>A $4 Million Decision Is Coming.<br><em>No One Is Planning for It.</em></h1>
+    <p class="hero-lead">The Township's own Asset Management Plan identifies major facility replacements and upgrades by 2035. There is no reserve. No design work has started. No community consultation has been planned. The debt will be retired in two years — freeing up capacity that needs a deliberate purpose before the bill arrives.</p>
+  </div>
+</div>
+
+<div class="layout">
+  <main>
+
+    <div class="intro-block">
+      <strong>This is not a criticism of the facilities we have.</strong> The Community Centre, the museum, the parks, beaches, and recreation programs are the connective tissue of Nipissing life — and the staff and volunteers who run them do essential work. The problem is that the Township's own planning documents identify major capital needs by the mid-2030s, with no reserve contribution, no design process, and no community input about what residents actually want those facilities to look like. Planning that should start today keeps getting pushed toward a future crisis.
+    </div>
+
+    <div class="section-label" id="the-gap">The Numbers</div>
+    <h2 class="section-title">What the Asset Management Plan Actually Says</h2>
+
+    <p style="font-size:14.5px;line-height:1.75;color:var(--body);margin-bottom:1.5rem;">The Township's 2025 Asset Management Plan, produced by UrbanRe Advisory, identifies the following major capital needs. These are the Township's own numbers — not estimates from this campaign.</p>
+
+    <div class="facility-stats">
+      <div class="fstat alert">
+        <div class="fstat-num">$4M+</div>
+        <div class="fstat-label">Township Office &amp; Public Works replacement (~2035)</div>
+      </div>
+      <div class="fstat alert">
+        <div class="fstat-num">$0</div>
+        <div class="fstat-label">Dedicated reserve currently set aside for this</div>
+      </div>
+      <div class="fstat">
+        <div class="fstat-num">~$280K</div>
+        <div class="fstat-label">Annual capacity freed when debt retires (~2027)</div>
+      </div>
+    </div>
+
+    <div class="asset-table-wrap">
+      <table class="asset-table">
+        <thead>
+          <tr><th>Facility / Asset</th><th>Need / Issue</th><th>Est. Cost</th><th>Horizon</th><th>Reserve?</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Township Office &amp; Public Works</strong></td>
+            <td>Both buildings identified for replacement in the AMP. Current structures have exceeded useful life.</td>
+            <td><span class="amount large">$4M+</span></td>
+            <td class="horizon">~2035</td>
+            <td><span class="flag-none">None</span></td>
+          </tr>
+          <tr>
+            <td><strong>Public Works Garage</strong></td>
+            <td>Near-term repairs and upgrades</td>
+            <td><span class="amount medium">~$167K</span></td>
+            <td class="horizon">2027</td>
+            <td><span class="flag-partial">Building</span></td>
+          </tr>
+          <tr>
+            <td><strong>Community Centre</strong></td>
+            <td>Accessibility upgrades, exterior repairs, deferred maintenance</td>
+            <td><span class="amount medium">~$175K</span></td>
+            <td class="horizon">2028</td>
+            <td><span class="flag-partial">Building</span></td>
+          </tr>
+          <tr>
+            <td><strong>Museum Buildings</strong></td>
+            <td>Foundation issues, electrical, storage deficit. Artifacts currently stored across multiple locations in the township.</td>
+            <td><span class="amount medium">TBD</span></td>
+            <td class="horizon">Near-term</td>
+            <td><span class="flag-none">Unknown</span></td>
+          </tr>
+          <tr>
+            <td><strong>Chapman's Landing Dock</strong></td>
+            <td>Replacement identified in AMP</td>
+            <td><span class="amount small">~$70K</span></td>
+            <td class="horizon">Medium-term</td>
+            <td><span class="flag-partial">Unclear</span></td>
+          </tr>
+          <tr>
+            <td><strong>McQuaby Lake Boat Launch</strong></td>
+            <td>Rehabilitation identified in AMP</td>
+            <td><span class="amount small">~$250K</span></td>
+            <td class="horizon">Medium-term</td>
+            <td><span class="flag-partial">Unclear</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout red">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <h4>The Single Largest Item Has No Reserve and No Plan</h4>
+        <p>The $4M+ Township Office and Public Works replacement is the most significant capital decision Nipissing Township will face in the next decade. The 2025 audited financial statements confirm there is no dedicated reserve for it. No design process has started. No community consultation has been conducted. At current debt repayment rates, the Township will have ~$280K/year in freed capacity by 2027. Without a deliberate decision to redirect that capacity, it will accumulate as general cash — and the 2035 decision will arrive as an unplanned crisis requiring emergency debt financing.</p>
+      </div>
+    </div>
+
+    <div class="section-label" id="reserves" style="margin-top:3rem;">Reserve Analysis</div>
+    <h2 class="section-title">Where Money Is Set Aside — And Where It Isn't</h2>
+
+    <div class="reserve-grid">
+      <div class="reserve-card missing">
+        <div class="reserve-label">Does Not Exist</div>
+        <div class="reserve-name">Civic Facilities Reserve</div>
+        <div class="reserve-amount">$0</div>
+        <p>For the $4M Township Office and Public Works replacement. No contributions. No plan. No target date.</p>
+      </div>
+      <div class="reserve-card ok">
+        <div class="reserve-label">Active &amp; Appropriate</div>
+        <div class="reserve-name">Parkland Reserve</div>
+        <div class="reserve-amount">$143,695</div>
+        <p>Obligatory reserve for parkland development under the Planning Act. Well-managed, funds appropriately restricted.</p>
+      </div>
+      <div class="reserve-card obsolete">
+        <div class="reserve-label">Purpose Now Obsolete</div>
+        <div class="reserve-name">Broadband Reserve</div>
+        <div class="reserve-amount">~$60,000</div>
+        <p>Set aside to attract broadband connectivity. Bell Fiber is now being deployed in the township. Starlink and LEO satellites exist. No project remains to fund.</p>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="callout-icon">📶</div>
+      <div>
+        <h4>The Broadband Reserve Is a Stranded Asset</h4>
+        <p>The Township has been accumulating roughly $60,000 waiting to help bring broadband connectivity to the community. <strong>Bell Fiber is now being deployed in the township.</strong> Starlink and other LEO satellite services provide reliable rural internet without municipal investment. The broadband problem has been solved by the private sector. Holding money in this reserve for a project that will never come is not fiscal responsibility — it's deferred decision-making. The most logical use: seed the Civic Facilities Reserve that should be starting now.</p>
+      </div>
+    </div>
+
+    <div class="section-label" id="boards" style="margin-top:3rem;">Boards &amp; Committees</div>
+    <h2 class="section-title">The Recreation Committee and Museum Board Need Council Direction</h2>
+
+    <p style="font-size:14.5px;line-height:1.75;color:var(--body);margin-bottom:1.5rem;">I served on both the Museum Board and the Recreation Committee. The most consistent observation from that experience: these boards operate without mandate letters, without annual objectives from council, and without a clear sense of what council wants them to accomplish. The Recreation Committee has been pressing for storage space as soccer and other programs expand. The Museum continues to store artifacts in multiple locations across the township without a clear strategic direction about collection management or space.</p>
+
+    <div class="callout red">
+      <div class="callout-icon">📋</div>
+      <div>
+        <h4>Recreation Committee: 4 of 12 Meetings Cancelled in 2025</h4>
+        <p>In 2025, the Recreation Committee scheduled 12 meetings and cancelled 4 — a 33% cancellation rate. The committee overseeing active summer programming cancelled its July and August meetings. This is not a failure of volunteers — it's a governance failure: <strong>a committee without mandate letters or council accountability has no framework by which to measure whether meeting is necessary.</strong> Minutes for the meetings that do occur are buried on a separate service page rather than surfaced alongside council records.</p>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <div class="callout-icon">✓</div>
+      <div>
+        <h4>Board and Committee Minutes Are Now Being Published — A Good Start</h4>
+        <p>Recreation Committee and Museum Board agendas and minutes are now posted publicly on individual service pages. That's a step in the right direction. The next step is making them proactively discoverable — a central index, cross-references to council decisions, and email notification when new minutes are posted. Being technically available and being genuinely accessible are different standards. The goal is the second one.</p>
+      </div>
+    </div>
+
+    <div class="section-label" id="vision" style="margin-top:3rem;">The Right Question</div>
+    <h2 class="section-title">What Does Nipissing Township Want to Look Like in 2040?</h2>
+
+    <div class="vision-block">
+      <h3>The Conversation That Hasn't Happened Yet</h3>
+      <p>The Township has a Community Centre where council meetings have had to relocate because the regular space isn't adequate. It has a Museum that lacks space and stores artifacts in multiple buildings across the township. It has a Recreation Committee pressing for storage as programs expand. It has aging dock infrastructure. It has a Township Office and Public Works building approaching the end of its useful life.</p>
+      <p>These aren't separate problems. They're fragments of a single question council hasn't formally asked residents: <em>What do we want our civic facilities to look like in 20 years?</em></p>
+      <p>Answering that question through public consultation — before any design work, any tendering, any financial commitment — creates legitimacy and community buy-in for whatever comes next. A multi-use facility co-locating council chambers, museum space, and recreational storage might be more efficient than three separate projects. A community survey might reveal priorities that surprise everyone. None of that can happen without a deliberate decision to start the conversation.</p>
+      <p>That conversation should begin in 2027, early in the next council's term — with genuine resident input before a single design dollar is spent.</p>
+    </div>
+
+    <div class="section-label" id="commitments">What I Would Do</div>
+    <h2 class="section-title">Four Specific Commitments</h2>
+
+    <div class="commitments">
+      <div class="commitment">
+        <div class="commitment-num">1</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Redirect the Broadband Reserve Toward a Civic Facilities Reserve</div>
+          <div class="commitment-desc">The ~$60,000 sitting in the broadband reserve has no project left to fund. I will advocate for council to formally close the broadband reserve and redirect its balance to a new dedicated Civic Facilities Reserve — the first contribution toward the $4M+ project coming in the next decade.</div>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">2</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Begin Annual Contributions to the Civic Facilities Reserve as Debt Is Retired</div>
+          <div class="commitment-desc">The Township's ~$448K in municipal debt will be fully retired by approximately 2027, freeing up roughly $280K/year in principal payments. I will advocate for a portion of those freed payments — starting at ~$130K/year — to be contributed annually to the Civic Facilities Reserve. By 2035, that would accumulate approximately $1M in matching funds toward provincial or federal infrastructure grants.</div>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">3</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Mandate Letters and Annual Objectives for Recreation and Museum</div>
+          <div class="commitment-desc">Council should issue formal mandate letters to every board and committee at the start of each term — setting priorities, defining success, and establishing fiscal constraints. The Recreation Committee needs clarity on storage, programming scope, and facility management. The Museum Board needs direction on collection priorities and space planning. Without mandate letters, boards run on inertia. With them, they run on direction.</div>
+        </div>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">4</div>
+        <div class="commitment-body">
+          <div class="commitment-title">Community Consultation on Long-Term Facilities Vision — Starting in 2027</div>
+          <div class="commitment-desc">Before a dollar is spent on design, residents should be asked what they want. What services should be co-located? Is there an opportunity for a multi-use civic anchor? What does Nipissing Township look like in 2040? These questions should be answered through structured public engagement — not decided quietly by staff and ratified by council. A consultation process beginning in 2027 creates legitimacy for whatever comes next.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sources-block">
+      <div class="sources-label">Source Documents</div>
+      <ul class="sources-list">
+        <li><a href="https://council.chriswjohnston.ca/2025/files/Township-of-Nipissing-2025-Asset-Management-Plan-1.pdf" target="_blank">2025 Asset Management Plan — UrbanRe Advisory (October 2025)</a></li>
+        <li><a href="https://nipissingtownship.com/wp-content/uploads/2026/04/2025-12-31-Township-of-Nipissing-FS.pdf" target="_blank">2025 Audited Financial Statements — KPMG (March 2026)</a></li>
+        <li><a href="/finances.html">Township Finances — Plain Language Summary →</a></li>
+      </ul>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">On This Page</div>
+      <ul class="toc">
+        <li><a href="#the-gap">→ Asset Management Numbers</a></li>
+        <li><a href="#reserves">→ Reserve Fund Analysis</a></li>
+        <li><a href="#boards">→ Recreation &amp; Museum Boards</a></li>
+        <li><a href="#vision">→ The Long-Term Vision</a></li>
+        <li><a href="#commitments">→ Four Commitments</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Key Numbers</div>
+      <ul class="stat-list">
+        <li class="stat-row"><span class="stat-label">Township Office &amp; PW replacement</span><span class="stat-value bad">$4M+</span></li>
+        <li class="stat-row"><span class="stat-label">Current dedicated reserve</span><span class="stat-value bad">$0</span></li>
+        <li class="stat-row"><span class="stat-label">Annual debt freed by ~2027</span><span class="stat-value">~$280K</span></li>
+        <li class="stat-row"><span class="stat-label">Broadband reserve (no project)</span><span class="stat-value">~$60K</span></li>
+        <li class="stat-row"><span class="stat-label">Rec. meetings cancelled (2025)</span><span class="stat-value bad">4 of 12</span></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Related Pages</div>
+      <ul class="toc">
+        <li><a href="/finances.html">Township Finances Explained</a></li>
+        <li><a href="/governance.html">Governance &amp; Council Leadership</a></li>
+        <li><a href="/projects.html">Accountability: Three Case Studies</a></li>
+        <li><a href="/communication.html">Communication &amp; Technology</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card cta-card">
+      <div class="sidebar-card-title">What Do You Want to See?</div>
+      <p>Before October 2026, I want to hear from residents about what matters most for community facilities. What's missing? What would you want Nipissing Township to look like in 2040?</p>
+      <a class="cta-btn" href="/#contact">Share Your Vision</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <p class="footer-logo">Chris Johnston</p>
+  <p>Candidate for Nipissing Township Council · October 2026</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Accountability</a>
+    <a href="/governance.html">Governance</a>
+    <a href="/communication.html">Communication</a>
+    <a href="/finances.html">Finances</a>
+    <a href="mailto:chris@chriswjohnston.ca">chris@chriswjohnston.ca</a>
+  </div>
+  <p>Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
+</footer>
+
+<div class="stage-bar">
+  ⚠ Stage Preview — <a href="https://chriswjohnston.ca">View Live Site</a> &nbsp;·&nbsp; <a href="https://github.com/chriswjohnston/chriswjohnston-stage/actions">Promote to Production →</a>
+</div>
+
+</body>
+</html>
