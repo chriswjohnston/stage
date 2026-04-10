@@ -5,45 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Strategic Planning — Chris Johnston for Nipissing Township Council</title>
   <meta name="description" content="The 2023–2026 Strategic Plan was approved in 42 days, without meaningful public input. Here's what was wrong — and what the next council must do differently.">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  
   <style>
     :root {
-      --forest:   #2C4A3E;
-      --pine:     #3D6B5E;
-      --pine-lt:  #e8f0eb;
-      --gold:     #b8922a;
-      --gold-lt:  #fdf6e3;
-      --warm:     #E8C98A;
-      --rust:     #C06830;
-      --ink:      #1c1c1c;
-      --charcoal: #1E2B2A;
-      --body:     #3a3a3a;
-      --muted:    #6e6e6e;
-      --rule:     #d8d0c8;
-      --bg:       #FAF7F0;
-      --sand:     #F2EAD3;
-      --white:    #FFFFFF;
-      --red:      #b83232;
-      --sky:      #A8D5E2;
-    }
+  /* === Colours — matches chriswjohnston.ca homepage === */
+  --forest:    #2C4A3E;   /* primary dark green — nav, hero, headings */
+  --pine:      #3D6B5E;   /* secondary green — links, borders */
+  --pine-lt:   #e8f0eb;   /* light green tint — section dividers */
+  --gold:      #b8922a;   /* gold accent — labels, badges, borders */
+  --gold-lt:   #fdf6e3;   /* pale gold — block backgrounds */
+  --warm:      #E8C98A;   /* warm gold — nav logo, hero accents */
+  --rust:      #C06830;   /* rust/orange — primary CTA, section labels */
+  --rust-dk:   #A8552A;   /* dark rust — hover state */
+  --sky:       #A8D5E2;   /* sky blue — nav logo span */
+  --ink:       #1c1c1c;
+  --body:      #3a3a3a;
+  --muted:     #6e6e6e;
+  --rule:      #d8d0c8;
+  --bg:        #FAF7F0;
+  --sand:      #F2EAD3;
+  --white:     #ffffff;
+  --red:       #b83232;
+  --red-lt:    #fdf0f0;
+  /* Aliases for pages that use --green / --green-mid / --green-lt */
+  --green:     #2C4A3E;
+  --green-mid: #3D6B5E;
+  --green-lt:  #e8f0eb;
+}
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Lato', system-ui, sans-serif; background: var(--bg); color: var(--body); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
     /* ── NAV ─── */
     nav {
-      background: rgba(44,74,62,0.97);
-      backdrop-filter: blur(8px);
-      padding: 0 2.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px; position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
-    }
-    .nav-logo { font-family: 'Playfair Display', serif; color: var(--warm); font-size: 1.1rem; text-decoration: none; font-weight: 700; }
-    .nav-logo span { color: var(--sky); }
-    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--warm); }
+  background: rgba(44,74,62,0.97);
+  backdrop-filter: blur(8px);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.nav-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--warm);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-logo span { color: var(--sky); }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; flex-wrap: wrap; }
+.nav-links a {
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--warm); }
 
     /* ── HERO ─── */
     .hero {
@@ -79,13 +105,13 @@
     main { max-width: 860px; margin: 0 auto; padding: 0 2rem 5rem; }
 
     .alert { background: var(--white); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; margin: 2.5rem 0; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
-    .alert-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .alert-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.5rem; }
     .alert p { color: var(--body); font-size: 1rem; line-height: 1.72; margin-bottom: 0; }
     .alert strong { color: var(--ink); }
 
     .section-heading { display: flex; align-items: center; gap: 0.85rem; margin: 3.5rem 0 1.25rem; scroll-margin-top: 80px; }
-    .section-heading .marker { width: 4px; height: 32px; background: var(--pine); border-radius: 2px; flex-shrink: 0; }
-    .section-heading h2 { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: var(--ink); font-weight: 700; }
+    .section-heading .marker { width: 4px; height: 32px; background: var(--forest); border-radius: 2px; flex-shrink: 0; }
+    .section-heading h2 { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: var(--forest); font-weight: 700; }
     p { font-size: 1rem; margin-bottom: 1.1rem; color: var(--body); }
 
     /* ── CRITIQUE BLOCKS ─── */
@@ -106,7 +132,7 @@
     .finding-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 1rem 0; }
     .finding-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.95rem; }
     .finding-list li .dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; flex-shrink: 0; margin-top: 0.6rem; }
-    .finding-list li .dot.green { background: var(--pine); }
+    .finding-list li .dot.green { background: var(--forest); }
 
     .rec-box { background: var(--pine-lt); border: 1px solid #b8d4c2; border-left: 4px solid var(--pine); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.25rem 0 0; }
     .rec-box .rec-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--pine); margin-bottom: 0.4rem; }
@@ -114,7 +140,7 @@
 
     .goal-table-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); margin: 1.1rem 0; }
     .goal-table-wrap table { width: 100%; border-collapse: collapse; }
-    .goal-table-wrap th { background: var(--pine); color: var(--white); padding: 0.6rem 1rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; }
+    .goal-table-wrap th { background: var(--forest); color: var(--white); padding: 0.6rem 1rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; }
     .goal-table-wrap td { padding: 0.65rem 1rem; font-size: 0.88rem; border-bottom: 1px solid var(--rule); color: var(--body); }
     .goal-table-wrap tr:last-child td { border-bottom: none; }
     .goal-table-wrap tr:nth-child(even) td { background: var(--sand); }
@@ -136,7 +162,7 @@
 
     .priority-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.75rem 0; }
     .priority-card { background: var(--forest); color: var(--white); border-radius: 10px; padding: 1.4rem 1.5rem; text-decoration: none; display: block; transition: background 0.2s, transform 0.2s; border-bottom: 3px solid var(--gold); }
-    .priority-card:hover { background: var(--pine); transform: translateY(-2px); }
+    .priority-card:hover { background: var(--forest); transform: translateY(-2px); }
     .priority-card .priority-num { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); font-weight: 700; margin-bottom: 0.4rem; }
     .priority-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
     .priority-card p { font-size: 0.84rem; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.55; }
@@ -145,7 +171,7 @@
     .commitment-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
     .commitment-item:last-child { border-bottom: none; padding-bottom: 0; }
     .commitment-item:first-child { padding-top: 0; }
-    .commitment-check { width: 28px; height: 28px; background: var(--pine); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: white; font-size: 0.8rem; font-weight: 700; }
+    .commitment-check { width: 28px; height: 28px; background: var(--forest); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: white; font-size: 0.8rem; font-weight: 700; }
     .commitment-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
     .commitment-item p { font-size: 0.87rem; color: var(--muted); margin: 0; line-height: 1.6; }
 
@@ -172,13 +198,14 @@
       .critique-header .tag { display: none; }
     }
   </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
+    <li><a href="/" class="active">Home</a></li>
     <li><a href="/projects.html">Accountability</a></li>
     <li><a href="/governance.html">Governance</a></li>
     <li><a href="/communication.html">Communication</a></li>

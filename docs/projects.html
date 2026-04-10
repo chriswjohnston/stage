@@ -5,24 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project Accountability – Chris Johnston for Nipissing Township Council</title>
 <meta name="description" content="Three documented cases of project failure, opacity, and accountability gaps at Nipissing Township — and the complaint that triggered an Ombudsman investigation.">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green:     #1a4d2e;
-  --green-mid: #2d6b45;
-  --green-lt:  #e8f0eb;
-  --gold:      #b8922a;
-  --gold-lt:   #fdf6e3;
+  /* === Colours — matches chriswjohnston.ca homepage === */
+  --forest:    #2C4A3E;   /* primary dark green — nav, hero, headings */
+  --pine:      #3D6B5E;   /* secondary green — links, borders */
+  --pine-lt:   #e8f0eb;   /* light green tint — section dividers */
+  --gold:      #b8922a;   /* gold accent — labels, badges, borders */
+  --gold-lt:   #fdf6e3;   /* pale gold — block backgrounds */
+  --warm:      #E8C98A;   /* warm gold — nav logo, hero accents */
+  --rust:      #C06830;   /* rust/orange — primary CTA, section labels */
+  --rust-dk:   #A8552A;   /* dark rust — hover state */
+  --sky:       #A8D5E2;   /* sky blue — nav logo span */
   --ink:       #1c1c1c;
   --body:      #3a3a3a;
   --muted:     #6e6e6e;
   --rule:      #d8d0c8;
-  --bg:        #f9f7f4;
+  --bg:        #FAF7F0;
+  --sand:      #F2EAD3;
   --white:     #ffffff;
   --red:       #b83232;
   --red-lt:    #fdf0f0;
+  /* Aliases for pages that use --green / --green-mid / --green-lt */
+  --green:     #2C4A3E;
+  --green-mid: #3D6B5E;
+  --green-lt:  #e8f0eb;
 }
 
 html { scroll-behavior: smooth; }
@@ -30,7 +40,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--body);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -53,11 +63,12 @@ nav {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #E8C98A;
+  color: var(--warm);
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
-.nav-logo span { color: #A8D5E2; }
-.nav-links { display: flex; gap: 1.4rem; list-style: none; }
+.nav-logo span { color: var(--sky); }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; flex-wrap: wrap; }
 .nav-links a {
   color: rgba(255,255,255,0.82);
   text-decoration: none;
@@ -67,7 +78,7 @@ nav {
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: #E8C98A; }
+.nav-links a:hover, .nav-links a.active { color: var(--warm); }
 
 .hero {
   background: var(--green);
@@ -103,7 +114,7 @@ nav {
   flex-shrink: 0;
 }
 .hero h1 {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: clamp(30px, 5vw, 52px);
   line-height: 1.15;
@@ -169,7 +180,7 @@ nav {
 }
 
 .project-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: clamp(20px, 3vw, 27px);
   color: var(--ink);
@@ -288,7 +299,7 @@ nav {
   margin-bottom: 6px;
 }
 .ombudsman-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 17px;
   color: var(--ink);
@@ -376,7 +387,7 @@ nav {
   margin-top: 16px;
 }
 .closing-title {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 20px;
   color: #fff;
@@ -390,7 +401,7 @@ nav {
 }
 .closing-btn {
   display: inline-block;
-  background: var(--gold);
+  background: var(--rust);
   color: #fff;
   padding: 12px 28px;
   border-radius: 5px;
@@ -399,7 +410,7 @@ nav {
   text-decoration: none;
   transition: background 0.2s;
 }
-.closing-btn:hover { background: #a07d22; }
+.closing-btn:hover { background: var(--rust-dk); }
 
 footer {
   background: var(--ink);
@@ -415,7 +426,7 @@ footer {
 footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
 footer a:hover { color: #fff; }
 .footer-name {
-  font-family: 'Lora', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 14px;
   color: #fff;
@@ -444,6 +455,7 @@ footer a:hover { color: #fff; }
   .tl-content { border-left: none; padding-left: 0; padding-top: 4px; }
 }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -451,7 +463,7 @@ footer a:hover { color: #fff; }
   <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/projects.html">Accountability</a></li>
+    <li><a href="/projects.html" class="active">Accountability</a></li>
     <li><a href="/governance.html">Governance</a></li>
     <li><a href="/communication.html">Communication</a></li>
     <li><a href="/facilities.html">Facilities</a></li>
