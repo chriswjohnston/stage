@@ -1,24 +1,25 @@
 # chriswjohnston-stage
 
-Preview site for chriswjohnston.ca campaign site.
-Lives at stage.chriswjohnston.ca — always shows campaign mode.
+Campaign website for Chris Johnston — Nipissing Township Council 2026.
 
-## How to use
+## Structure
 
-1. Edit src/campaign/index.html
-2. Commit and push to main
-3. Build runs automatically — preview at stage.chriswjohnston.ca
-4. When happy: Actions → Promote to Production → Run workflow → type PROMOTE
+- `src/campaign/index.html` — Main campaign homepage (source)
+- `projects.html` — Fiscal responsibility / project accountability page
+- `facilities.html` — Community services & recreation page  
+- `communication.html` — Communication & technology page
+- `communication-plan.html` — Full 13-point communication plan
+- `governance.html` — Community governance page
+- `build_stage.py` — Builds docs/ from src/ with stage banner injected
+- `docs/` — Built output served by GitHub Pages (stage.chriswjohnston.ca)
 
-## GitHub Secrets needed
+## Deploy
 
-- PROD_TOKEN — Personal Access Token with repo scope on chriswjohnston-site
-  (same token as REPO_TOKEN, just named differently here)
+**Stage:** Push to `main` — GitHub Actions runs `build_stage.py` automatically.
 
-## Setup
+**Production:** Run the "Promote to Production" workflow manually from GitHub Actions.
 
-1. Create repo: chriswjohnston-stage
-2. Upload all these files
-3. Settings → Pages → main branch → /docs folder
-4. Add PROD_TOKEN secret
-5. In cPanel: CNAME record stage → chriswjohnston.github.io
+## Notes
+
+- `facilities.html` is in repo root — copy from existing repo, do not replace with placeholder
+- `docs/components/news-ticker.js` is fetched from live site at build time

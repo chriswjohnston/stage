@@ -20,6 +20,13 @@ EXTRA_PAGES = [
     Path("communication.html"),
     Path("communication-plan.html"),
     Path("governance.html"),
+    Path("finances.html"),
+    Path("strategic-planning.html"),
+]
+
+# Static assets to copy directly (no banner injection)
+STATIC_ASSETS = [
+    Path("shared.css"),
 ]
 
 TICKER_SNIPPET = """  <script src="/components/news-ticker.js" defer></script>
@@ -90,6 +97,15 @@ def build():
 
     (DOCS_DIR / "index.html").write_text(html, encoding="utf-8")
     print(f"  ✓ docs/index.html (campaign mode)")
+
+    # ── Static assets ──────────────────────────────────────────────────────
+    for asset in STATIC_ASSETS:
+        if asset.exists():
+            dest = DOCS_DIR / asset.name
+            shutil.copy2(asset, dest)
+            print(f"  ✓ docs/{asset.name}")
+        else:
+            print(f"  ⚠ {asset} not found — skipping")
 
     # ── Extra standalone pages ─────────────────────────────────────────────
     for page in EXTRA_PAGES:
