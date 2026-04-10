@@ -7,24 +7,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared.css" />
   <style>
-    :root {
-      --forest: #2C4A3E; --pine: #3D6B5E; --water: #5B9FAF; --sky: #A8D5E2;
-      --sand: #F2EAD3; --warm: #E8C98A; --rust: #C06830;
-      --charcoal: #1E2B2A; --cream: #FAF7F0; --white: #FFFFFF;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+    /* Page-specific styles that extend shared.css */
+    body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--body); overflow-x: hidden; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; background: rgba(44,74,62,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--warm); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 60px; background: rgba(44,74,62,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--warm); text-decoration: none; font-weight: 700; }
     .nav-logo span { color: var(--sky); }
-    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--warm); }
 
-    /* HERO */
     .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
     .hero-left { background: var(--forest); display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 4rem 5rem; position: relative; z-index: 2; }
     .hero-left::after { content: ''; position: absolute; top: 0; right: -60px; bottom: 0; width: 120px; background: var(--forest); clip-path: polygon(0 0, 0% 100%, 100% 100%); z-index: 1; }
@@ -45,9 +39,12 @@
 
     section { padding: 5rem 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.6rem; }
+    .section-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.6rem; display: block; }
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 700; color: var(--forest); line-height: 1.2; margin-bottom: 1.2rem; }
-    .section-intro { font-size: 1rem; font-weight: 300; line-height: 1.82; color: #444; max-width: 640px; }
+    .section-title.light { color: var(--white); }
+    .section-title em { font-style: italic; color: var(--pine); }
+    .section-title.light em { color: var(--warm); opacity: 0.85; }
+    .section-intro { font-size: 1rem; font-weight: 300; line-height: 1.82; color: #555; max-width: 640px; }
 
     /* ABOUT */
     #about { background: var(--cream); }
@@ -56,73 +53,62 @@
     .about-photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .about-accent { position: absolute; bottom: -1.5rem; left: -1.5rem; width: 120px; height: 120px; border: 3px solid var(--warm); border-radius: 8px; z-index: -1; }
     .about-text p { font-size: 0.97rem; line-height: 1.82; color: #555; margin-bottom: 1rem; }
-    .farm-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--sand); border: 1px solid rgba(44,74,62,0.2); border-radius: 30px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 700; color: var(--forest); margin-bottom: 1.5rem; text-decoration: none; transition: background 0.2s; }
-    .farm-badge:hover { background: var(--warm); }
     .about-stats { display: flex; gap: 2.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(44,74,62,0.15); flex-wrap: wrap; }
     .stat-item strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--forest); }
     .stat-item span { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: #777; line-height: 1.4; }
 
-    /* CREDENTIALS */
-    #credentials { background: var(--cream); }
-    .career-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-    .career-card { background: var(--white); border-radius: 10px; padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    .career-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); margin-bottom: 0.4rem; }
-    .career-card .role-co { font-size: 0.78rem; font-weight: 700; color: var(--rust); letter-spacing: 0.08em; margin-bottom: 0.8rem; }
-    .career-card p { font-size: 0.87rem; line-height: 1.72; color: #555; }
-    .callout-box { background: var(--sand); border-radius: 12px; padding: 2rem 2.5rem; margin-top: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
-    .callout-box .ci { font-size: 1.6rem; flex-shrink: 0; }
-    .callout-box h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); margin-bottom: 0.5rem; }
-    .callout-box p { font-size: 0.92rem; line-height: 1.8; color: #555; }
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .edu-card { display: flex; gap: 1rem; align-items: flex-start; background: var(--white); border-radius: 10px; padding: 1.4rem 1.6rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .edu-card .ei { font-size: 1.4rem; flex-shrink: 0; }
-    .edu-card h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--forest); font-size: 1rem; margin-bottom: 0.2rem; }
-    .edu-card .edu-co { font-size: 0.75rem; font-weight: 700; color: var(--rust); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-    .edu-card p { font-size: 0.84rem; line-height: 1.65; color: #666; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
-    .tag { font-size: 0.78rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 20px; }
+    /* FIVE YEARS */
+    #trying-to-serve { background: var(--cream); border-top: 2px solid var(--pine-lt); }
+    .attempt-timeline { display: flex; flex-direction: column; margin-bottom: 3rem; }
+    .attempt-row { display: grid; grid-template-columns: 110px 1fr; gap: 0 2.5rem; padding: 2rem 0; border-bottom: 1px solid rgba(44,74,62,0.1); }
+    .attempt-row:first-child { padding-top: 0; }
+    .attempt-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .attempt-row.highlight { background: var(--sand); margin: 0 -2rem; padding: 2rem; border-radius: 8px; margin-bottom: 1px; border-bottom: none; }
+    .attempt-date { font-family: 'Playfair Display', serif; font-size: 0.82rem; font-weight: 700; color: #aaa; line-height: 1.4; padding-top: 3px; }
+    .attempt-date.current { color: var(--pine); }
+    .attempt-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem; line-height: 1.3; }
+    .attempt-body { font-size: 0.92rem; line-height: 1.78; color: #555; }
+    .attempt-body p + p { margin-top: 0.75rem; }
+    .attempt-body a { color: var(--pine); }
+    .piper-quote { background: var(--forest); border-radius: 8px; padding: 1.5rem 2rem; margin: 1rem 0; }
+    .piper-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.7; margin-bottom: 0.75rem; }
+    .piper-quote cite { font-size: 0.7rem; color: rgba(255,255,255,0.45); font-style: normal; }
+    .piper-quote cite a { color: var(--warm); }
+    .five-years-closing { border-left: 4px solid var(--warm); padding: 1.5rem 2rem; background: var(--white); border-radius: 0 8px 8px 0; border: 1px solid var(--rule); border-left: 4px solid var(--warm); }
+    .five-years-closing blockquote { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--forest); line-height: 1.65; margin-bottom: 0.5rem; }
+    .five-years-closing cite { font-size: 0.78rem; color: #888; font-style: normal; }
 
-    /* TESTIMONIALS */
-    #testimonials { background: var(--forest); }
-    #testimonials .section-title { color: var(--white); }
-    #testimonials .section-label { color: var(--warm); }
-    #testimonials .section-intro { color: rgba(255,255,255,0.7); }
-    .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
-    .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 2rem; }
-    .testimonial-card blockquote { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.82); font-style: italic; margin-bottom: 1.5rem; }
-    .testimonial-card cite { font-style: normal; }
-    .cite-name { font-weight: 700; color: var(--warm); font-size: 0.9rem; display: block; }
-    .cite-role { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
-
-    /* VISION */
-    #vision { background: var(--sand); text-align: center; }
-    .vision-quote { max-width: 820px; margin: 0 auto; }
-    .vision-quote blockquote { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.8vw, 2.1rem); font-weight: 600; color: var(--forest); line-height: 1.55; margin-bottom: 1.5rem; position: relative; padding: 0 2rem; }
-    .vision-quote blockquote::before { content: '\201C'; font-size: 6rem; color: var(--warm); position: absolute; top: -2rem; left: -1rem; font-family: 'Playfair Display', serif; line-height: 1; opacity: 0.5; }
-    .vision-quote cite { font-style: normal; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); }
+    /* COMMUNITY VOICES */
+    #community-voices { background: var(--sand); }
+    .voices-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .voice-card { background: var(--white); border-radius: 10px; padding: 1.6rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid var(--forest); }
+    .voice-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); margin-bottom: 0.5rem; }
+    .voice-card p { font-size: 0.9rem; line-height: 1.75; color: #555; }
+    .generational-block { background: var(--forest); border-radius: 12px; padding: 2.5rem; }
+    .gb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .gb-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.75rem; }
+    .generational-block h3 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--white); line-height: 1.3; margin-bottom: 1rem; }
+    .generational-block p { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
+    .gen-pullquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--warm); line-height: 1.7; margin-top: 0.5rem; }
 
     /* PRIORITIES */
     #priorities { background: var(--forest); }
-    #priorities .section-title { color: var(--white); }
-    #priorities .section-label { color: var(--warm); }
-    #priorities .section-intro { color: rgba(255,255,255,0.7); }
     .priorities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-    .priority-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem 1.8rem; transition: background 0.25s, transform 0.2s, border-color 0.25s; }
+    .priority-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem 1.8rem; transition: background 0.25s, transform 0.2s, border-color 0.25s; text-decoration: none; display: block; }
     .priority-card:hover { background: rgba(255,255,255,0.1); border-color: var(--warm); transform: translateY(-4px); }
     .priority-icon { width: 52px; height: 52px; background: rgba(232,201,138,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 1.6rem; }
-    .priority-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--warm); margin-bottom: 0.8rem; }
-    .priority-card p { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.72); }
+    .priority-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--warm); margin-bottom: 0.7rem; }
+    .priority-card p { font-size: 0.87rem; line-height: 1.72; color: rgba(255,255,255,0.7); margin-bottom: 1rem; }
+    .priority-link { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm); border-bottom: 1px solid rgba(232,201,138,0.3); padding-bottom: 2px; }
 
     /* TURNOVER */
     #turnover { background: #192820; }
-    #turnover .section-title { color: var(--white); }
-    #turnover .section-label { color: var(--warm); }
     .turnover-intro { font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.72); max-width: 780px; margin-bottom: 3rem; }
-    .term-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-bottom: 3rem; }
+    .term-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
     .term-counter { background: rgba(255,255,255,0.03); padding: 2rem 1.8rem; }
     .term-counter.current { border-top: 3px solid var(--rust); }
     .term-counter.past { border-top: 3px solid rgba(232,201,138,0.4); }
-    .term-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm); opacity: 0.7; margin-bottom: 0.5rem; }
+    .term-badge { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm); opacity: 0.7; margin-bottom: 0.5rem; }
     .term-counter.current .term-badge { color: var(--rust); opacity: 1; }
     .term-dates { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); font-weight: 700; margin-bottom: 0.3rem; }
     .term-departed-count { font-size: 3rem; font-weight: 800; font-family: 'Playfair Display', serif; color: var(--rust); line-height: 1; margin-bottom: 0.3rem; }
@@ -133,146 +119,145 @@
     .term-departures li::before { content: '↳'; color: var(--warm); opacity: 0.5; flex-shrink: 0; font-size: 0.75rem; margin-top: 0.1rem; }
     .term-counter.current .term-departures li::before { color: var(--rust); opacity: 0.8; }
 
-    .seat-tracker { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 2rem 2.5rem; margin-bottom: 2rem; }
-    .seat-tracker h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--warm); margin-bottom: 0.4rem; }
-    .tracker-sub { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 1.6rem; }
-    .seat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .seat-card { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 1rem; text-align: center; border: 1px solid rgba(255,255,255,0.08); }
-    .seat-card.departed { border-color: rgba(192,104,48,0.4); background: rgba(192,104,48,0.06); }
-    .seat-card.serving { border-color: rgba(232,201,138,0.3); background: rgba(232,201,138,0.05); }
-    .seat-card.appointed { border-color: rgba(168,213,226,0.35); background: rgba(91,159,175,0.08); }
-    .seat-dot { width: 10px; height: 10px; border-radius: 50%; margin: 0 auto 0.6rem; }
-    .seat-card.departed .seat-dot { background: var(--rust); }
-    .seat-card.serving .seat-dot { background: var(--warm); }
-    .seat-card.appointed .seat-dot { background: var(--sky); }
-    .seat-name { font-size: 0.78rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; line-height: 1.3; }
-    .seat-status { font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; color: rgba(255,255,255,0.7); }
-    .seat-card.departed .seat-status { color: var(--rust); opacity: 0.9; }
-    .tracker-legend { display: flex; gap: 1.5rem; margin-top: 1.2rem; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); }
-    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .tracker-note { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 1rem; line-height: 1.65; }
+    .election-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 2rem 2.5rem; margin-bottom: 2rem; }
+    .election-box h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--warm); margin-bottom: 0.35rem; }
+    .election-box-sub { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-bottom: 1.5rem; }
+    .election-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1rem; }
+    .ecol-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .ecol-elected { color: var(--warm); }
+    .ecol-defeated { color: rgba(255,255,255,0.32); }
+    .ecard { display: flex; justify-content: space-between; align-items: center; padding: 0.55rem 0.85rem; border-radius: 6px; margin-bottom: 0.4rem; }
+    .ecard-elected { background: rgba(232,201,138,0.06); border: 1px solid rgba(232,201,138,0.18); }
+    .ecard-elected-departed { background: rgba(192,104,48,0.06); border: 1px solid rgba(192,104,48,0.2); }
+    .ecard-defeated { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+    .ecard-fired { background: rgba(192,104,48,0.1); border: 1px solid rgba(192,104,48,0.35); }
+    .ecard-name { font-size: 0.82rem; font-weight: 700; color: var(--white); }
+    .ecard-meta { font-size: 0.6rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.07em; }
+    .ecard-meta-alert { font-size: 0.6rem; color: var(--rust); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+    .evotes { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; }
+    .evotes-elected { color: var(--warm); }
+    .evotes-defeated { color: rgba(255,255,255,0.32); }
+    .evotes-alert { color: var(--rust); }
+    .election-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.65; }
 
-    .turnover-callout { background: rgba(192,104,48,0.1); border: 1px solid rgba(192,104,48,0.3); border-radius: 10px; padding: 1.5rem 2rem; display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 2rem; }
-    .turnover-callout .ci { font-size: 1.6rem; flex-shrink: 0; }
-    .turnover-callout h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--warm); margin-bottom: 0.4rem; }
-    .turnover-callout p { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.7); }
-
-    .consistency-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 2.5rem; margin-bottom: 2rem; }
-    .consistency-block h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--warm); margin-bottom: 1rem; }
-    .consistency-block .intro-p { font-size: 0.97rem; line-height: 1.82; color: rgba(255,255,255,0.7); margin-bottom: 0; }
-    .consistency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-    .consistency-item { padding: 1.2rem 1.5rem; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid rgba(232,201,138,0.3); }
-    .consistency-item h4 { font-size: 0.85rem; font-weight: 700; color: var(--warm); margin-bottom: 0.4rem; }
-    .consistency-item p { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.6); }
-
-    /* FIVE YEARS SECTION */
-    #trying-to-serve { background: var(--cream); }
-    .attempt-timeline { display: flex; flex-direction: column; margin-bottom: 3rem; }
-    .attempt-row { display: grid; grid-template-columns: 110px 1fr; gap: 0 2.5rem; padding: 2rem 0; border-bottom: 1px solid rgba(44,74,62,0.12); }
-    .attempt-row:first-child { padding-top: 0; }
-    .attempt-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .attempt-row.highlight { background: var(--sand); margin: 0 -2rem; padding: 2rem; border-bottom: none; border-radius: 8px; margin-bottom: 1px; }
-    .attempt-date { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; color: #999; line-height: 1.4; padding-top: 3px; }
-    .attempt-date.current { color: var(--pine); }
-    .attempt-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem; line-height: 1.3; }
-    .attempt-body { font-size: 0.92rem; line-height: 1.78; color: #555; }
-    .attempt-body p + p { margin-top: 0.75rem; }
-    .attempt-body a { color: var(--pine); }
-    .piper-quote { background: var(--forest); border-radius: 8px; padding: 1.5rem 2rem; margin: 1rem 0; }
-    .piper-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 0.75rem; }
-    .piper-quote cite { font-size: 0.72rem; color: rgba(255,255,255,0.45); font-style: normal; }
-    .piper-quote cite a { color: var(--warm); }
-    .five-years-closing { border-left: 4px solid var(--warm); padding: 1.5rem 2rem; background: var(--white); border-radius: 0 8px 8px 0; }
-    .five-years-closing blockquote { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; color: var(--forest); line-height: 1.65; margin-bottom: 0.5rem; }
-    .five-years-closing cite { font-size: 0.78rem; color: #888; font-style: normal; }
+    .tc { background: rgba(192,104,48,0.08); border: 1px solid rgba(192,104,48,0.28); border-radius: 10px; padding: 1.5rem 2rem; display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 1.5rem; }
+    .tc-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .tc h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--warm); margin-bottom: 0.4rem; }
+    .tc p { font-size: 0.88rem; line-height: 1.72; color: rgba(255,255,255,0.7); }
 
     /* ISSUES */
     #issues { background: var(--cream); }
-    .issues-list { margin-top: 2.5rem; display: grid; gap: 1.2rem; }
-    .issue-row { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1.5rem; align-items: start; padding: 1.6rem 2rem; background: var(--white); border-radius: 10px; border-left: 4px solid var(--pine); box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.2s; }
+    .issues-list { margin-top: 2.5rem; display: grid; gap: 1rem; }
+    .issue-row { display: grid; grid-template-columns: 3rem 1fr; gap: 1.5rem; align-items: start; padding: 1.4rem 1.8rem; background: var(--white); border-radius: 10px; border-left: 4px solid var(--pine); box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.2s; }
     .issue-row:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); transform: translateX(4px); }
-    .issue-row.alert-row { border-left-color: var(--rust); }
-    .issue-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--warm); font-weight: 700; line-height: 1; }
-    .issue-content h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--forest); margin-bottom: 0.4rem; }
-    .issue-content p { font-size: 0.92rem; line-height: 1.75; color: #555; }
-    .issue-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; background: rgba(192,104,48,0.1); color: var(--rust); margin-bottom: 0.5rem; }
+    .issue-row.ar { border-left-color: var(--rust); }
+    .issue-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--warm); font-weight: 700; line-height: 1; }
+    .issue-content h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); margin-bottom: 0.3rem; }
+    .issue-content p { font-size: 0.9rem; line-height: 1.72; color: #555; margin-bottom: 0.4rem; }
+    .issue-content a { color: var(--pine); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+    .issue-tag { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.18rem 0.55rem; border-radius: 3px; background: rgba(192,104,48,0.08); color: var(--rust); margin-bottom: 0.4rem; }
+
+    /* CREDENTIALS */
+    #credentials { background: var(--cream); border-top: 1px solid var(--rule); }
+    .career-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .career-card { background: var(--white); border-radius: 10px; padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .career-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--forest); margin-bottom: 0.35rem; }
+    .role-co { font-size: 0.75rem; font-weight: 700; color: var(--rust); letter-spacing: 0.08em; margin-bottom: 0.75rem; display: block; }
+    .career-card p { font-size: 0.87rem; line-height: 1.72; color: #555; }
+    .callout-box { background: var(--sand); border-radius: 12px; padding: 1.75rem 2.25rem; margin-top: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+    .callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .callout-box h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--forest); margin-bottom: 0.5rem; }
+    .callout-box p { font-size: 0.9rem; line-height: 1.78; color: #555; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; }
+    .stag { font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 20px; }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--forest); }
+    .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 2rem; }
+    .testimonial-card blockquote { font-size: 0.93rem; line-height: 1.8; color: rgba(255,255,255,0.82); font-style: italic; margin-bottom: 1.5rem; }
+    .testimonial-card cite { font-style: normal; }
+    .cite-name { font-weight: 700; color: var(--warm); font-size: 0.88rem; display: block; }
+    .cite-role { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+
+    /* VISION */
+    #vision { background: var(--sand); text-align: center; }
+    .vision-quote { max-width: 780px; margin: 0 auto; }
+    .vision-quote blockquote { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 600; color: var(--forest); line-height: 1.55; margin-bottom: 1.5rem; position: relative; padding: 0 2rem; }
+    .vision-quote blockquote::before { content: '\201C'; font-size: 5rem; color: var(--warm); position: absolute; top: -2rem; left: -1rem; font-family: 'Playfair Display', serif; line-height: 1; opacity: 0.4; }
+    .vision-quote cite { font-style: normal; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); }
 
     /* GET INVOLVED */
     #involved { background: var(--water); }
-    #involved .section-title { color: var(--white); }
-    #involved .section-label { color: var(--sand); }
     .involved-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
     .involve-card { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 2rem; }
-    .involve-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--warm); margin-bottom: 0.8rem; }
-    .involve-card p { font-size: 0.93rem; line-height: 1.75; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+    .involve-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--warm); margin-bottom: 0.8rem; }
+    .involve-card p { font-size: 0.92rem; line-height: 1.75; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
 
     /* CONTACT */
     #contact { background: var(--charcoal); }
-    #contact .section-title { color: var(--white); }
-    #contact .section-label { color: var(--warm); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 2.5rem; align-items: start; }
-    .contact-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem; }
     .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; color: rgba(255,255,255,0.75); font-size: 0.95rem; }
-    .contact-detail strong { color: var(--warm); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; min-width: 60px; padding-top: 2px; }
+    .contact-detail strong { color: var(--warm); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; min-width: 55px; padding-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem; }
     .social-links { display: flex; gap: 1rem; margin-top: 2rem; }
-    .social-link { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; transition: background 0.2s; }
+    .social-link { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; transition: background 0.2s; }
     .social-link:hover { background: var(--rust); }
-    .contact-form .form-group { margin-bottom: 1.2rem; }
-    .contact-form label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
-    .contact-form input, .contact-form textarea, .contact-form select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.8rem 1rem; color: var(--white); font-family: 'Lato', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.25); }
-    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--warm); }
-    .contact-form select option { background: var(--charcoal); }
-    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.8rem 1rem; color: var(--white); font-family: 'Lato', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--warm); }
+    .form-group select option { background: var(--charcoal); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
 
-    footer { background: #111b1a; padding: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    footer { background: #111b1a; padding: 2rem; text-align: center; color: rgba(255,255,255,0.32); font-size: 0.8rem; }
     footer a { color: var(--warm); text-decoration: none; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 900px) {
-      .hero, .about-grid, .career-grid, .priorities-grid, .term-counters,
-      .consistency-grid, .edu-grid, .testimonial-grid, .involved-grid, .contact-grid { grid-template-columns: 1fr !important; }
+      .hero, .about-grid, .career-grid, .election-cols,
+      .voices-grid, .testimonial-grid, .involved-grid, .contact-grid, .gb-grid { grid-template-columns: 1fr !important; }
+      .priorities-grid { grid-template-columns: 1fr 1fr !important; }
+      .term-counters { grid-template-columns: 1fr !important; }
       .hero-right, .hero-left::after { display: none; }
       .hero-left { padding: 7rem 2rem 4rem; }
-      .seat-grid { grid-template-columns: repeat(2, 1fr); }
-      .attempt-row { grid-template-columns: 80px 1fr; gap: 0 1.5rem; }
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 0.8rem; }
-      .nav-links a { font-size: 0.65rem; }
+      nav { padding: 0 1.25rem; }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 520px) {
+      .priorities-grid { grid-template-columns: 1fr !important; }
       .attempt-row { grid-template-columns: 1fr; }
       .attempt-date { margin-bottom: 0.5rem; }
+      .nav-links li:nth-child(n+5) { display: none; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">Chris <span>Johnston</span></div>
+  <a class="nav-logo" href="/">Chris <span>Johnston</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#credentials">Experience</a></li>
-    <li><a href="#priorities">Priorities</a></li>
-    <li><a href="#turnover">The Problem</a></li>
     <li><a href="#trying-to-serve">My Record</a></li>
+    <li><a href="#priorities">Priorities</a></li>
+    <li><a href="#turnover">The Pattern</a></li>
     <li><a href="#issues">Issues</a></li>
+    <li><a href="#credentials">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ═══════════════════════════════════════ HERO -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
     <p class="hero-eyebrow">Nipissing Township Council · 2026</p>
     <h1 class="hero-name">Chris<br><em>Johnston</em></h1>
     <p class="hero-title">Candidate for Township Council</p>
-    <p class="hero-tagline">Farmer. Neighbour. Parent. 15+ years in Marketing, Communication and Technology leadership. I'm running because our township deserves a council that asks hard questions, embraces modern thinking, and actually stays to finish the work.</p>
+    <p class="hero-tagline">Farmer. Neighbour. Parent. 15+ years in Marketing, Communication and Technology leadership. I've been trying to fix how this township is governed since 2018. In 2026, I'm asking voters to give me the seat to do it from the inside.</p>
     <div class="hero-ctas">
       <a href="#priorities" class="btn-primary">My Priorities</a>
-      <a href="#contact" class="btn-outline">Get Involved</a>
+      <a href="#trying-to-serve" class="btn-outline">My Record</a>
     </div>
   </div>
   <div class="hero-right">
@@ -280,23 +265,22 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ ABOUT -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
       <div style="position:relative;">
         <div class="about-photo-box">
-          <img src="https://jhfarms.ca/cdn/shop/files/DSC_1104_1200x.jpg?v=1614386873" alt="Chris Johnston — JH Farms, Nipissing Township" />
+          <img src="https://jhfarms.ca/cdn/shop/files/DSC_1104_1200x.jpg?v=1614386873" alt="Chris Johnston — Nipissing Township" />
         </div>
         <div class="about-accent"></div>
       </div>
       <div class="about-text">
-        <p class="section-label">About Chris</p>
+        <span class="section-label">About Chris</span>
         <h2 class="section-title">Rooted Here.<br>Invested in What's Next.</h2>
-        <a href="https://jhfarms.ca" class="farm-badge" target="_blank" rel="noopener">🌾 JH Farms &nbsp;<span style="opacity:0.6;font-weight:400;">jhfarms.ca</span></a>
-        <p>My wife's family has farmed this land for generations — deep roots in Trout Creek and Nipissing Township that go back long before either of us were born. I came here in 2018, but I didn't arrive as a stranger. I grew up in Powassan, attending Powassan Jr., Mapleridge, and St. Joseph Scollard Hall — and these lakes, roads, and communities have always felt like home.</p>
-        <p>Together we run <strong>JH Farms</strong> — 292 acres we took on, a farmhouse we rebuilt from the foundation up, and a small business we're proud of. We recently welcomed our son. We're not going anywhere.</p>
-        <p>Everyone talks about wanting young people to stay in the area, to volunteer, to contribute. That's exactly what we've done — building a life and a business here, working remotely and globally from Nipissing Township. By day I work as <strong>Director of Marketing Operations at ETS Canada</strong>, remotely. For over 15 years I've built a career in <strong>Marketing Technology</strong> — leading marketing strategy, communications, and the technology platforms that power them. I know exactly what a failed software implementation looks like — and exactly how to prevent one.</p>
+        <p>This community is part of my family's story going back generations. My wife's family has farmed land in this community for generations — and my own great grandfather lived here too. I grew up in Powassan — Powassan Jr., Mapleridge, St. Joseph Scollard Hall — and these lakes, roads, and communities have always felt like home, long before I chose to build a life here.</p>
+        <p>Together my wife and I run <strong>JH Farms</strong> — 292 acres we took on, a farmhouse we rebuilt from the foundation up, and a small business we're proud of. We recently welcomed our son. We're not going anywhere.</p>
+        <p>By day I work as <strong>Director of Marketing Operations at ETS Canada</strong>, remotely from Nipissing Township. For over 15 years I've built a career in Marketing Technology — leading strategy, communications, and the platforms that power them. I know exactly what a failed software implementation looks like. And exactly how to prevent one.</p>
         <div class="about-stats">
           <div class="stat-item"><strong>15+</strong><span>Years in Marketing<br>Technology leadership</span></div>
           <div class="stat-item"><strong>BA</strong><span>Communications,<br>Wilfrid Laurier</span></div>
@@ -307,102 +291,356 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ CREDENTIALS -->
-<section id="credentials">
+<!-- FIVE YEARS -->
+<section id="trying-to-serve">
   <div class="container">
-    <p class="section-label">Professional Background</p>
-    <h2 class="section-title">The Skills Gap on Council<br>Is Real. I Can Fill It.</h2>
-    <p class="section-intro">For over 15 years I've built a career at the intersection of marketing, communications, and technology — leading campaigns, managing the platforms that power them, and being accountable for results at companies across Canada, all while running a farm in Nipissing Township.</p>
+    <span class="section-label">Before This Campaign</span>
+    <h2 class="section-title">Five Years of Trying to Serve.<br><em>I Kept Showing Up Anyway.</em></h2>
+    <p class="section-intro" style="margin-bottom:3rem;">October 2026 is not my first attempt to contribute to this township. It is my fifth. Each time I was turned away, I kept working — from the outside, without a seat, building tools, raising issues, and showing up at public meetings. Here is the record.</p>
 
-    <div class="career-grid">
-      <div class="career-card" style="border-top:3px solid var(--forest);">
-        <div style="font-size:1.4rem;margin-bottom:0.8rem;">🏢</div>
-        <h3>Director of Marketing Operations</h3>
-        <p class="role-co">ETS Canada · Oct 2024–Present</p>
-        <p>Currently leading marketing operations strategy and technology at one of Canada's leading educational testing organizations — remotely from Nipissing Township.</p>
+    <div class="attempt-timeline">
+
+      <div class="attempt-row">
+        <div class="attempt-date">2018–2022<br>Term</div>
+        <div>
+          <div class="attempt-title">Applied for Linda Andersen's Vacant Seat</div>
+          <div class="attempt-body"><p>Ten residents stepped forward. After council voted, I tied with Stephen Kirkey. A name draw decided it. Kirkey won. He ran in 2022 and won 216 votes — voters validated the appointment. I stayed engaged: serving on the Museum Board and Recreation Committee, filing an Ombudsman complaint, and raising governance issues formally.</p></div>
+        </div>
       </div>
-      <div class="career-card" style="border-top:3px solid var(--pine);">
-        <div style="font-size:1.4rem;margin-bottom:0.8rem;">⚙️</div>
-        <h3>Senior Manager, Marketing Technology</h3>
-        <p class="role-co">Wave HQ · Jun 2023–Oct 2024</p>
-        <p>Led the full marketing technology stack for a fintech company — strategy, vendor selection, implementation, and day-to-day operations. Managed a team of 3 across email, SMS, push notifications, analytics, and attribution. Owned the budget and interfaced across 10+ departments.</p>
+
+      <div class="attempt-row">
+        <div class="attempt-date">Oct 2022</div>
+        <div>
+          <div class="attempt-title">Stood for Election</div>
+          <div class="attempt-body"><p>I put my name forward in the October 2022 municipal election. I didn't mount the campaign I had planned — my father-in-law passed away in August 2022. I stood anyway, because the township deserved candidates willing to show up even in difficult circumstances.</p></div>
+        </div>
       </div>
-      <div class="career-card" style="border-top:3px solid var(--water);">
-        <div style="font-size:1.4rem;margin-bottom:0.8rem;">📱</div>
-        <h3>Lifecycle Marketing Manager</h3>
-        <p class="role-co">Nuula (formerly BFS Capital) · Nov 2020–Aug 2022</p>
-        <p>Managed the full marketing technology stack for customer retention — email, SMS, and push notifications — using Salesforce, Segment, Amplitude, Twilio, Sendgrid, and more. Helped scale a fintech startup through its rebrand from BFS Capital to Nuula.</p>
+
+      <div class="attempt-row">
+        <div class="attempt-date">Oct 3, 2023</div>
+        <div>
+          <div class="attempt-title">Presented at the Strategic Planning Process — and Told Council the Truth</div>
+          <div class="attempt-body">
+            <p>I attended the Township's strategic planning town hall and presented substantive, researched input. I told council plainly that if they weren't willing to govern effectively, there were people ready to step up. The strategic plan was finalized 42 days later, largely unchanged.</p>
+            <p><a href="/strategic-planning.html">My full critique of the 2023–2026 Strategic Plan →</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/live/U5KCHDjMARM?si=37PSUwH6Q32Br5dq" target="_blank">Watch the presentation →</a></p>
+          </div>
+        </div>
       </div>
+
+      <div class="attempt-row highlight">
+        <div class="attempt-date">May 9, 2024</div>
+        <div>
+          <div class="attempt-title">Applied for Tom Butler's Vacant Seat — 8 Applicants Presented</div>
+          <div class="attempt-body">
+            <p>Eight residents presented — proof that people were ready to serve, as I'd said six months earlier. The seat went to James Scott, a candidate voters had just ranked last in 2022. Before the vote, Mayor Piper addressed me directly — on the public record:</p>
+            <div class="piper-quote">
+              <blockquote>"I give you a lot of credit coming here tonight because can you tell me what you said six months ago to this Council. You suggested that all these Councillors were a quarter way through their term and that they should resign. I appreciate that you have a vast background in planning but around here we need boots on the ground."</blockquote>
+              <cite>— Mayor Tom Piper, May 9, 2024 · <a href="https://www.youtube.com/live/-vacMCdy94A?si=xUfJZGwL3QDlVpvR" target="_blank">Watch on YouTube →</a></cite>
+            </div>
+            <p>The mayor treated accountability as a disqualifying act. The Township's own Strategic Plan opens with the Municipal Act definition of council's role: to develop policies, ensure accountability, maintain financial integrity. That is exactly what I bring.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="attempt-row">
+        <div class="attempt-date">Dec 19, 2024</div>
+        <div>
+          <div class="attempt-title">Applied for Mayor Piper's Vacant Seat — 6 Applicants Presented</div>
+          <div class="attempt-body"><p>After Mayor Piper resigned in November 2024, I presented again — one of six applicants. Lisa Chalapenko was appointed. I kept working: building civic tech tools, writing formal letters to council, documenting the pattern, preparing this campaign.</p></div>
+        </div>
+      </div>
+
+      <div class="attempt-row">
+        <div class="attempt-date current">Oct 2026</div>
+        <div>
+          <div class="attempt-title">Now I'm Asking Voters Directly</div>
+          <div class="attempt-body"><p>Council couldn't give me a seat. Voters can. Everything I would have done from inside the room — I spent five years doing from outside it. The Ombudsman complaint. The formal letters. The civic tech tools. The by-law research. The documented advocacy. That is not just a campaign platform. That is a track record.</p></div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="callout-box">
-      <div class="ci">💡</div>
-      <div>
-        <h4>What This Means for Nipissing Township</h4>
-        <p>When our township approved the TownSuite software package, someone with my background would have asked: What's the implementation plan? Who's accountable for milestones? What are the exit criteria if this fails? What did the vendor's references say? These aren't complicated questions — but you have to know enough to ask them. I do.</p>
-      </div>
-    </div>
-
-    <p class="section-label" style="margin-top:3rem;">Education</p>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--forest);margin-bottom:1.5rem;">Educated to Lead.<br>Trained to Communicate.</h3>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="ei">🎓</div>
-        <div>
-          <h4>BA, Communications</h4>
-          <p class="edu-co">Wilfrid Laurier University · 2006–2009</p>
-          <p>Interdisciplinary program drawing on political science, sociology, business and psychology, with a focus on marketing. Student Union President Nominee; Laurier's Next Top Volunteer 2009; BDO Dunwoody New Venture Competition Semi-Finalist.</p>
-        </div>
-      </div>
-      <div class="edu-card">
-        <div class="ei">📜</div>
-        <div>
-          <h4>Digital Marketing Management Certificate</h4>
-          <p class="edu-co">University of Toronto · 2013</p>
-          <p>Specialist-level training in digital marketing strategy, search engine marketing, social media, and measurable ROI — the foundation of a career in marketing technology leadership.</p>
-        </div>
-      </div>
-      <div class="edu-card">
-        <div class="ei">🎨</div>
-        <div>
-          <h4>Digital Graphic Design Certificate</h4>
-          <p class="edu-co">Humber College · 2011–2014</p>
-          <p>Adobe Photoshop, Illustrator, and InDesign. Design fundamentals, typography, and preparation for print and digital media — skills directly applicable to better council communications.</p>
-        </div>
-      </div>
-      <div class="edu-card">
-        <div class="ei">📚</div>
-        <div>
-          <h4>Conestoga College</h4>
-          <p class="edu-co">Continuing Studies</p>
-          <p>Additional professional development rounding out a broad educational foundation across communications, design, business and technology.</p>
-        </div>
-      </div>
-    </div>
-
-    <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#999;margin-top:2.5rem;margin-bottom:1rem;">Core Competencies</p>
-    <div class="skill-tags">
-      <span class="tag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Technology Strategy</span>
-      <span class="tag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Software Procurement</span>
-      <span class="tag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Budget Management</span>
-      <span class="tag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Team Leadership</span>
-      <span class="tag" style="background:var(--pine);color:rgba(255,255,255,0.85);">Communications</span>
-      <span class="tag" style="background:var(--pine);color:rgba(255,255,255,0.85);">Vendor Management</span>
-      <span class="tag" style="background:var(--pine);color:rgba(255,255,255,0.85);">Cross-Functional Delivery</span>
-      <span class="tag" style="background:var(--water);color:var(--white);">Digital Marketing</span>
-      <span class="tag" style="background:var(--water);color:var(--white);">Graphic Design</span>
-      <span class="tag" style="background:var(--water);color:var(--white);">Data &amp; Analytics</span>
-      <span class="tag" style="background:var(--rust);color:var(--white);">Farming &amp; Rural Business</span>
+    <div class="five-years-closing">
+      <blockquote>Mayor Piper saw my criticism of council as disqualifying. I see holding elected officials accountable as exactly the job description. Eight people showed up to the next vacancy. The residents of Nipissing Township are ready for a council that welcomes scrutiny rather than resents it.</blockquote>
+      <cite>— Chris Johnston, Candidate for Nipissing Township Council</cite>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ TESTIMONIALS -->
+<!-- COMMUNITY VOICES -->
+<section id="community-voices">
+  <div class="container">
+    <span class="section-label">What I'm Hearing</span>
+    <h2 class="section-title">The Community Has Been Saying This for Years.</h2>
+    <p class="section-intro" style="margin-bottom:2.5rem;">Before and throughout this campaign, I've had conversations with residents across the township. Four themes come up every time.</p>
+
+    <div class="voices-grid">
+      <div class="voice-card"><div style="font-size:1.6rem;margin-bottom:0.6rem;">🔍</div><h3>Transparency</h3><p>Residents want to know what's happening at council — and at the boards and committees that manage their recreation facilities, museum, and cemetery. Not buried in agenda packages. Proactively, in plain language, on a regular schedule.</p></div>
+      <div class="voice-card"><div style="font-size:1.6rem;margin-bottom:0.6rem;">💻</div><h3>Modern Upgrades</h3><p>A website that actually works. Searchable records. Digital options for residents who don't want to call the office to find a basic document. The tools exist. The township just hasn't treated this as a priority — and it's showing.</p></div>
+      <div class="voice-card"><div style="font-size:1.6rem;margin-bottom:0.6rem;">💰</div><h3>Low Taxes — With Accountability</h3><p>Residents want low taxes — and they'll accept them if they trust the money is being spent well. TownSuite, the landfill card, the CAO process — these erode that trust. Good financial management and transparency go together.</p></div>
+      <div class="voice-card"><div style="font-size:1.6rem;margin-bottom:0.6rem;">🛣️</div><h3>Better Roads</h3><p>The most consistent thing I hear. Transportation services is already the largest expense in the Township — $1.9M in 2025. Residents want to see that investment produce results, and honest reporting when it does and doesn't.</p></div>
+    </div>
+
+    <div class="generational-block">
+      <div class="gb-grid">
+        <div>
+          <div class="gb-label">The Generational Question</div>
+          <h3>Older residents want younger people to step up. I agree. But stepping up only works when the door is actually open.</h3>
+          <p>I hear this consistently: people want young families to stay, to volunteer, to contribute. I've tried to do exactly that — on the Museum Board, on the Recreation Committee, in five attempts to serve officially since 2018.</p>
+        </div>
+        <div>
+          <p>But the next generation doesn't want to be <em style="color:var(--warm);">"voluntold"</em> — handed tasks with no voice in direction, or turned away when stepping forward through legitimate channels.</p>
+          <p>If Nipissing Township wants younger people to stay and lead, it needs to create conditions where that's actually possible. Better transparency. Open recruitment for boards. A council that treats new voices as an asset rather than a challenge.</p>
+          <p class="gen-pullquote">I am that next generation. I've been trying to serve for five years. In October 2026, I'm asking voters to open that door.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIORITIES -->
+<section id="priorities">
+  <div class="container">
+    <span class="section-label" style="color:var(--warm);">What I'm Running On</span>
+    <h2 class="section-title light">Four Clear Priorities</h2>
+    <p class="section-intro" style="color:rgba(255,255,255,0.7);margin-bottom:0;">Every vote I cast on Council will be guided by these commitments — and I'll explain my reasoning publicly, every time.</p>
+    <div class="priorities-grid">
+      <a class="priority-card" href="/projects.html">
+        <div class="priority-icon">💰</div>
+        <h3>Fiscal Responsibility</h3>
+        <p>Taxpayer money is trust. I'll ask hard questions before any major expenditure, push for competitive procurement, and ensure Council understands what it's approving.</p>
+        <span class="priority-link">Three documented cases →</span>
+      </a>
+      <a class="priority-card" href="/facilities.html">
+        <div class="priority-icon">🏊</div>
+        <h3>Community Services &amp; Recreation</h3>
+        <p>A $4.8M facilities gap with no reserve, no plan, no timeline. The township's own Asset Management Plan identifies it. We need to start planning now.</p>
+        <span class="priority-link">The $4.8M question →</span>
+      </a>
+      <a class="priority-card" href="/communication.html">
+        <div class="priority-icon">📡</div>
+        <h3>Communication &amp; Technology</h3>
+        <p>Residents shouldn't have to dig for information about their government. I built the tools that prove it's possible — now I'll make them the standard.</p>
+        <span class="priority-link">The 13-point plan →</span>
+      </a>
+      <a class="priority-card" href="/governance.html">
+        <div class="priority-icon">⚖️</div>
+        <h3>Community Governance</h3>
+        <p>Council should lead and staff should implement. Four documented examples of the inversion. Five structural changes to fix it.</p>
+        <span class="priority-link">The governance problem →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TURNOVER -->
+<section id="turnover">
+  <div class="container">
+    <span class="section-label" style="color:var(--warm);">A Pattern Worth Discussing</span>
+    <h2 class="section-title light">Three Terms.<br><em>The Same Instability.</em></h2>
+    <p class="turnover-intro">For three consecutive council terms, Nipissing Township has seen significant mid-term changes — through resignations, appointments, and decisions that sometimes contradicted what voters had already decided at the ballot box. Each departure takes institutional knowledge with it.</p>
+
+    <div class="term-counters">
+      <div class="term-counter past">
+        <div class="term-badge">2014–2018 Term</div>
+        <div class="term-dates">The Haufe Term</div>
+        <div class="term-departed-count" style="color:var(--warm);opacity:0.7;">1</div>
+        <div class="term-departed-label">mid-term change</div>
+        <ul class="term-departures">
+          <li>Mayor Haufe resigned mid-term due to ALS</li>
+          <li>Councillor Tom Piper appointed Mayor by council — not elected to the role</li>
+          <li>In 2018, Piper ran for Mayor <strong style="color:var(--warm);">acclaimed</strong> — no opponent</li>
+        </ul>
+      </div>
+      <div class="term-counter past">
+        <div class="term-badge">2018–2022 Term</div>
+        <div class="term-dates">The COVID Term</div>
+        <div class="term-departed-count" style="color:var(--warm);opacity:0.7;">1</div>
+        <div class="term-departed-label">mid-term change</div>
+        <ul class="term-departures">
+          <li>Piper again acclaimed — <strong style="color:var(--warm);">no one ran against him</strong></li>
+          <li>Elected council: Andersen (303), Marchant (274), Scott (291), Smith (321)</li>
+          <li>Linda Andersen departed mid-term (relocated)</li>
+          <li>10 applicants — Johnston & Kirkey tied; name draw to Kirkey</li>
+          <li>2022: Kirkey won 216 votes — voters validated the appointment</li>
+        </ul>
+      </div>
+      <div class="term-counter current">
+        <div class="term-badge">2022–2026 Term · Current</div>
+        <div class="term-dates">This Term</div>
+        <div class="term-departed-count">2</div>
+        <div class="term-departed-label">elected members departed</div>
+        <ul class="term-departures">
+          <li>Piper acclaimed again — <strong style="color:var(--warm);">third uncontested mayoral race</strong></li>
+          <li>Voters rejected both incumbents — Scott 117 votes (last), Marchant 128</li>
+          <li>Butler resigned 2023 — council appointed Scott, <strong style="color:var(--warm);">the candidate voters ranked last</strong></li>
+          <li>Piper resigned Nov. 2024 — Yemm elevated, Foote to Deputy Mayor</li>
+          <li>Chalapenko appointed Dec. 2024 from 6 applicants — currently serving</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="election-box">
+      <h3>What Voters Actually Decided — October 2022</h3>
+      <p class="election-box-sub">4 councillor seats · 9 candidates · Piper acclaimed as Mayor (uncontested for the third time)</p>
+      <div class="election-cols">
+        <div>
+          <div class="ecol-label ecol-elected">✓ Elected by Voters</div>
+          <div class="ecard ecard-elected"><div><div class="ecard-name">Dave Yemm</div><div class="ecard-meta">New · now Mayor</div></div><div class="evotes evotes-elected">486</div></div>
+          <div class="ecard ecard-elected"><div><div class="ecard-name">Shelly Foote</div><div class="ecard-meta">New · now Dep. Mayor</div></div><div class="evotes evotes-elected">288</div></div>
+          <div class="ecard ecard-elected"><div><div class="ecard-name">Stephen Kirkey</div><div class="ecard-meta">Appointed 2021 · validated</div></div><div class="evotes evotes-elected">216</div></div>
+          <div class="ecard ecard-elected-departed"><div><div class="ecard-name">Tom Butler</div><div class="ecard-meta">New · resigned 2023</div></div><div class="evotes evotes-elected">173</div></div>
+        </div>
+        <div>
+          <div class="ecol-label ecol-defeated">✗ Not Elected</div>
+          <div class="ecard ecard-defeated"><div><div class="ecard-name">Shawn Hughes</div><div class="ecard-meta">Also applied 2021 & 2024</div></div><div class="evotes evotes-defeated">169</div></div>
+          <div class="ecard ecard-defeated"><div><div class="ecard-name">Joseph Bell</div><div class="ecard-meta">Also applied 2021</div></div><div class="evotes evotes-defeated">151</div></div>
+          <div class="ecard ecard-defeated"><div><div class="ecard-name">Thomas Marchant</div><div class="ecard-meta">Incumbent · 274 votes in 2018</div></div><div class="evotes evotes-defeated">128</div></div>
+          <div class="ecard ecard-fired"><div><div class="ecard-name">James Scott</div><div class="ecard-meta-alert">Incumbent · last place · then appointed</div></div><div class="evotes evotes-alert">117</div></div>
+          <div class="ecard ecard-defeated"><div><div class="ecard-name">Chris Johnston</div><div class="ecard-meta">Applied 2021, 2024, 2024</div></div><div class="evotes evotes-defeated">73</div></div>
+        </div>
+      </div>
+      <p class="election-note">In 2022 the councillor race grew from 5 candidates (2018) to 9 — a clear community signal. Both incumbents were rejected. Three newcomers won. When Butler's seat came open in 2023, council appointed the candidate voters had ranked last.</p>
+    </div>
+
+    <div class="tc">
+      <div class="tc-icon">🗳️</div>
+      <div>
+        <h4>Council Used a Vacancy to Override What Voters Decided</h4>
+        <p>James Scott ran in 2018 and won 291 votes. In 2022 he ran as an incumbent — and finished last with 117 votes. Voters knew him. They chose not to re-elect him. When Butler resigned, council appointed Scott anyway. A vacancy is supposed to fill an unexpected gap — not seat someone the community had just fired.</p>
+      </div>
+    </div>
+
+    <div class="tc">
+      <div class="tc-icon">📋</div>
+      <div>
+        <h4>Three Consecutive Uncontested Mayoral Races</h4>
+        <p>Tom Piper was appointed Mayor mid-term in 2018 when Haufe resigned. He then ran in 2018 and 2022 — both times acclaimed, with no opponent. The mayor of Nipissing Township went uncontested for eight years. A community that can't find mayoral candidates is a community that needs to ask why.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUES -->
+<section id="issues">
+  <div class="container">
+    <span class="section-label">The Real Issues</span>
+    <h2 class="section-title">What Needs to Change</h2>
+    <p class="section-intro">These aren't abstract positions. They're documented patterns — and problems I'm committed to fixing.</p>
+    <div class="issues-list">
+
+      <div class="issue-row ar">
+        <div class="issue-num">01</div>
+        <div class="issue-content">
+          <div class="issue-tag">⚠ Accountability</div>
+          <h3>$189,000 in Software — Approved at Nearly 2× Budget, Abandoned After Three Years</h3>
+          <p>TownSuite came in at nearly twice the budgeted amount and six times the only other bidder. The appropriate response was a new RFP — not approval. Three years later, terminated with no public explanation. The landfill card system followed the same pattern months later.</p>
+          <a href="/projects.html">Three documented case studies →</a>
+        </div>
+      </div>
+
+      <div class="issue-row ar">
+        <div class="issue-num">02</div>
+        <div class="issue-content">
+          <div class="issue-tag">⚠ Governance</div>
+          <h3>Staff Govern. Council Ratifies. The Municipal Act Requires the Opposite.</h3>
+          <p>A by-law requiring annual committee appointments was ignored for years, then changed to match staff practice after I raised it in writing. The CAO hiring process ran entirely behind closed doors — managed by the person who became the candidate. A staff member overrode a council resolution without a vote; council ratified it without a question.</p>
+          <a href="/governance.html">Four documented examples →</a>
+        </div>
+      </div>
+
+      <div class="issue-row">
+        <div class="issue-num">03</div>
+        <div class="issue-content">
+          <div class="issue-tag">Fiscal Planning</div>
+          <h3>$4M Facility Decision Coming — No Reserve, No Design, No Plan</h3>
+          <p>The Township's Asset Management Plan identifies a $4M Township Office and Public Works replacement by 2035. No reserve exists. No design work done. The debt is nearly retired — freeing up ~$280K/year. That capacity needs a purpose before 2035 arrives as a crisis.</p>
+          <a href="/facilities.html">The $4.8M facilities gap →</a> &nbsp;·&nbsp; <a href="/finances.html">Township finances explained →</a>
+        </div>
+      </div>
+
+      <div class="issue-row">
+        <div class="issue-num">04</div>
+        <div class="issue-content">
+          <div class="issue-tag">Communication</div>
+          <h3>Board Minutes Buried. By-Laws Not Searchable. Newsletter Inconsistent.</h3>
+          <p>I built council.chriswjohnston.ca and bylaw.chriswjohnston.ca myself — proving what's possible. If a candidate with no budget can index 833 resolutions with AI summaries, a municipality can do far more. The barrier isn't technical. It's whether council treats this as a priority.</p>
+          <a href="/communication.html">The 13-point plan →</a>
+        </div>
+      </div>
+
+      <div class="issue-row">
+        <div class="issue-num">05</div>
+        <div class="issue-content">
+          <div class="issue-tag">Strategic Planning</div>
+          <h3>The Strategic Plan Expires This Year — We Have One Chance to Do Better</h3>
+          <p>The 2023–2026 plan was finalized 42 days after the public town hall. It quotes the Municipal Act's governance framework on page 6, then ignores it. I submitted a formal critique in September 2023. The document is publicly available. The next council must produce a real plan with measurable goals and an annual public report card.</p>
+          <a href="/strategic-planning.html">My full strategic planning critique →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="container">
+    <span class="section-label">Professional Background</span>
+    <h2 class="section-title">The Skills Gap on Council Is Real. I Can Fill It.</h2>
+    <p class="section-intro">For over 15 years I've built a career at the intersection of marketing, communications, and technology — managing platforms, owning budgets, being accountable for results at companies across Canada, all while running a farm in Nipissing Township.</p>
+
+    <div class="career-grid">
+      <div class="career-card" style="border-top:3px solid var(--forest);">
+        <div style="font-size:1.3rem;margin-bottom:0.7rem;">🏢</div>
+        <h3>Director of Marketing Operations</h3>
+        <span class="role-co">ETS Canada · Oct 2024–Present</span>
+        <p>Leading marketing operations strategy and technology at one of Canada's leading educational testing organizations — remotely from Nipissing Township.</p>
+      </div>
+      <div class="career-card" style="border-top:3px solid var(--pine);">
+        <div style="font-size:1.3rem;margin-bottom:0.7rem;">⚙️</div>
+        <h3>Senior Manager, Marketing Technology</h3>
+        <span class="role-co">Wave HQ · Jun 2023–Oct 2024</span>
+        <p>Led the full marketing technology stack — strategy, vendor selection, implementation. Managed a team of 3, owned the budget, interfaced across 10+ departments.</p>
+      </div>
+      <div class="career-card" style="border-top:3px solid var(--water);">
+        <div style="font-size:1.3rem;margin-bottom:0.7rem;">📱</div>
+        <h3>Lifecycle Marketing Manager</h3>
+        <span class="role-co">Nuula (formerly BFS Capital) · Nov 2020–Aug 2022</span>
+        <p>Managed the full marketing technology stack for customer retention using Salesforce, Segment, Amplitude, Twilio, and more. Helped scale a fintech startup through its rebrand.</p>
+      </div>
+    </div>
+
+    <div class="callout-box">
+      <div class="callout-icon">💡</div>
+      <div>
+        <h4>What This Means for Nipissing Township</h4>
+        <p>When the Township approved TownSuite at nearly twice the budget and six times the only other bidder, someone with my background would have asked: What's the implementation plan? Who's accountable for milestones? What are the exit criteria if this fails? I will ask these questions. Every time. Before we sign, not after we fail.</p>
+      </div>
+    </div>
+
+    <div class="skill-tags">
+      <span class="stag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Technology Strategy</span>
+      <span class="stag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Software Procurement</span>
+      <span class="stag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Budget Management</span>
+      <span class="stag" style="background:var(--forest);color:rgba(255,255,255,0.85);">Team Leadership</span>
+      <span class="stag" style="background:var(--pine);color:rgba(255,255,255,0.85);">Communications</span>
+      <span class="stag" style="background:var(--pine);color:rgba(255,255,255,0.85);">Vendor Management</span>
+      <span class="stag" style="background:var(--pine);color:rgba(255,255,255,0.85);">Cross-Functional Delivery</span>
+      <span class="stag" style="background:var(--water);color:var(--white);">Digital Marketing</span>
+      <span class="stag" style="background:var(--water);color:var(--white);">Graphic Design</span>
+      <span class="stag" style="background:var(--water);color:var(--white);">Data &amp; Analytics</span>
+      <span class="stag" style="background:var(--rust);color:var(--white);">Farming &amp; Rural Business</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
-    <p class="section-label">What People Say</p>
-    <h2 class="section-title">The Track Record<br>Speaks for Itself</h2>
-    <p class="section-intro">Colleagues and clients who've worked directly with Chris over his 15+ year career in technology and marketing leadership.</p>
+    <span class="section-label" style="color:var(--warm);">What People Say</span>
+    <h2 class="section-title light">The Track Record Speaks for Itself</h2>
+    <p class="section-intro" style="color:rgba(255,255,255,0.7);">Colleagues and clients who've worked directly with Chris over 15+ years in technology and marketing leadership.</p>
     <div class="testimonial-grid">
       <div class="testimonial-card">
         <blockquote>"Chris is a human Swiss Army knife when it comes to marketing technology. He possesses deep knowledge of martech, immense problem-solving skills, and a genuine enthusiasm for coaching. His innovative approach and strategic vision were crucial to the success of our initiatives."</blockquote>
@@ -421,11 +659,11 @@
         <cite><span class="cite-name">Shaun Lai</span><span class="cite-role">Programme Manager, AI &amp; Cloud · Microsoft Public Sector</span></cite>
       </div>
     </div>
-    <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:1.5rem;text-align:center;">Recommendations sourced from <a href="https://www.linkedin.com/in/chriswjohnston/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Chris Johnston's LinkedIn profile</a>.</p>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.28);margin-top:1.5rem;text-align:center;">Recommendations sourced from <a href="https://www.linkedin.com/in/chriswjohnston/" target="_blank" style="color:rgba(255,255,255,0.38);">Chris Johnston's LinkedIn profile</a>.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ VISION -->
+<!-- VISION -->
 <section id="vision">
   <div class="container">
     <div class="vision-quote">
@@ -435,280 +673,11 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ PRIORITIES -->
-<section id="priorities">
-  <div class="container">
-    <p class="section-label">What I'm Running On</p>
-    <h2 class="section-title">Four Clear Priorities</h2>
-    <p class="section-intro">Every vote I cast on Council will be guided by these commitments — and I'll explain my reasoning publicly, every time.</p>
-    <div class="priorities-grid">
-      <div class="priority-card">
-        <div class="priority-icon">💰</div>
-        <h3>Fiscal Responsibility</h3>
-        <p>Taxpayer money is trust. I'll ask hard questions before any major expenditure, push for competitive procurement, and ensure Council understands what it's approving.</p>
-        <a href="projects.html" style="display:inline-block;margin-top:1rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(232,201,138,0.4);padding-bottom:2px;">See the track record →</a>
-      </div>
-      <div class="priority-card">
-        <div class="priority-icon">🏊</div>
-        <h3>Community Services &amp; Recreation</h3>
-        <p>Our community centre, parks, beaches, and programs are the connective tissue of Nipissing life. I'll work to sustain and thoughtfully invest in these facilities.</p>
-        <a href="facilities.html" style="display:inline-block;margin-top:1rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(232,201,138,0.4);padding-bottom:2px;">The $4.8M facilities question →</a>
-      </div>
-      <div class="priority-card">
-        <div class="priority-icon">📡</div>
-        <h3>Communication &amp; Technology</h3>
-        <p>Residents shouldn't have to attend a council meeting to know what their government is doing. I'll push for regular plain-language updates and a modern digital presence.</p>
-        <a href="communication.html" style="display:inline-block;margin-top:1rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(232,201,138,0.4);padding-bottom:2px;">See what better looks like →</a>
-      </div>
-      <div class="priority-card">
-        <div class="priority-icon">⚖️</div>
-        <h3>Community Governance</h3>
-        <p>Council should lead and staff should implement — not the other way around. I'll advocate for term priorities, council orientation, and real accountability at every board and committee.</p>
-        <a href="governance.html" style="display:inline-block;margin-top:1rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(232,201,138,0.4);padding-bottom:2px;">The governance problem →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ TURNOVER -->
-<section id="turnover">
-  <div class="container">
-    <p class="section-label">A Pattern Worth Discussing</p>
-    <h2 class="section-title">Three Terms.<br>Three Mayors. The Same Story.</h2>
-    <p class="turnover-intro">For three consecutive council terms, Nipissing Township has seen its mayor's seat change hands mid-term by appointment rather than election. Councillors have departed, vacancies have been filled by council vote rather than by residents, and in one case council used a vacancy to return someone voters had just rejected at the ballot box. The institutional knowledge needed to see projects through keeps walking out the door — and nobody asks why.</p>
-
-    <div class="term-counters">
-      <div class="term-counter past">
-        <div class="term-badge">2014–2018 Term</div>
-        <div class="term-dates">The Haufe Term</div>
-        <div class="term-departed-count">2</div>
-        <div class="term-departed-label">mid-term changes</div>
-        <ul class="term-departures">
-          <li>Mayor Pat Haufe resigned mid-term due to ALS</li>
-          <li>Cllr. Tom Piper appointed Mayor by council — not elected by voters</li>
-          <li>Tom Marchant appointed to fill the resulting vacancy — also not elected</li>
-        </ul>
-      </div>
-      <div class="term-counter past">
-        <div class="term-badge">2018–2022 Term</div>
-        <div class="term-dates">The COVID Term</div>
-        <div class="term-departed-count">1</div>
-        <div class="term-departed-label">mid-term change</div>
-        <ul class="term-departures">
-          <li>Cllr. Linda Andersen departed mid-term</li>
-          <li>Seat filled by <strong style="color:var(--warm);">name draw</strong> — 10 applicants including Chris Johnston; Stephen Kirkey won the draw</li>
-          <li>Kirkey ran and was re-elected by voters in 2022</li>
-          <li>CAO-Clerk also resigned Feb. 2021 — Ombudsman later found council violated the Municipal Act in closed meetings that same year</li>
-        </ul>
-      </div>
-      <div class="term-counter current">
-        <div class="term-badge">2022–2026 Term · Current</div>
-        <div class="term-dates">This Term</div>
-        <div class="term-departed-count">3</div>
-        <div class="term-departed-label">elected members departed</div>
-        <ul class="term-departures">
-          <li>Cllr. Tom Butler resigned 2023 — council appointed James Scott as replacement</li>
-          <li><strong style="color:var(--warm);">Scott had run in 2022 and lost</strong> — council used the vacancy to seat someone voters had just rejected</li>
-          <li>Mayor Piper resigned Nov. 2024 — third consecutive term a mayor leaves early</li>
-          <li>Deputy Mayor Yemm appointed Mayor; Foote appointed Deputy Mayor</li>
-          <li>Lisa Chalapenko appointed councillor Dec. 2024 — currently serving</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Seat tracker — corrected: Lisa serving, no vacant seat -->
-    <div class="seat-tracker">
-      <h3>The 2022–2026 Council — Who Was Elected, Who Wasn't</h3>
-      <p class="tracker-sub">October 2022 election results · 5 seats filled by voters</p>
-      <div class="seat-grid">
-        <div class="seat-card departed"><div class="seat-dot"></div><div class="seat-name">Thomas Piper</div><div class="seat-status">Elected Mayor → resigned</div></div>
-        <div class="seat-card departed"><div class="seat-dot"></div><div class="seat-name">Tom Butler</div><div class="seat-status">Elected → resigned 2023</div></div>
-        <div class="seat-card serving"><div class="seat-dot"></div><div class="seat-name">Dave Yemm</div><div class="seat-status">Elected → now Mayor</div></div>
-        <div class="seat-card serving"><div class="seat-dot"></div><div class="seat-name">Shelly Foote</div><div class="seat-status">Elected → now Dep. Mayor</div></div>
-        <div class="seat-card serving"><div class="seat-dot"></div><div class="seat-name">Stephen Kirkey</div><div class="seat-status">Elected → serving</div></div>
-        <div class="seat-card appointed"><div class="seat-dot"></div><div class="seat-name">James Scott</div><div class="seat-status">Lost 2022 election → appointed by council</div></div>
-        <div class="seat-card appointed"><div class="seat-dot"></div><div class="seat-name">Lisa Chalapenko</div><div class="seat-status">Appointed Dec 2024 → serving</div></div>
-      </div>
-      <div class="tracker-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:var(--rust);"></div>Elected — departed mid-term (2)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--warm);"></div>Elected — still serving (3)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--sky);"></div>Never elected by voters (2 — appointed by council)</div>
-      </div>
-      <p class="tracker-note">Five seats were filled by voters in October 2022: Piper (Mayor), Yemm, Foote, Kirkey, and Butler. Butler resigned in 2023 — council appointed James Scott, who had run in 2022 and lost. After Mayor Piper resigned in late 2024, council appointed Lisa Chalapenko. Current council: Mayor Yemm, Deputy Mayor Foote, Councillors Kirkey, Scott, and Chalapenko.</p>
-    </div>
-
-    <div class="turnover-callout">
-      <div class="ci">🗳️</div>
-      <div>
-        <h4>Council Used a Vacancy to Override What Voters Decided</h4>
-        <p>When Tom Butler resigned, council appointed James Scott — a candidate voters had rejected just months earlier in the October 2022 election. Regardless of Scott's qualifications, the democratic principle is clear: <strong>residents chose not to elect him, and council chose to seat him anyway.</strong> A vacancy appointment process is supposed to fill an unexpected gap — not to relitigate an election result.</p>
-      </div>
-    </div>
-
-    <div class="consistency-block">
-      <h3>Why Consistency Is the Foundation of Good Governance</h3>
-      <p class="intro-p">Running a township isn't like chairing a one-time committee. It requires understanding multi-year capital plans, the history behind every budget line, relationships with provincial partners, and the context behind hundreds of past decisions. When councillors leave mid-term, all of that walks out with them. This is how a major software implementation gets approved and abandoned without anyone at the table asking why.</p>
-      <div class="consistency-grid">
-        <div class="consistency-item"><h4>📋 Multi-Year Projects Stall</h4><p>Capital projects, grant applications, and infrastructure plans span multiple years. Every new councillor restarts the learning curve — delaying decisions and increasing the risk of costly mistakes.</p></div>
-        <div class="consistency-item"><h4>🤝 Relationships Take Time</h4><p>Effective municipal governance depends on relationships with provincial ministries, neighbouring councils, and community organizations. These can't be rebuilt every time someone leaves.</p></div>
-        <div class="consistency-item"><h4>🗳️ Appointments Aren't Votes</h4><p>When a seat is filled by appointment rather than election, residents lose their voice. The person at the table was chosen by four colleagues, not by the community they're supposed to represent.</p></div>
-        <div class="consistency-item"><h4>⚡ Momentum Is Everything</h4><p>Progress on facilities, communication, and infrastructure requires sustained attention over years. Churn kills momentum. Consistency gets things done.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ FIVE YEARS OF TRYING TO SERVE -->
-<section id="trying-to-serve">
-  <div class="container">
-    <p class="section-label">Before This Campaign</p>
-    <h2 class="section-title">Five Years of Trying to Serve.<br><span style="color:var(--pine);font-style:italic;">I Kept Showing Up Anyway.</span></h2>
-    <p class="section-intro" style="margin-bottom:3rem;">October 2026 is not my first attempt to contribute to this township. It is my fifth. Each time I was turned away, I kept working — from the outside, without a seat, building tools and raising issues and showing up at public meetings. Here is the record.</p>
-
-    <div class="attempt-timeline">
-
-      <!-- 1: Linda Andersen -->
-      <div class="attempt-row">
-        <div class="attempt-date">2018–2022<br>Term</div>
-        <div>
-          <div class="attempt-title">Applied for Linda Andersen's Vacant Seat</div>
-          <div class="attempt-body">
-            <p>Ten residents stepped forward for the vacancy. After council voted, I tied with Stephen Kirkey. The seat was decided by a name draw. Kirkey won. He subsequently ran in the 2022 election and was elected by voters. I remained engaged — serving on the Museum Board and Recreation Committee, filing an Ombudsman complaint about closed meetings, and raising governance issues formally with staff and council.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2: October 2022 election -->
-      <div class="attempt-row">
-        <div class="attempt-date">Oct 2022</div>
-        <div>
-          <div class="attempt-title">Stood for Election</div>
-          <div class="attempt-body">
-            <p>I put my name forward in the October 2022 municipal election. I didn't mount the campaign I had planned — my father-in-law passed away in August 2022. I stood anyway, because the township deserved candidates who cared enough to show up even in difficult circumstances.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3: Strategic planning -->
-      <div class="attempt-row">
-        <div class="attempt-date">Oct 3, 2023</div>
-        <div>
-          <div class="attempt-title">Presented at the Strategic Planning Process — and Told Council the Truth</div>
-          <div class="attempt-body">
-            <p>I attended the Township's strategic planning town hall and presented substantive, researched input on governance, communication, and accountability. I told council plainly that if they weren't willing to govern effectively, there were people ready to step up and do the job.</p>
-            <p>The strategic plan was finalized 42 days later — November 14, 2023 — as Resolution R2023-208. A four-year strategic plan, approved in six weeks, with no meaningful incorporation of public input. The document correctly quotes the Municipal Act's governance framework on page 6, then proceeds to ignore it entirely.</p>
-            <p><a href="https://www.youtube.com/live/U5KCHDjMARM?si=37PSUwH6Q32Br5dq" target="_blank">Watch the October 3, 2023 presentation →</a></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4: Tom Butler vacancy — highlighted -->
-      <div class="attempt-row highlight">
-        <div class="attempt-date">May 9, 2024</div>
-        <div>
-          <div class="attempt-title">Applied for Tom Butler's Vacant Seat — 8 Applicants Presented</div>
-          <div class="attempt-body">
-            <p>Eight residents presented for the vacancy — proof that people were ready to serve, just as I had said six months earlier at the strategic planning session. The seat went to James Scott, a candidate voters had rejected in the October 2022 election.</p>
-            <p>Before the vote, Mayor Piper addressed me directly. His words are in the public record:</p>
-
-            <div class="piper-quote">
-              <blockquote>"I give you a lot of credit coming here tonight because can you tell me what you said six months ago to this Council. You suggested that all these Councillors were a quarter way through their term and that they should resign. I appreciate that you have a vast background in planning but around here we need boots on the ground."</blockquote>
-              <cite>— Mayor Tom Piper, May 9, 2024 · <a href="https://www.youtube.com/live/-vacMCdy94A?si=xUfJZGwL3QDlVpvR" target="_blank">Watch on YouTube →</a></cite>
-            </div>
-
-            <p>The mayor of Nipissing Township told a vacancy applicant that holding council accountable disqualified him from serving — and that strategic planning expertise was less valuable than "boots on the ground." The Township's own Strategic Plan, approved five months earlier, opens with the Municipal Act's definition of council's role: to develop and evaluate policies and programs, ensure accountability, and maintain financial integrity. None of that is boots on the ground. That is, however, exactly what I bring.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5: Tom Piper vacancy -->
-      <div class="attempt-row">
-        <div class="attempt-date">Dec 19, 2024</div>
-        <div>
-          <div class="attempt-title">Applied for Mayor Piper's Vacant Seat — 6 Applicants Presented</div>
-          <div class="attempt-body">
-            <p>After Mayor Piper resigned in November 2024, I presented again — one of six applicants. Lisa Chalapenko was appointed. I kept working: building civic tech tools, writing formal letters to council, documenting the pattern.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6: October 2026 -->
-      <div class="attempt-row">
-        <div class="attempt-date current">Oct 2026</div>
-        <div>
-          <div class="attempt-title">Now I'm Asking Voters Directly</div>
-          <div class="attempt-body">
-            <p>Council couldn't give me a seat. Voters can. Everything I would have done from inside the room — I've spent five years doing from outside it. The Ombudsman complaint. The formal letters to council. The civic tech tools. The by-law research. The documented advocacy. That's not just a campaign. That's a track record.</p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /attempt-timeline -->
-
-    <div class="five-years-closing">
-      <blockquote>Mayor Piper saw my criticism of council as disqualifying. I see holding elected officials accountable as exactly the job description. Eight people showed up to the next vacancy. The residents of Nipissing Township are ready for a council that welcomes scrutiny rather than resents it.</blockquote>
-      <cite>— Chris Johnston, Candidate for Nipissing Township Council</cite>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ ISSUES -->
-<section id="issues">
-  <div class="container">
-    <p class="section-label">The Real Issues</p>
-    <h2 class="section-title">What Needs to Change</h2>
-    <p class="section-intro">These aren't abstract positions. They're patterns I've observed in our township — and problems I'm committed to fixing.</p>
-    <div class="issues-list">
-      <div class="issue-row alert-row">
-        <div class="issue-num">01</div>
-        <div class="issue-content">
-          <div class="issue-tag">⚠ Accountability</div>
-          <h3>Township Software — Approved Without Scrutiny, Abandoned After Three Years</h3>
-          <p>In 2022, council approved a multi-system software package — TownSuite for finance and payroll ($179,733), CGIS for cemetery and building ($3,800), and Firepro for fire and by-law ($5,685) — totalling approximately $189,000 plus taxes. After three years of failed implementation, TownSuite was terminated in late 2025. No public explanation was given for what went wrong, what the final cost was, or what will be done differently. <a href="projects.html" style="color:var(--pine);">Full case study →</a></p>
-        </div>
-      </div>
-      <div class="issue-row">
-        <div class="issue-num">02</div>
-        <div class="issue-content">
-          <div class="issue-tag">Governance</div>
-          <h3>Staff Govern. Council Ratifies. The Municipal Act Requires the Opposite.</h3>
-          <p>Council should set direction and staff should implement — that's what the Municipal Act requires. In practice at Nipissing Township, staff manage the process and council signs off. A staff member overrode a council resolution without a vote. A by-law requiring annual committee appointments was ignored for years, then changed to match the practice. An entire CAO hiring process happened behind closed doors. <a href="governance.html" style="color:var(--pine);">Full documentation →</a></p>
-        </div>
-      </div>
-      <div class="issue-row">
-        <div class="issue-num">03</div>
-        <div class="issue-content">
-          <div class="issue-tag">Stability</div>
-          <h3>Three Terms of Turnover — It's Time for Consistency</h3>
-          <p>For three consecutive terms, the mayor's seat has changed hands mid-term. Council has appointed replacements — including someone voters had just rejected at the ballot box. Institutional knowledge evaporates. Projects stall. I am committed to serving the full term and being present for every decision that matters.</p>
-        </div>
-      </div>
-      <div class="issue-row">
-        <div class="issue-num">04</div>
-        <div class="issue-content">
-          <div class="issue-tag">Communication</div>
-          <h3>Modern Communication — Residents Shouldn't Have to Chase Their Government</h3>
-          <p>The newsletter went dark for over a year. Board and committee minutes are buried in council packages. By-laws aren't searchable. I've already built working tools at <a href="https://council.chriswjohnston.ca" style="color:var(--pine);">council.chriswjohnston.ca</a> and <a href="https://bylaw.chriswjohnston.ca" style="color:var(--pine);">bylaw.chriswjohnston.ca</a> that prove what's possible. <a href="communication.html" style="color:var(--pine);">See the full plan →</a></p>
-        </div>
-      </div>
-      <div class="issue-row">
-        <div class="issue-num">05</div>
-        <div class="issue-content">
-          <div class="issue-tag">Skills &amp; Capacity</div>
-          <h3>A Stronger Council Means Complementary Skills</h3>
-          <p>The current council brings real strengths in roads, infrastructure, and operational knowledge. What's missing is diversity at the table: marketing, communications, technology, and financial analysis. A well-rounded council doesn't need everyone to know everything — it needs people who collectively cover the range of decisions in front of them. I'm here to add what's currently missing.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ GET INVOLVED -->
+<!-- GET INVOLVED -->
 <section id="involved">
   <div class="container">
-    <p class="section-label">Join the Campaign</p>
-    <h2 class="section-title">Let's Build Something Together</h2>
+    <span class="section-label" style="color:var(--sand);">Join the Campaign</span>
+    <h2 class="section-title light">Let's Build Something Together</h2>
     <p class="section-intro" style="color:rgba(255,255,255,0.82);">Every conversation, every lawn sign, and every vote matters in a small township.</p>
     <div class="involved-grid">
       <div class="involve-card">
@@ -725,14 +694,14 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ CONTACT -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-grid">
       <div>
-        <p class="section-label">Reach Out</p>
-        <h2 class="section-title">Let's Talk</h2>
-        <p class="contact-info">Have a concern about your township? Want to share what matters most to your family? I want to hear from you — before the election and long after it.</p>
+        <span class="section-label" style="color:var(--warm);">Reach Out</span>
+        <h2 class="section-title light">Let's Talk</h2>
+        <p style="color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:2rem;">Have a concern about your township? Want to share what matters most to your family? I want to hear from you — before the election and long after it.</p>
         <div class="contact-detail"><strong>Email</strong><span><a href="mailto:chris@chriswjohnston.ca" style="color:var(--warm);">chris@chriswjohnston.ca</a></span></div>
         <div class="contact-detail"><strong>Web</strong><span>chriswjohnston.ca</span></div>
         <div class="contact-detail"><strong>Farm</strong><span><a href="https://jhfarms.ca" target="_blank" style="color:var(--warm);">jhfarms.ca</a></span></div>
@@ -743,22 +712,15 @@
           <a href="#" class="social-link" aria-label="X / Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
       </div>
-      <div class="contact-form">
+      <div>
         <div class="form-group"><label>Your Name</label><input type="text" placeholder="Jane Smith" /></div>
         <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@example.com" /></div>
         <div class="form-group">
           <label>How can I help?</label>
-          <select>
-            <option value="">Select one…</option>
-            <option>I want to volunteer</option>
-            <option>I'd like a lawn sign</option>
-            <option>I have a question about your platform</option>
-            <option>I want to share a concern about the township</option>
-            <option>Other</option>
-          </select>
+          <select><option value="">Select one…</option><option>I want to volunteer</option><option>I'd like a lawn sign</option><option>I have a question about your platform</option><option>I want to share a concern about the township</option><option>Other</option></select>
         </div>
         <div class="form-group"><label>Message</label><textarea placeholder="Tell me what's on your mind…"></textarea></div>
-        <button class="btn-primary" style="width:100%;padding:1rem;" onclick="alert('Thank you! Connect this to Formspree to go live.')">Send Message</button>
+        <button class="btn-primary" style="width:100%;padding:1rem;" onclick="alert('Form submission coming soon.')">Send Message</button>
       </div>
     </div>
   </div>
