@@ -18,6 +18,17 @@
     .nav-links { display: flex; gap: 1.4rem; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--warm); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.25s; }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .nav-mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(28,43,40,0.99); backdrop-filter: blur(12px); padding: 1.5rem 2rem 2rem; z-index: 99; box-shadow: 0 8px 32px rgba(0,0,0,0.4); transform: translateY(-10px); opacity: 0; transition: transform 0.25s, opacity 0.25s; pointer-events: none; }
+    .nav-mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .nav-mobile-menu li { list-style: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-menu a { display: block; padding: 0.85rem 0; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-mobile-menu a:hover { color: var(--warm); }
+    .nav-mobile-cta { margin-top: 1.25rem; display: block; text-align: center; background: var(--rust); color: #fff !important; padding: 0.9rem !important; border-radius: 6px; font-size: 0.85rem !important; letter-spacing: 0.1em !important; }
 
     .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
     .hero-left { background: var(--forest); display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 4rem 5rem; position: relative; z-index: 2; }
@@ -218,10 +229,64 @@
     .form-group select option { background: var(--charcoal); }
     .form-group textarea { resize: vertical; min-height: 120px; }
 
+    /* IMPACT STRIP */
+    #impact-strip { background: var(--charcoal); padding: 0; }
+    .impact-strip-inner { display: grid; grid-template-columns: repeat(4,1fr); }
+    .impact-cell { padding: 1.75rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.07); text-align: center; }
+    .impact-cell:last-child { border-right: none; }
+    .impact-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--rust); line-height: 1; display: block; margin-bottom: 0.3rem; }
+    .impact-label { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.5); line-height: 1.45; letter-spacing: 0.04em; }
+    .impact-label em { color: rgba(255,255,255,0.75); font-style: normal; }
+
+    /* SEAT CHART */
+    .seat-chart { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; margin-bottom: 2rem; }
+    .seat-term { background: rgba(255,255,255,0.03); padding: 1.75rem 1.5rem; }
+    .seat-term.current { background: rgba(192,104,48,0.07); border-top: 3px solid var(--rust); }
+    .seat-term.past { border-top: 3px solid rgba(232,201,138,0.35); }
+    .seat-term-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm); opacity: 0.7; margin-bottom: 0.25rem; }
+    .seat-term.current .seat-term-label { color: var(--rust); opacity: 1; }
+    .seat-term-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); font-weight: 700; margin-bottom: 1rem; }
+    .seat-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.6rem; }
+    .seat-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 700; letter-spacing: 0; color: rgba(0,0,0,0.6); position: relative; cursor: default; }
+    .seat-dot[title]:hover::after { content: attr(title); position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); color: #fff; font-size: 0.65rem; white-space: nowrap; padding: 4px 8px; border-radius: 4px; pointer-events: none; z-index: 10; }
+    .dot-elected { background: #6aaa82; }
+    .dot-acclaimed { background: #b8922a; color: rgba(255,255,255,0.8); }
+    .dot-appointed { background: #e8a048; }
+    .dot-resigned { background: #c06830; opacity: 0.6; }
+    .dot-appointed-override { background: #c06830; border: 2px solid #fff; }
+    .seat-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.07); }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.62rem; color: rgba(255,255,255,0.45); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* VOTE BAR CHART */
+    .vote-chart { margin: 1.5rem 0 1rem; }
+    .vote-bar-row { display: grid; grid-template-columns: 130px 1fr 42px; align-items: center; gap: 0.6rem; margin-bottom: 0.55rem; }
+    .vbar-name { font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.75); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .vbar-track { background: rgba(255,255,255,0.06); border-radius: 4px; height: 24px; position: relative; overflow: visible; }
+    .vbar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; display: flex; align-items: center; }
+    .vbar-elected { background: linear-gradient(90deg, #4a7a6c, #6aaa82); }
+    .vbar-defeated { background: rgba(255,255,255,0.12); }
+    .vbar-override { background: linear-gradient(90deg, #a8552a, #c06830); }
+    .vbar-num { font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.6); }
+    .vbar-num.elected { color: var(--warm); }
+    .vbar-num.override { color: var(--rust); }
+    .vbar-annotation { grid-column: 1 / -1; display: flex; align-items: center; gap: 0.5rem; background: rgba(192,104,48,0.12); border: 1px solid rgba(192,104,48,0.3); border-radius: 6px; padding: 0.5rem 0.75rem; margin-bottom: 0.55rem; }
+    .vbar-annotation-text { font-size: 0.72rem; color: var(--rust); font-weight: 700; }
+    .vote-divider { border: none; border-top: 1px dashed rgba(255,255,255,0.12); margin: 0.75rem 0; }
+
+    /* TIGHTER ISSUE CARDS */
+    .issue-card { background: var(--white); border-radius: 10px; padding: 1.4rem 1.6rem; border-left: 4px solid var(--pine); box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.2s; display: block; text-decoration: none; }
+    .issue-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); transform: translateX(4px); }
+    .issue-card.ar { border-left-color: var(--rust); }
+    .issue-card-top { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; }
+    .issue-card-stat { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--rust); line-height: 1; white-space: nowrap; }
+    .issue-card.nostat .issue-card-stat { font-size: 1rem; color: var(--pine); }
+    .issue-card-headline { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--forest); line-height: 1.3; }
+    .issue-card-link { font-size: 0.72rem; font-weight: 700; color: var(--pine); letter-spacing: 0.05em; margin-top: 0.5rem; display: inline-block; }
+    .issue-tag { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 3px; background: rgba(192,104,48,0.08); color: var(--rust); margin-bottom: 0.4rem; }
+
     footer { background: #111b1a; padding: 2rem; text-align: center; color: rgba(255,255,255,0.32); font-size: 0.8rem; }
     footer a { color: var(--warm); text-decoration: none; }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 900px) {
       .hero, .about-grid, .career-grid, .election-cols,
@@ -231,12 +296,30 @@
       .hero-right, .hero-left::after { display: none; }
       .hero-left { padding: 7rem 2rem 4rem; }
       nav { padding: 0 1.25rem; }
+      .impact-strip-inner { grid-template-columns: repeat(2,1fr); }
+      .impact-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .impact-cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07); }
+      .seat-chart { grid-template-columns: 1fr; gap: 2px; }
+      .vote-bar-row { grid-template-columns: 100px 1fr 38px; }
+      section { padding: 3.5rem 1.5rem; }
     }
-    @media (max-width: 520px) {
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-menu { display: block; }
       .priorities-grid { grid-template-columns: 1fr !important; }
       .attempt-row { grid-template-columns: 1fr; }
       .attempt-date { margin-bottom: 0.5rem; }
-      .nav-links li:nth-child(n+5) { display: none; }
+      .impact-num { font-size: 1.7rem; }
+      .impact-label { font-size: 0.65rem; }
+      .vote-bar-row { grid-template-columns: 90px 1fr 34px; gap: 0.4rem; }
+      .vbar-name { font-size: 0.65rem; }
+      .seat-dot { width: 22px; height: 22px; }
+      section { padding: 3rem 1.25rem; }
+      .hero-left { padding: 6rem 1.5rem 3rem; }
+      .hero-proof { gap: 1rem; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas a { text-align: center; }
     }
   </style>
 </head>
@@ -253,7 +336,19 @@
     <li><a href="#credentials">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<ul class="nav-mobile-menu" id="mobile-menu">
+  <li><a href="#about" class="mobile-nav-link">About</a></li>
+  <li><a href="#trying-to-serve" class="mobile-nav-link">My Record</a></li>
+  <li><a href="#priorities" class="mobile-nav-link">Priorities</a></li>
+  <li><a href="#turnover" class="mobile-nav-link">The Pattern</a></li>
+  <li><a href="#issues" class="mobile-nav-link">Issues</a></li>
+  <li><a href="#credentials" class="mobile-nav-link">Experience</a></li>
+  <li><a href="#contact" class="mobile-nav-link nav-mobile-cta">Contact Me</a></li>
+</ul>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -288,6 +383,28 @@
   </div>
   <div class="hero-right">
     <div class="hero-farm-photo"></div>
+  </div>
+</section>
+
+<!-- IMPACT STRIP -->
+<section id="impact-strip">
+  <div class="impact-strip-inner">
+    <div class="impact-cell">
+      <span class="impact-num">$189K</span>
+      <span class="impact-label"><em>Spent on software.</em><br>Abandoned 3 years later.</span>
+    </div>
+    <div class="impact-cell">
+      <span class="impact-num">0</span>
+      <span class="impact-label"><em>Questions asked</em><br>at the April 7 meeting.</span>
+    </div>
+    <div class="impact-cell">
+      <span class="impact-num">3×</span>
+      <span class="impact-label"><em>Uncontested mayoral races</em><br>in a row. Same person.</span>
+    </div>
+    <div class="impact-cell">
+      <span class="impact-num">1</span>
+      <span class="impact-label"><em>Ombudsman finding</em><br>council broke the law.</span>
+    </div>
   </div>
 </section>
 
@@ -464,86 +581,192 @@
   <div class="container">
     <span class="section-label" style="color:var(--warm);">A Pattern Worth Discussing</span>
     <h2 class="section-title light">Three Terms.<br><em>The Same Instability.</em></h2>
-    <p class="turnover-intro">For three consecutive council terms, Nipissing Township has seen significant mid-term changes — through resignations, appointments, and decisions that sometimes contradicted what voters had already decided at the ballot box. Each departure takes institutional knowledge with it.</p>
+    <p class="turnover-intro">Three consecutive terms. Mid-term departures every time. Appointments that sometimes contradicted what voters had already decided. Each seat below tells part of that story.</p>
 
-    <div class="term-counters">
-      <div class="term-counter past">
-        <div class="term-badge">2014–2018 Term</div>
-        <div class="term-dates">The Haufe Term</div>
-        <div class="term-departed-count" style="color:var(--warm);opacity:0.7;">1</div>
-        <div class="term-departed-label">mid-term appointment</div>
-        <ul class="term-departures">
-          <li>Mayor Haufe resigned mid-term due to ALS</li>
-          <li>Councillor Tom Piper appointed Mayor by council — not elected to the role</li>
-          <li>In 2018, Piper ran for Mayor <strong style="color:var(--warm);">acclaimed</strong> — no opponent</li>
-        </ul>
+    <!-- SEAT CHART -->
+    <div class="seat-chart">
+
+      <div class="seat-term past">
+        <div class="seat-term-label">2014–2018 · The Haufe Term</div>
+        <div class="seat-term-name">1 mid-term change</div>
+        <div style="margin-bottom:0.5rem;">
+          <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">Mayor</div>
+          <div class="seat-row">
+            <div class="seat-dot dot-elected" title="Mayor Haufe — elected">H</div>
+            <div style="display:flex;align-items:center;color:rgba(255,255,255,0.3);font-size:0.7rem;padding:0 4px;">→</div>
+            <div class="seat-dot dot-acclaimed" title="Tom Piper — appointed mid-term, then acclaimed in 2018">P</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">Councillors (4 seats)</div>
+          <div class="seat-row">
+            <div class="seat-dot dot-elected" title="Elected councillor">●</div>
+            <div class="seat-dot dot-elected" title="Elected councillor">●</div>
+            <div class="seat-dot dot-elected" title="Elected councillor">●</div>
+            <div class="seat-dot dot-elected" title="Elected councillor">●</div>
+          </div>
+        </div>
       </div>
-      <div class="term-counter past">
-        <div class="term-badge">2018–2022 Term</div>
-        <div class="term-dates">The COVID Term</div>
-        <div class="term-departed-count" style="color:var(--warm);opacity:0.7;">1</div>
-        <div class="term-departed-label">mid-term change</div>
-        <ul class="term-departures">
-          <li>Piper again acclaimed — <strong style="color:var(--warm);">no one ran against him</strong></li>
-          <li>Elected council: Andersen (303), Marchant (274), Scott (291), Smith (321)</li>
-          <li>Linda Andersen departed mid-term (relocated)</li>
-          <li>10 applicants — Johnston & Kirkey tied; name draw to Kirkey</li>
-          <li>2022: Kirkey won 216 votes — voters validated the appointment</li>
-        </ul>
+
+      <div class="seat-term past">
+        <div class="seat-term-label">2018–2022 · The COVID Term</div>
+        <div class="seat-term-name">1 mid-term change</div>
+        <div style="margin-bottom:0.5rem;">
+          <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">Mayor</div>
+          <div class="seat-row">
+            <div class="seat-dot dot-acclaimed" title="Tom Piper — acclaimed, no opponent">P</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">Councillors (4 seats)</div>
+          <div class="seat-row">
+            <div class="seat-dot dot-elected" title="Andersen — elected, 303 votes">A</div>
+            <div class="seat-dot dot-elected" title="Marchant — elected, 274 votes">M</div>
+            <div class="seat-dot dot-elected" title="Scott — elected, 291 votes">S</div>
+            <div class="seat-dot dot-elected" title="Smith — elected, 321 votes">Sm</div>
+          </div>
+          <div style="margin-top:0.5rem;font-size:0.68rem;color:rgba(255,255,255,0.35);">Andersen departed (relocated) →</div>
+          <div class="seat-row" style="margin-top:0.4rem;">
+            <div class="seat-dot dot-appointed" title="Kirkey — appointed after name draw with Johnston">K</div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.3);padding:0 4px;align-self:center;">Johnston lost coin flip</div>
+          </div>
+        </div>
       </div>
-      <div class="term-counter current">
-        <div class="term-badge">2022–2026 Term · Current</div>
-        <div class="term-dates">This Term</div>
-        <div class="term-departed-count">2</div>
-        <div class="term-departed-label">elected members departed</div>
-        <ul class="term-departures">
-          <li>Piper acclaimed again — <strong style="color:var(--warm);">third uncontested mayoral race</strong></li>
-          <li>Voters rejected both incumbents — Scott 117 votes (last), Marchant 128</li>
-          <li>Butler resigned 2023 — council appointed Scott, <strong style="color:var(--warm);">the candidate voters ranked last</strong></li>
-          <li>Piper resigned Nov. 2024 — Yemm elevated, Foote to Deputy Mayor</li>
-          <li>Chalapenko appointed Dec. 2024 from 6 applicants — currently serving</li>
-        </ul>
+
+      <div class="seat-term current">
+        <div class="seat-term-label">2022–2026 · Current Term</div>
+        <div class="seat-term-name">2 elected members departed</div>
+        <div style="margin-bottom:0.5rem;">
+          <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">Mayor</div>
+          <div class="seat-row">
+            <div class="seat-dot dot-acclaimed" title="Piper — acclaimed for the third consecutive time">P</div>
+            <div style="display:flex;align-items:center;color:rgba(255,255,255,0.3);font-size:0.7rem;padding:0 4px;">→</div>
+            <div class="seat-dot dot-resigned" title="Piper resigned Nov 2024">P</div>
+            <div style="display:flex;align-items:center;color:rgba(255,255,255,0.3);font-size:0.7rem;padding:0 4px;">→</div>
+            <div class="seat-dot dot-appointed" title="Yemm elevated to Mayor">Y</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">Councillors — voters elected</div>
+          <div class="seat-row">
+            <div class="seat-dot dot-elected" title="Dave Yemm — 486 votes, now Mayor">Y</div>
+            <div class="seat-dot dot-elected" title="Shelly Foote — 288 votes, now Dep. Mayor">F</div>
+            <div class="seat-dot dot-elected" title="Stephen Kirkey — 216 votes">K</div>
+            <div class="seat-dot dot-resigned" title="Tom Butler — 173 votes, resigned 2023">B</div>
+          </div>
+          <div style="margin-top:0.5rem;font-size:0.68rem;color:var(--rust);">Butler resigned → council appointed Scott</div>
+          <div class="seat-row" style="margin-top:0.4rem;">
+            <div class="seat-dot dot-appointed-override" title="James Scott — ranked LAST by voters in 2022 with 117 votes, then appointed">S</div>
+            <div style="font-size:0.65rem;color:var(--rust);padding:0 4px;align-self:center;font-weight:700;">Voters ranked him last (117 votes)</div>
+          </div>
+          <div style="margin-top:0.75rem;font-size:0.68rem;color:rgba(255,255,255,0.35);">Yemm elevated → Foote to Dep. Mayor → Chalapenko appointed</div>
+          <div class="seat-row" style="margin-top:0.4rem;">
+            <div class="seat-dot dot-appointed" title="Lisa Chalapenko — appointed Dec 2024">C</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="election-box">
+    <!-- SEAT LEGEND -->
+    <div class="seat-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#6aaa82;"></div>Elected by voters</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#b8922a;"></div>Acclaimed (no opponent)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e8a048;"></div>Appointed mid-term</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c06830;opacity:0.6;"></div>Resigned</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c06830;border:2px solid #fff;"></div>Appointed despite voters' rejection</div>
+    </div>
+
+    <!-- VOTE BAR CHART -->
+    <div class="election-box" style="margin-top:2rem;">
       <h3>What Voters Actually Decided — October 2022</h3>
-      <p class="election-box-sub">4 councillor seats · 9 candidates · Piper acclaimed as Mayor (uncontested for the third time)</p>
-      <div class="election-cols">
-        <div>
-          <div class="ecol-label ecol-elected">✓ Elected by Voters</div>
-          <div class="ecard ecard-elected"><div><div class="ecard-name">Dave Yemm</div><div class="ecard-meta">New · now Mayor</div></div><div class="evotes evotes-elected">486</div></div>
-          <div class="ecard ecard-elected"><div><div class="ecard-name">Shelly Foote</div><div class="ecard-meta">New · now Dep. Mayor</div></div><div class="evotes evotes-elected">288</div></div>
-          <div class="ecard ecard-elected"><div><div class="ecard-name">Stephen Kirkey</div><div class="ecard-meta">Appointed 2021 · validated</div></div><div class="evotes evotes-elected">216</div></div>
-          <div class="ecard ecard-elected-departed"><div><div class="ecard-name">Tom Butler</div><div class="ecard-meta">New · resigned 2023</div></div><div class="evotes evotes-elected">173</div></div>
-        </div>
-        <div>
-          <div class="ecol-label ecol-defeated">✗ Not Elected</div>
-          <div class="ecard ecard-defeated"><div><div class="ecard-name">Shawn Hughes</div><div class="ecard-meta">Also applied 2021 & 2024</div></div><div class="evotes evotes-defeated">169</div></div>
-          <div class="ecard ecard-defeated"><div><div class="ecard-name">Joseph Bell</div><div class="ecard-meta">Also applied 2021</div></div><div class="evotes evotes-defeated">151</div></div>
-          <div class="ecard ecard-defeated"><div><div class="ecard-name">Thomas Marchant</div><div class="ecard-meta">Incumbent · 274 votes in 2018</div></div><div class="evotes evotes-defeated">128</div></div>
-          <div class="ecard ecard-fired"><div><div class="ecard-name">James Scott</div><div class="ecard-meta-alert">Incumbent · last place · then appointed</div></div><div class="evotes evotes-alert">117</div></div>
-          <div class="ecard ecard-defeated"><div><div class="ecard-name">Chris Johnston</div><div class="ecard-meta">Applied 2021, 2024, 2024</div></div><div class="evotes evotes-defeated">73</div></div>
-        </div>
-      </div>
-      <p class="election-note">In 2022 the councillor race grew from 5 candidates (2018) to 9 — a clear community signal. Both incumbents were rejected. Three newcomers won. When Butler's seat came open in 2023, council appointed the candidate voters had ranked last.</p>
-    </div>
+      <p class="election-box-sub">4 councillor seats · 9 candidates · Piper acclaimed as Mayor (uncontested for the third consecutive time)</p>
 
-    <div class="tc">
-      <div class="tc-icon">🗳️</div>
-      <div>
-        <h4>Council Used a Vacancy to Override What Voters Decided</h4>
-        <p>James Scott ran in 2018 and won 291 votes. In 2022 he ran as an incumbent — and finished last with 117 votes. Voters knew him. They chose not to re-elect him. When Butler resigned, council appointed Scott anyway. A vacancy is supposed to fill an unexpected gap — not seat someone the community had just fired.</p>
+      <div class="vote-chart">
+        <!-- Elected -->
+        <div class="vote-bar-row">
+          <div class="vbar-name">Dave Yemm</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-elected" style="width:100%;"><span style="padding-left:8px;font-size:0.6rem;color:rgba(255,255,255,0.6);">✓ Elected · now Mayor</span></div></div>
+          <div class="vbar-num elected">486</div>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name">Shelly Foote</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-elected" style="width:59%;"></div></div>
+          <div class="vbar-num elected">288</div>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name">Stephen Kirkey</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-elected" style="width:44%;"></div></div>
+          <div class="vbar-num elected">216</div>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name">Tom Butler</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-elected" style="width:35%;"><span style="padding-left:8px;font-size:0.6rem;color:rgba(255,255,255,0.5);">✓ Elected · resigned 2023</span></div></div>
+          <div class="vbar-num elected">173</div>
+        </div>
+
+        <hr class="vote-divider">
+
+        <!-- Defeated -->
+        <div class="vote-bar-row">
+          <div class="vbar-name">Shawn Hughes</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-defeated" style="width:34%;"></div></div>
+          <div class="vbar-num">169</div>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name">Joseph Bell</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-defeated" style="width:31%;"></div></div>
+          <div class="vbar-num">151</div>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name">T. Marchant</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-defeated" style="width:26%;"></div></div>
+          <div class="vbar-num">128</div>
+        </div>
+
+        <!-- Scott annotation -->
+        <div class="vbar-annotation">
+          <span style="font-size:1rem;">⚠️</span>
+          <span class="vbar-annotation-text">Voters ranked James Scott last. Council appointed him to the next vacancy anyway.</span>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name" style="color:var(--rust);">James Scott</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-override" style="width:24%;"><span style="padding-left:8px;font-size:0.6rem;color:rgba(255,255,255,0.7);">Last place → then appointed</span></div></div>
+          <div class="vbar-num override">117</div>
+        </div>
+        <div class="vote-bar-row">
+          <div class="vbar-name">Chris Johnston</div>
+          <div class="vbar-track"><div class="vbar-fill vbar-defeated" style="width:15%;"></div></div>
+          <div class="vbar-num">73</div>
+        </div>
       </div>
+      <p class="election-note" style="margin-top:1rem;">Both incumbents were rejected by voters in 2022. Three newcomers won. When Butler resigned, council chose to seat the candidate voters had just ranked last — not one of the five candidates who had finished ahead of him.</p>
     </div>
 
     <div class="tc">
       <div class="tc-icon">📋</div>
       <div>
         <h4>Three Consecutive Uncontested Mayoral Races</h4>
-        <p>Tom Piper was appointed Mayor mid-term in 2018 when Haufe resigned. He then ran in 2018 and 2022 — both times acclaimed, with no opponent. The mayor of Nipissing Township went uncontested for eight years. A community that can't find mayoral candidates is a community that needs to ask why.</p>
+        <p>Tom Piper was appointed Mayor mid-term in 2018. He then ran in 2018 and 2022 — both times acclaimed, with no opponent. The mayor of Nipissing Township went uncontested for eight years. A community that can't find mayoral candidates is a community that needs to ask why.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ATTENTION / TRUST -->
+<section id="attention" style="background: var(--forest); color: #fff;">
+  <div class="container" style="max-width: 780px; text-align: center; padding-top: 4rem; padding-bottom: 4rem;">
+    <p style="font-size: 1.25rem; line-height: 1.9; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem;">
+      Most people don't follow every council meeting. That's okay — you shouldn't have to.
+    </p>
+    <p style="font-size: 1.25rem; line-height: 1.9; color: rgba(255,255,255,0.85); margin-bottom: 2rem;">
+      But when you're not watching, you need to trust the people in that room to ask hard questions, spend your money carefully, and tell you what happened.
+    </p>
+    <a href="/projects.html" style="display: inline-block; font-size: 1.15rem; font-weight: 700; color: #fff; border-bottom: 2px solid rgba(255,255,255,0.5); padding-bottom: 2px; text-decoration: none; margin-bottom: 2.5rem;">
+      Here's what's been going on while you weren't paying attention. →
+    </a>
+    <p style="font-size: 1.15rem; line-height: 1.75; color: rgba(255,255,255,0.95); font-style: italic; margin: 0;">
+      I've been watching. I've been documenting. Elect me and I'll be the one in that room you can actually trust.
+    </p>
   </div>
 </section>
 
@@ -555,55 +778,50 @@
     <p class="section-intro">These aren't abstract positions. They're documented patterns — and problems I'm committed to fixing.</p>
     <div class="issues-list">
 
-      <div class="issue-row ar">
-        <div class="issue-num">01</div>
-        <div class="issue-content">
-          <div class="issue-tag">⚠ Accountability</div>
-          <h3>$189,000 in Software — Approved at Nearly 2× Budget, Abandoned After Three Years</h3>
-          <p>TownSuite came in at nearly twice the budgeted amount and six times the only other bidder. The appropriate response was a new RFP — not approval. Three years later, terminated with no public explanation. The landfill card system followed the same pattern months later.</p>
-          <a href="/projects.html">Three documented case studies →</a>
+      <a class="issue-card ar" href="/projects.html">
+        <div class="issue-tag">⚠ Accountability</div>
+        <div class="issue-card-top">
+          <span class="issue-card-stat">$189K</span>
+          <span class="issue-card-headline">Spent on software. Abandoned 3 years later. No public explanation given.</span>
         </div>
-      </div>
+        <span class="issue-card-link">Three documented cases →</span>
+      </a>
 
-      <div class="issue-row ar">
-        <div class="issue-num">02</div>
-        <div class="issue-content">
-          <div class="issue-tag">⚠ Governance</div>
-          <h3>Staff Govern. Council Ratifies. The Municipal Act Requires the Opposite.</h3>
-          <p>A by-law requiring annual committee appointments was ignored for years, then changed to match staff practice after I raised it in writing. The CAO hiring process ran entirely behind closed doors — managed by the person who became the candidate. A staff member overrode a council resolution without a vote; council ratified it without a question.</p>
-          <a href="/governance.html">Four documented examples →</a>
+      <a class="issue-card ar" href="/governance.html">
+        <div class="issue-tag">⚠ Governance</div>
+        <div class="issue-card-top">
+          <span class="issue-card-stat">4×</span>
+          <span class="issue-card-headline">Staff governed. Council ratified. The Municipal Act requires the opposite.</span>
         </div>
-      </div>
+        <span class="issue-card-link">Four documented examples →</span>
+      </a>
 
-      <div class="issue-row">
-        <div class="issue-num">03</div>
-        <div class="issue-content">
-          <div class="issue-tag">Fiscal Planning</div>
-          <h3>$4M Facility Decision Coming — No Reserve, No Design, No Plan</h3>
-          <p>The Township's Asset Management Plan identifies a $4M Township Office and Public Works replacement by 2035. No reserve exists. No design work done. The debt is nearly retired — freeing up ~$280K/year. That capacity needs a purpose before 2035 arrives as a crisis.</p>
-          <a href="/facilities.html">The $4.8M facilities gap →</a> &nbsp;·&nbsp; <a href="/finances.html">Township finances explained →</a>
+      <a class="issue-card" href="/facilities.html">
+        <div class="issue-tag">Fiscal Planning</div>
+        <div class="issue-card-top">
+          <span class="issue-card-stat">$4.8M</span>
+          <span class="issue-card-headline">Facility replacement coming by 2035. No reserve. No design. No plan.</span>
         </div>
-      </div>
+        <span class="issue-card-link">The facilities gap →</span>
+      </a>
 
-      <div class="issue-row">
-        <div class="issue-num">04</div>
-        <div class="issue-content">
-          <div class="issue-tag">Communication</div>
-          <h3>Board Minutes Buried. By-Laws Not Searchable. Newsletter Inconsistent.</h3>
-          <p>I built council.chriswjohnston.ca and bylaw.chriswjohnston.ca myself — proving what's possible. If a candidate with no budget can index 833 resolutions with AI summaries, a municipality can do far more. The barrier isn't technical. It's whether council treats this as a priority.</p>
-          <a href="/communication.html">The 13-point plan →</a>
+      <a class="issue-card" href="/communication.html">
+        <div class="issue-tag">Communication</div>
+        <div class="issue-card-top">
+          <span class="issue-card-stat">833</span>
+          <span class="issue-card-headline">Resolutions indexed by a candidate with no budget. The Township hasn't bothered.</span>
         </div>
-      </div>
+        <span class="issue-card-link">The 13-point plan →</span>
+      </a>
 
-      <div class="issue-row">
-        <div class="issue-num">05</div>
-        <div class="issue-content">
-          <div class="issue-tag">Strategic Planning</div>
-          <h3>The Strategic Plan Expires This Year — We Have One Chance to Do Better</h3>
-          <p>The 2023–2026 plan was finalized 42 days after the public town hall. It quotes the Municipal Act's governance framework on page 6, then ignores it. I submitted a formal critique in September 2023. The document is publicly available. The next council must produce a real plan with measurable goals and an annual public report card.</p>
-          <a href="/strategic-planning.html">My full strategic planning critique →</a>
+      <a class="issue-card nostat" href="/strategic-planning.html">
+        <div class="issue-tag">Strategic Planning</div>
+        <div class="issue-card-top">
+          <span class="issue-card-stat">42 days</span>
+          <span class="issue-card-headline">From public consultation to finalized plan. The next council can do better.</span>
         </div>
-      </div>
+        <span class="issue-card-link">My full critique →</span>
+      </a>
 
     </div>
   </div>
@@ -756,5 +974,21 @@
   <p>© 2026 Chris Johnston · Candidate for Nipissing Township Council · <a href="mailto:chris@chriswjohnston.ca">chris@chriswjohnston.ca</a> · Authorized by the financial agent of Chris Johnston. Nipissing Township, Ontario.</p>
 </footer>
 
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
 </body>
 </html>
